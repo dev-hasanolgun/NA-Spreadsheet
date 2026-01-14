@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Numerical Analysis Reference</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    h2 {
+      color: #11998e;
+      font-size: 1.8em;
+      margin: 30px 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #11998e;
+    }
+
+    h3 {
+      color: #0b6e4f;
+      font-size: 1.3em;
+      margin: 20px 0 10px 0;
+    }
+
+    h4 {
+      color: #0b6e4f;
+      font-size: 1.1em;
+      margin: 15px 0 8px 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 20px 0;
+    }
+
+    .card {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      font-size: 0.9em;
+    }
+
+    th {
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #e9ecef;
+      text-align: center;
+      vertical-align: middle;
+      font-family: 'Consolas', monospace;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    .formula-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .formula-box {
+      background: #f8f9fa;
+      border-left: 4px solid #11998e;
+      padding: 15px 20px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-size: 0.95em;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    .formula-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      background: #e0f2f1;
+    }
+
+    .method-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 0;
+      border-left: 5px solid #00b09b;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .method-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .method-title {
+      font-weight: 700;
+      color: #00b09b;
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+
+    .method-form {
+      background: white;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 8px 0;
+      font-weight: 500;
+    }
+
+    .var-def {
+      font-size: 0.85em;
+      color: #666;
+      font-style: italic;
+      margin-top: 5px;
+    }
+
+    .when-to-use {
+      background: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-size: 0.9em;
+    }
+
+    .key-insight {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-size: 0.9em;
+    }
+
+    .common-mistake {
+      background: #ffebee;
+      border-left: 4px solid #f44336;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-size: 0.9em;
+    }
+
+    ul {
+      margin: 10px 0 10px 25px;
+    }
+
+    ol {
+      margin: 10px 0 10px 25px;
+    }
+
+    .methods-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 968px) {
+
+      .grid-2,
+      .formula-grid,
+      .methods-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(5px);
+      z-index: 9999;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: white;
+      width: 90%;
+      max-width: 1200px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), inset 0 -15px 20px -10px rgba(0, 0, 0, 0.05);
+      position: relative;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      padding: 0;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      padding: 20px 30px;
+      border-bottom: 1px solid #e2e8f0;
+      background: #f8fafc;
+      border-radius: 12px 12px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .modal-body {
+      padding: 15px 30px 30px 30px;
+      font-size: 1.05rem;
+      background: #fff;
+    }
+
+    .modal-body h3:first-child {
+      margin-top: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #94a3b8;
+    }
+
+    .close-btn:hover {
+      color: #ef4444;
+    }
+
+    .modal-payload {
+      display: none;
+    }
+
+    .step-box {
+      background: #f1f5f9;
+      border-left: 4px solid #475569;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .step-title {
+      font-weight: bold;
+      color: #334155;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .section-divider {
+      border-top: 2px solid #e2e8f0;
+      margin: 25px 0;
+    }
+
+    /* Language Toggle Button */
+    .lang-toggle {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 30px;
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .lang-toggle:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .lang-toggle-icon {
+      font-size: 1.2em;
+    }
+
+    .lang-toggle-text {
+      color: white;
+      font-weight: 600;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  </style>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      chtml: {
+        matchFontHeight: true,
+        scale: 1.15
+      }
+    };
+
+    // Language Management
+    let currentLang = localStorage.getItem('numAnalysisLang') || 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('numAnalysisLang', lang);
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-en]').forEach(el => {
+        if (lang === 'tr' && el.dataset.tr) {
+          el.textContent = el.dataset.tr;
+        } else {
+          el.textContent = el.dataset.en;
+        }
+      });
+
+      // Update HTML elements with innerHTML (for complex content)
+      document.querySelectorAll('[data-en-html]').forEach(el => {
+        if (lang === 'tr' && el.dataset.trHtml) {
+          el.innerHTML = el.dataset.trHtml;
+        } else {
+          el.innerHTML = el.dataset.enHtml;
+        }
+      });
+
+      // Update toggle button
+      const toggleText = document.querySelector('.lang-toggle-text');
+      if (toggleText) {
+        toggleText.textContent = lang === 'en' ? 'TR' : 'EN';
+      }
+
+      // Re-render MathJax if modal is open
+      if (window.MathJax && document.querySelector('.modal-overlay.active')) {
+        MathJax.typesetPromise([document.getElementById('modal-body')]);
+      }
+    }
+
+    function toggleLanguage() {
+      setLanguage(currentLang === 'en' ? 'tr' : 'en');
+    }
+
+    function openModal(card) {
+      const title = card.querySelector('.method-title').innerText;
+      const payload = card.querySelector('.modal-payload').innerHTML;
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-body').innerHTML = payload;
+      const overlay = document.getElementById('info-modal');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Apply current language to modal content
+      setLanguage(currentLang);
+
+      if (window.MathJax) MathJax.typesetPromise([document.getElementById('modal-body')]);
+    }
+
+    function closeModal() {
+      const overlay = document.getElementById('info-modal');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { document.getElementById('modal-body').innerHTML = ''; }, 300);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize language
+      setLanguage(currentLang);
+
+      // Modal event listeners
+      document.getElementById('info-modal').addEventListener('click', function (e) {
+        if (e.target === this) closeModal();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+    });
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="lang-toggle" onclick="toggleLanguage()">
+        <span class="lang-toggle-icon">🌐</span>
+        <span class="lang-toggle-text">TR</span>
+      </div>
+      <h1>🔢 Numerical Analysis</h1>
+      <p class="subtitle" data-en="Complete Study Guide & Reference" data-tr="Kapsamlı Çalışma Rehberi">Complete Study
+        Guide & Reference</p>
+    </header>
+
+    <div class="content">
+
+      <!-- SECTION: FUNDAMENTALS -->
+      <h2 data-en="📜 Fundamentals & Theorems" data-tr="📜 Temeller & Teoremler">📜 Fundamentals & Theorems</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Intermediate Value Theorem (IVT)</h3>
+          <div class="formula-box">
+            \(f(a) \cdot f(b) < 0 \implies \exists c \in (a,b): f(c)=0\) <div class="var-def">where: f is continuous on
+              [a,b], f(a) and f(b) have opposite signs</div>
+        </div>
+        <p><strong>Use:</strong> Check if root exists in interval before starting iterative methods.</p>
+      </div>
+
+      <div class="method-card" onclick="openModal(this)">
+        <div class="method-title">Taylor Series & Polynomials</div>
+        <div class="method-form">
+          \(P_n(x) = \sum_{i=0}^n \frac{f^{(i)}(a)}{i!}(x-a)^i\)
+          <div class="var-def">where: a = expansion point, n = degree, f^(i) = i-th derivative</div>
+        </div>
+
+        <div class="modal-payload">
+          <h3>Taylor Series - Complete Theory</h3>
+
+          <h4>📌 What is it?</h4>
+          <p>Taylor Series approximates any smooth function as a polynomial. It represents a function using its
+            derivatives at a single point.</p>
+
+          <div class="formula-box">
+            <strong>General Taylor Series (around point a):</strong>
+            $$f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \cdots$$
+          </div>
+
+          <div class="formula-box">
+            <strong>Maclaurin Series (special case, a=0):</strong>
+            $$f(x) = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \cdots$$
+          </div>
+
+          <h4>🎯 Why does it work?</h4>
+          <p>Each term adds more accuracy by accounting for the function's curvature. The first derivative captures
+            slope, second derivative captures concavity, etc.</p>
+
+          <h4>📋 Algorithm Steps</h4>
+          <ol>
+            <li>Choose expansion point \(a\) (usually 0 for Maclaurin).</li>
+            <li>Calculate derivatives: \(f(a), f'(a), f''(a), \ldots, f^{(n)}(a)\).</li>
+            <li>Substitute into formula: \(P_n(x) = \sum_{i=0}^n \frac{f^{(i)}(a)}{i!}(x-a)^i\).</li>
+            <li>Use \(P_n(x)\) to approximate \(f(x)\) near \(a\).</li>
+          </ol>
+
+          <div class="section-divider"></div>
+
+          <h4>📊 Worked Example: Approximate \(e^x\) at x=0.5</h4>
+          <p>Use Maclaurin (a=0), degree n=3.</p>
+
+          <div class="step-box">
+            <span class="step-title">Step 1: Calculate derivatives</span>
+            \(f(x) = e^x \Rightarrow f(0) = 1\) <br>
+            \(f'(x) = e^x \Rightarrow f'(0) = 1\) <br>
+            \(f''(x) = e^x \Rightarrow f''(0) = 1\) <br>
+            \(f'''(x) = e^x \Rightarrow f'''(0) = 1\)
+          </div>
+
+          <div class="step-box">
+            <span class="step-title">Step 2: Build polynomial</span>
+            $$P_3(x) = 1 + x + \frac{x^2}{2} + \frac{x^3}{6}$$
+          </div>
+
+          <div class="step-box">
+            <span class="step-title">Step 3: Evaluate at x=0.5</span>
+            $$P_3(0.5) = 1 + 0.5 + \frac{0.25}{2} + \frac{0.125}{6}$$
+            $$= 1 + 0.5 + 0.125 + 0.0208 = 1.6458$$
+            <br><small>(True value: \(e^{0.5} = 1.6487\), Error = 0.0029)</small>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <h4>⚠️ Error Analysis (Remainder Term)</h4>
+          <div class="formula-box">
+            <strong>Lagrange Remainder:</strong>
+            $$R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1}$$
+            where \(\xi\) is some value between \(a\) and \(x\).
+          </div>
+          <p>This tells us the maximum possible error. For our example, \(|R_3| \le \frac{e^{0.5}}{4!}(0.5)^4 \approx
+            0.003\).</p>
+
+          <h4>🔄 Convergence</h4>
+          <p><strong>When does the series converge?</strong> The series converges if \(\lim_{n \to \infty} R_n(x) = 0\).
+            For \(e^x, \sin x, \cos x\), the series converges for ALL x. For \((1+x)^n\), only converges for \(|x| <
+              1\).</p>
+
+              <div class="common-mistake">
+                <strong>Common Mistake:</strong> Using Taylor expansion far from the expansion point \(a\). The
+                approximation is only accurate near \(a\). If you expand at \(a=0\) but evaluate at \(x=10\), you'll
+                need many terms!
+              </div>
+
+              <div class="key-insight">
+                <strong>Exam Tip:</strong> If asked to approximate \(\sin(0.1)\), use Maclaurin for \(\sin x = x -
+                \frac{x^3}{6} + \frac{x^5}{120} - \cdots\). Just 2-3 terms is enough for small x.
+              </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: ERROR ANALYSIS -->
+    <h2>⚠️ Error Analysis</h2>
+    <div class="formula-grid">
+      <div class="formula-box">
+        <strong>True Error:</strong> \(E_t = \text{True Value} - \text{Approximate Value}\)
+        <div class="var-def">Positive if underestimate, negative if overestimate</div>
+      </div>
+      <div class="formula-box">
+        <strong>Absolute Error:</strong> \(|E_t|\)
+        <div class="var-def">Always positive, magnitude of error</div>
+      </div>
+      <div class="formula-box">
+        <strong>Relative True Error:</strong> \(\epsilon_t = \frac{|E_t|}{|\text{True}|}\)
+        <div class="var-def">Error as fraction of true value</div>
+      </div>
+      <div class="formula-box">
+        <strong>Percent Relative Error:</strong> \(\epsilon_t \times 100\%\)
+      </div>
+      <div class="formula-box">
+        <strong>Approx Relative Error:</strong> \(\epsilon_a = \left|\frac{x_{new} - x_{old}}{x_{new}}\right|\)
+        <div class="var-def">Used in iterations when true value unknown</div>
+      </div>
+      <div class="formula-box">
+        <strong>Truncation Error:</strong> Error from stopping an infinite process
+        <div class="var-def">e.g., stopping Taylor series after n terms</div>
+      </div>
+    </div>
+
+    <!-- SECTION: ROOTS -->
+    <h2>🌱 Root Finding Methods</h2>
+    <div class="methods-grid">
+
+      <!-- BISECTION -->
+      <div class="method-card" onclick="openModal(this)">
+        <div class="method-title">1. Bisection Method</div>
+        <div class="method-form">
+          \(m = \frac{a + b}{2}\)
+          <div class="var-def">where: a = lower bound, b = upper bound, m = midpoint</div>
+        </div>
+        <div class="when-to-use">If \(f(a) \cdot f(m) < 0\), root in [a,m]. Otherwise in [m,b].</div>
+
+            <div class="modal-payload">
+              <h3>Bisection Method - Complete Guide</h3>
+
+              <h4>📌 What is it?</h4>
+              <p>Bisection is a bracketing method that repeatedly halves an interval until the root is isolated to
+                desired accuracy. It's the simplest and most robust root-finding method.</p>
+
+              <h4>🎯 Mathematical Foundation</h4>
+              <p>Based on <strong>Intermediate Value Theorem</strong>: If \(f\) is continuous on \([a,b]\) and \(f(a)
+                \cdot f(b) < 0\), then there exists at least one root in \((a,b)\).</p>
+
+                  <h4>📋 Algorithm</h4>
+                  <ol>
+                    <li><strong>Verify:</strong> Check \(f(a) \cdot f(b) < 0\) (opposite signs).</li>
+                    <li><strong>Compute midpoint:</strong> \(m = (a+b)/2\).</li>
+                    <li><strong>Evaluate:</strong> Calculate \(f(m)\).</li>
+                    <li><strong>Update interval:</strong>
+                      <ul>
+                        <li>If \(f(a) \cdot f(m) < 0\): root is in \([a,m]\), set \(b=m\).</li>
+                        <li>If \(f(m) \cdot f(b) < 0\): root is in \([m,b]\), set \(a=m\).</li>
+                        <li>If \(f(m) = 0\): exact root found!</li>
+                      </ul>
+                    </li>
+                    <li><strong>Repeat</strong> until \(|b-a| < \epsilon\) or \(|f(m)| < \epsilon\).</li>
+                  </ol>
+
+                  <div class="section-divider"></div>
+
+                  <h4>📊 Complete Example: Find root of \(f(x) = x^2 - 3\)</h4>
+                  <p><strong>Initial interval:</strong> \([1, 2]\). <strong>Goal:</strong> 3 iterations.</p>
+                  <p><strong>Verify IVT:</strong> \(f(1) = -2\), \(f(2) = 1\). Signs differ ✓</p>
+
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>n</th>
+                        <th>\(a\)</th>
+                        <th>\(b\)</th>
+                        <th>\(m = (a+b)/2\)</th>
+                        <th>\(f(a)\)</th>
+                        <th>\(f(m)\)</th>
+                        <th>\(f(b)\)</th>
+                        <th>Sign of \(f(a) \cdot f(m)\)</th>
+                        <th>Update</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>1.000</td>
+                        <td>2.000</td>
+                        <td>1.500</td>
+                        <td>-2.000</td>
+                        <td>-0.750</td>
+                        <td>+1.000</td>
+                        <td>+ (same)</td>
+                        <td>\(a=1.5\)</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>1.500</td>
+                        <td>2.000</td>
+                        <td>1.750</td>
+                        <td>-0.750</td>
+                        <td>+0.0625</td>
+                        <td>+1.000</td>
+                        <td>- (differ)</td>
+                        <td>\(b=1.75\)</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>1.500</td>
+                        <td>1.750</td>
+                        <td>1.625</td>
+                        <td>-0.750</td>
+                        <td>-0.359</td>
+                        <td>+0.0625</td>
+                        <td>+ (same)</td>
+                        <td>\(a=1.625\)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p><strong>Result after 3 iterations:</strong> Root is approximately \(m \approx 1.6875\) (midpoint of
+                    [1.625, 1.75]).</p>
+                  <p><small>True root: \(\sqrt{3} = 1.732\), Error = 0.044</small></p>
+
+                  <div class="section-divider"></div>
+
+                  <h4>⚙️ Convergence Analysis</h4>
+                  <div class="formula-box">
+                    <strong>Error Bound:</strong> \(|x_n - x_{true}| \le \frac{b-a}{2^n}\)
+                  </div>
+                  <p>After each iteration, the interval halves. This is <strong>linear convergence</strong> (slow but
+                    guaranteed).</p>
+
+                  <div class="formula-box">
+                    <strong>Number of iterations needed:</strong>
+                    $$n \ge \frac{\log(b-a) - \log(\epsilon)}{\log 2}$$
+                    where \(\epsilon\) is desired tolerance.
+                  </div>
+
+                  <p><strong>Example:</strong> For interval [1,2] and tolerance 0.001: \(n \ge \frac{\log 1 - \log
+                    0.001}{\log 2} = \frac{6.91}{0.693} \approx 10\) iterations.</p>
+
+                  <div class="common-mistake">
+                    <strong>Mistake 1:</strong> Forgetting to check IVT first. If \(f(a)\) and \(f(b)\) have same sign,
+                    method won't work! <br>
+                    <strong>Mistake 2:</strong> Confusing which endpoint to replace. Always replace the one that gives
+                    same sign as \(f(m)\).
+                  </div>
+
+                  <div class="key-insight">
+                    <strong>Advantages:</strong> Always converges (if IVT satisfied), simple, robust. <br>
+                    <strong>Disadvantages:</strong> Slow convergence, cannot find multiple roots, cannot find roots
+                    where function touches x-axis (tangent).
+                  </div>
+            </div>
+        </div>
+
+        <!-- NEWTON RAPHSON -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">2. Newton-Raphson Method</div>
+          <div class="method-form">
+            \(x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}\)
+            <div class="var-def">where: f'(x) = derivative at x, x_i = current guess</div>
+          </div>
+          <div class="key-insight">Quadratic convergence (very fast) when it works!</div>
+
+          <div class="modal-payload">
+            <h3>Newton-Raphson Method - Complete Guide</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>Newton's method uses the tangent line at a point to approximate where the function crosses zero. It's an
+              open method (doesn't need bracketing) with extremely fast convergence.</p>
+
+            <h4>🎯 Mathematical Derivation</h4>
+            <p>The tangent line at \((x_i, f(x_i))\) has equation:</p>
+            $$y - f(x_i) = f'(x_i)(x - x_i)$$
+            <p>Setting \(y=0\) (finding where tangent crosses x-axis):</p>
+            $$0 - f(x_i) = f'(x_i)(x_{i+1} - x_i)$$
+            $$x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$$
+
+            <h4>📋 Algorithm</h4>
+            <ol>
+              <li>Choose initial guess \(x_0\) (near expected root).</li>
+              <li>Compute \(f(x_i)\) and \(f'(x_i)\).</li>
+              <li>Calculate \(x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}\).</li>
+              <li>Check stopping criteria: \(|x_{i+1} - x_i| < \epsilon\) or \(|f(x_{i+1})| < \epsilon\).</li>
+              <li>Repeat from step 2.</li>
+            </ol>
+
+            <div class="section-divider"></div>
+
+            <h4>📊 Complete Example: Find \(\sqrt{10}\)</h4>
+            <p>Solve \(f(x) = x^2 - 10 = 0\). Derivative: \(f'(x) = 2x\).</p>
+            <p><strong>Initial guess:</strong> \(x_0 = 3\) (since \(3^2 = 9 \approx 10\)).</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>i</th>
+                  <th>\(x_i\)</th>
+                  <th>\(f(x_i) = x^2-10\)</th>
+                  <th>\(f'(x_i) = 2x\)</th>
+                  <th>\(h = f/f'\)</th>
+                  <th>\(x_{i+1} = x_i - h\)</th>
+                  <th>\(\epsilon_a = |h/x_{i+1}|\)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>3.000000</td>
+                  <td>-1.000000</td>
+                  <td>6.000000</td>
+                  <td>-0.166667</td>
+                  <td>3.166667</td>
+                  <td>5.3%</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>3.166667</td>
+                  <td>0.027778</td>
+                  <td>6.333333</td>
+                  <td>0.004386</td>
+                  <td>3.162281</td>
+                  <td>0.14%</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>3.162281</td>
+                  <td>0.000020</td>
+                  <td>6.324561</td>
+                  <td>0.000003</td>
+                  <td>3.162278</td>
+                  <td>0.0001%</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p><strong>Result:</strong> \(\sqrt{10} \approx 3.162278\) (Correct to 6 decimals in just 2 iterations!)</p>
+
+            <div class="section-divider"></div>
+
+            <h4>⚙️ Convergence Analysis</h4>
+            <div class="formula-box">
+              <strong>Convergence Order:</strong> Quadratic (errors roughly square each iteration)
+              $$|e_{i+1}| \approx C|e_i|^2$$
+              where \(e_i = x_i - x_{true}\).
+            </div>
+            <p>This means if error is 0.01, next error is ~0.0001. Very fast!</p>
+
+            <div class="formula-box">
+              <strong>Convergence Conditions:</strong>
+              <ul>
+                <li>\(f'(x) \ne 0\) near root (no horizontal tangents)</li>
+                <li>\(f''(x)\) continuous</li>
+                <li>Initial guess \(x_0\) sufficiently close to root</li>
+              </ul>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <h4>⚠️ Failure Modes</h4>
+            <div class="common-mistake">
+              <strong>Failure 1: Division by zero</strong> - If \(f'(x_i) = 0\), method crashes. Happens at local
+              extrema. <br><br>
+              <strong>Failure 2: Divergence</strong> - Poor initial guess can cause oscillation or divergence away from
+              root. <br><br>
+              <strong>Failure 3: Cycling</strong> - Can get stuck in periodic loop for certain functions.
+            </div>
+
+            <div class="key-insight">
+              <strong>When to use:</strong> Fast convergence needed, derivative is easy to calculate, good initial guess
+              available. <br>
+              <strong>When NOT to use:</strong> Derivative hard/impossible to find, multiple roots nearby, no good
+              initial guess.
+            </div>
+          </div>
+        </div>
+
+        <!-- REGULA FALSI -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">3. Regula Falsi (False Position)</div>
+          <div class="method-form">
+            \(c = \frac{a \cdot f(b) - b \cdot f(a)}{f(b) - f(a)}\)
+            <div class="var-def">where: [a,b] = bracket, c = linear interpolation point</div>
+          </div>
+
+          <div class="modal-payload">
+            <h3>Regula Falsi - Complete Guide</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>Regula Falsi (False Position) is similar to Bisection but uses linear interpolation instead of midpoint.
+              It connects points (a, f(a)) and (b, f(b)) with a straight line and finds where this line crosses the
+              x-axis.</p>
+
+            <h4>🎯 Mathematical Foundation</h4>
+            <p>The line through \((a, f(a))\) and \((b, f(b))\) has slope:</p>
+            $$m = \frac{f(b) - f(a)}{b - a}$$
+            <p>Using point-slope form and setting y=0:</p>
+            $$0 - f(a) = \frac{f(b)-f(a)}{b-a}(c - a)$$
+            <p>Solving for c:</p>
+            $$c = a - f(a) \frac{b-a}{f(b)-f(a)} = \frac{af(b) - bf(a)}{f(b)-f(a)}$$
+
+            <h4>📋 Algorithm</h4>
+            <ol>
+              <li>Verify \(f(a) \cdot f(b) < 0\).</li>
+              <li>Compute \(c = \frac{af(b) - bf(a)}{f(b)-f(a)}\).</li>
+              <li>Evaluate \(f(c)\).</li>
+              <li>If \(f(a) \cdot f(c) < 0\): set \(b=c\). Otherwise: set \(a=c\).</li>
+              <li>Repeat until \(|b-a| < \epsilon\).</li>
+            </ol>
+
+            <div class="section-divider"></div>
+
+            <h4>📊 Example: \(f(x) = x^2 - 3\) on [1, 2]</h4>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>n</th>
+                  <th>\(a\)</th>
+                  <th>\(b\)</th>
+                  <th>\(f(a)\)</th>
+                  <th>\(f(b)\)</th>
+                  <th>\(c\) (Formula)</th>
+                  <th>\(f(c)\)</th>
+                  <th>Update</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>1.000</td>
+                  <td>2.000</td>
+                  <td>-2.000</td>
+                  <td>1.000</td>
+                  <td>\(\frac{1(1)-2(-2)}{1-(-2)} = 1.667\)</td>
+                  <td>-0.222</td>
+                  <td>\(a=1.667\)</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>1.667</td>
+                  <td>2.000</td>
+                  <td>-0.222</td>
+                  <td>1.000</td>
+                  <td>1.727</td>
+                  <td>-0.017</td>
+                  <td>\(a=1.727\)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="common-mistake">
+              <strong>One-sided Convergence:</strong> Often one endpoint stays fixed for many iterations while the other
+              converges. This slows convergence compared to Bisection in some cases.
+            </div>
+
+            <div class="key-insight">
+              <strong>Comparison:</strong> Usually faster than Bisection but can be slower if curvature is high. More
+              accurate choice of new point than simple midpoint.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Continue with other sections similarly expanded... -->
+      <!-- For brevity, I'll show one more complete section -->
+
+      <h2 data-en="📐 Linear Systems" data-tr="📐 Doğrusal Sistemler">📐 Linear Systems</h2>
+      <div class="grid-2">
+
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">LU Decomposition</div>
+          <div class="method-form">
+            \(A = L \cdot U\)
+            <div class="var-def">where: L = lower triangular, U = upper triangular</div>
+          </div>
+
+          <div class="modal-payload">
+            <h3>LU Decomposition - Complete Guide</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>LU Decomposition factors a matrix \(A\) into a product of lower triangular matrix \(L\) and upper
+              triangular matrix \(U\). This allows solving \(Ax=b\) efficiently, especially for multiple right-hand
+              sides.</p>
+
+            <h4>🎯 Why is it useful?</h4>
+            <p>Instead of solving \(Ax=b\) directly (expensive), we:</p>
+            <ol>
+              <li>Decompose once: \(A = LU\) (costly but done once)</li>
+              <li>Solve \(Ly = b\) by forward substitution (cheap)</li>
+              <li>Solve \(Ux = y\) by back substitution (cheap)</li>
+            </ol>
+            <p>If you have many systems with same \(A\) but different \(b\), you decompose once and reuse!</p>
+
+            <h4>📋 Doolittle's Method (L has 1s on diagonal)</h4>
+
+            <div class="formula-box">
+              $$L = \begin{bmatrix} 1 & 0 & 0 \\ l_{21} & 1 & 0 \\ l_{31} & l_{32} & 1 \end{bmatrix}, \quad U =
+              \begin{bmatrix} u_{11} & u_{12} & u_{13} \\ 0 & u_{22} & u_{23} \\ 0 & 0 & u_{33} \end{bmatrix}$$
+            </div>
+
+            <p><strong>Formulas:</strong></p>
+            <ul>
+              <li>First row of U: \(u_{1j} = a_{1j}\) for all j</li>
+              <li>First column of L: \(l_{i1} = \frac{a_{i1}}{u_{11}}\) for \(i > 1\)</li>
+              <li>General: \(u_{ij} = a_{ij} - \sum_{k=1}^{i-1} l_{ik}u_{kj}\) for \(i \le j\)</li>
+              <li>General: \(l_{ij} = \frac{1}{u_{jj}}(a_{ij} - \sum_{k=1}^{j-1} l_{ik}u_{kj})\) for \(i > j\)</li>
+            </ul>
+
+            <div class="section-divider"></div>
+
+            <h4>📊 Complete Example</h4>
+            <p>Decompose:</p>
+            $$A = \begin{bmatrix} 2 & 1 & 1 \\ 4 & 3 & 3 \\ 8 & 7 & 9 \end{bmatrix}$$
+
+            <div class="step-box">
+              <span class="step-title">Step 1: First row of U (copy row 1)</span>
+              $$U_{row1} = [2, 1, 1]$$
+            </div>
+
+            <div class="step-box">
+              <span class="step-title">Step 2: First column of L</span>
+              \(l_{21} = \frac{a_{21}}{u_{11}} = \frac{4}{2} = 2\) <br>
+              \(l_{31} = \frac{a_{31}}{u_{11}} = \frac{8}{2} = 4\)
+            </div>
+
+            <div class="step-box">
+              <span class="step-title">Step 3: Second row of U</span>
+              \(u_{22} = a_{22} - l_{21}u_{12} = 3 - 2(1) = 1\) <br>
+              \(u_{23} = a_{23} - l_{21}u_{13} = 3 - 2(1) = 1\)
+            </div>
+
+            <div class="step-box">
+              <span class="step-title">Step 4: Second column of L</span>
+              \(l_{32} = \frac{a_{32} - l_{31}u_{12}}{u_{22}} = \frac{7 - 4(1)}{1} = 3\)
+            </div>
+
+            <div class="step-box">
+              <span class="step-title">Step 5: Final element</span>
+              \(u_{33} = a_{33} - l_{31}u_{13} - l_{32}u_{23} = 9 - 4(1) - 3(1) = 2\)
+            </div>
+
+            <p><strong>Result:</strong></p>
+            $$L = \begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 4 & 3 & 1 \end{bmatrix}, \quad U = \begin{bmatrix} 2 & 1 & 1
+            \\ 0 & 1 & 1 \\ 0 & 0 & 2 \end{bmatrix}$$
+
+            <div class="key-insight">
+              <strong>Verification:</strong> Always multiply \(L \times U\) to check you get back \(A\)!
+            </div>
+
+            <div class="common-mistake">
+              <strong>Mistake:</strong> Confusing Doolittle (L has 1s) with Crout (U has 1s). Check which is required in
+              exam!
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- INTERPOLATION & CURVE FITTING -->
+      <h2 data-en="📈 Interpolation & Polynomials" data-tr="📈 İnterpolasyon & Polinomlar">📈 Interpolation &
+        Polynomials</h2>
+      <div class="methods-grid">
+
+        <!-- LAGRANGE -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Lagrange Interpolation</div>
+          <div class="method-form">
+            \(P(x) = \sum_{i=0}^n y_i L_i(x)\)
+            <div class="var-def">where: \(L_i(x) = \prod_{j \ne i} \frac{x-x_j}{x_i-x_j}\)</div>
+          </div>
+          <div class="when-to-use">Polynomial passing through given points (x_i, y_i)</div>
+
+          <div class="modal-payload">
+            <h3>Lagrange Interpolation - Complete Guide</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>Lagrange interpolation constructs a polynomial of degree \(n\) that passes exactly through \(n+1\) given
+              points. Each point contributes a "basis function" that is 1 at that point and 0 at all others.</p>
+
+            <h4>🎯 Mathematical Foundation</h4>
+            <p>The Lagrange basis polynomial \(L_i(x)\) has special properties:</p>
+            <ul>
+              <li>\(L_i(x_i) = 1\) (equals 1 at its own point)</li>
+              <li>\(L_i(x_j) = 0\) for all \(j \ne i\) (equals 0 at all other points)</li>
+            </ul>
+
+            <div class="formula-box">
+              <strong>Basis Function:</strong>
+              $$L_i(x) =
+              \frac{(x-x_0)(x-x_1)\cdots(x-x_{i-1})(x-x_{i+1})\cdots(x-x_n)}{(x_i-x_0)(x_i-x_1)\cdots(x_i-x_{i-1})(x_i-x_{i+1})\cdots(x_i-x_n)}$$
+            </div>
+
+            <div class="formula-box">
+              <strong>Complete Polynomial:</strong>
+              $$P(x) = y_0 L_0(x) + y_1 L_1(x) + \cdots + y_n L_n(x)$$
+            </div>
+
+            <h4>📋 Algorithm</h4>
+            <ol>
+              <li>For each point \(i\), build \(L_i(x)\) by:
+                <ul>
+                  <li>Numerator: product of \((x - x_j)\) for all \(j \ne i\)</li>
+                  <li>Denominator: product of \((x_i - x_j)\) for all \(j \ne i\)</li>
+                </ul>
+              </li>
+              <li>Multiply each \(L_i(x)\) by its corresponding \(y_i\).</li>
+              <li>Sum all terms: \(P(x) = \sum y_i L_i(x)\).</li>
+            </ol>
+
+            <div class="section-divider"></div>
+
+            <h4>📊 Complete Example: 3 Points</h4>
+            <p>Find polynomial through: (0, 1), (1, 3), (2, 2).</p>
+
+            <div class="step-box">
+              <span class="step-title">Step 1: Build \(L_0(x)\) (for point x_0=0)</span>
+              Numerator: \((x-1)(x-2)\) (skip x_0) <br>
+              Denominator: \((0-1)(0-2) = (-1)(-2) = 2\) <br>
+              $$L_0(x) = \frac{(x-1)(x-2)}{2}$$
+            </div>
+
+            <div class="step-box">
+              <span class="step-title">Step 2: Build \(L_1(x)\) (for point x_1=1)</span>
+              Numerator: \((x-0)(x-2)\) (skip x_1) <br>
+              Denominator: \((1-0)(1-2) = (1)(-1) = -1\) <br>
+              $$L_1(x) = \frac{x(x-2)}{-1} = -x(x-2)$$
+            </div>
+
+            <div class="step-box">
+              <span class="step-title">Step 3: Build \(L_2(x)\) (for point x_2=2)</span>
+              Numerator: \((x-0)(x-1)\) (skip x_2) <br>
+              Denominator: \((2-0)(2-1) = (2)(1) = 2\) <br>
+              $$L_2(x) = \frac{x(x-1)}{2}$$
+            </div>
+
+            <div class="step-box">
+              <span class="step-title">Step 4: Combine</span>
+              $$P(x) = 1 \cdot L_0 + 3 \cdot L_1 + 2 \cdot L_2$$
+              $$= \frac{(x-1)(x-2)}{2} - 3x(x-2) + \frac{2x(x-1)}{2}$$
+              $$= \frac{(x-1)(x-2)}{2} - 3x(x-2) + x(x-1)$$
+            </div>
+
+            <p>Expanding and simplifying: \(P(x) = -2.5x^2 + 4.5x + 1\)</p>
+
+            <div class="section-divider"></div>
+
+            <h4>⚠️ Error Analysis</h4>
+            <div class="formula-box">
+              <strong>Interpolation Error:</strong>
+              $$E(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)(x-x_1)\cdots(x-x_n)$$
+              where \(\xi\) is between min and max of \(x_0, x_1, \ldots, x_n, x\).
+            </div>
+
+            <div class="common-mistake">
+              <strong>Runge's Phenomenon:</strong> For equally spaced points and high degree, Lagrange can oscillate
+              wildly at boundaries. Use more points near edges or use spline interpolation instead.
+            </div>
+
+            <div class="key-insight">
+              <strong>Advantages:</strong> Direct formula, no need for divided difference table. <br>
+              <strong>Disadvantages:</strong> Expensive to compute (many multiplications), adding new point requires
+              full recalculation.
+            </div>
+          </div>
+        </div>
+
+        <!-- NEWTON DIVIDED DIFFERENCES -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Newton Divided Differences</div>
+          <div class="method-form">
+            \(P(x) = b_0 + b_1(x-x_0) + b_2(x-x_0)(x-x_1) + \cdots\)
+            <div class="var-def">where: \(b_i\) = divided difference coefficients from table</div>
+          </div>
+
+          <div class="modal-payload">
+            <h3>Newton Divided Differences - Complete Guide</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>Newton's form uses divided differences to build an interpolating polynomial. Main advantage: easy to add
+              new points increamentally (unlike Lagrange).</p>
+
+            <h4>🎯 Divided Difference Definitions</h4>
+            <div class="formula-box">
+              <strong>0th difference:</strong> \(f[x_i] = y_i\) <br>
+              <strong>1st difference:</strong> \(f[x_i, x_{i+1}] = \frac{f[x_{i+1}] - f[x_i]}{x_{i+1} - x_i}\) <br>
+              <strong>2nd difference:</strong> \(f[x_i, x_{i+1}, x_{i+2}] = \frac{f[x_{i+1}, x_{i+2}] - f[x_i,
+              x_{i+1}]}{x_{i+2} - x_i}\) <br>
+              <strong>nth difference:</strong> Recursive pattern continues
+            </div>
+
+            <h4>📋 Algorithm - Build Table</h4>
+            <ol>
+              <li>Column 0: List \(x_i\) and \(y_i\) values.</li>
+              <li>Column 1 (1st diff): \(\frac{y_{i+1} - y_i}{x_{i+1} - x_i}\) for each consecutive pair.</li>
+              <li>Column 2 (2nd diff): Use formula on column 1 values.</li>
+              <li>Continue until you have one value in final column.</li>
+              <li>Coefficients \(b_i\) are the FIRST value in each column.</li>
+            </ol>
+
+            <div class="section-divider"></div>
+
+            <h4>📊 Complete Example</h4>
+            <p>Points: (1, 0), (2, 1), (4, 2).</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>\(x_i\)</th>
+                  <th>\(f[x_i]\) (y)</th>
+                  <th>1st Diff \(f[x_i,x_{i+1}]\)</th>
+                  <th>2nd Diff \(f[x_i,x_{i+1},x_{i+2}]\)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><strong>0</strong> (b0)</td>
+                  <td>\(\frac{1-0}{2-1} = \mathbf{1}\) (b1)</td>
+                  <td rowspan="2">\(\frac{0.5-1}{4-1} = \mathbf{-0.167}\) (b2)</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>1</td>
+                  <td>\(\frac{2-1}{4-2} = 0.5\)</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>2</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="step-box">
+              <span class="step-title">Coefficients from table:</span>
+              \(b_0 = 0\), \(b_1 = 1\), \(b_2 = -0.167\)
+            </div>
+
+            <div class="step-box">
+              <span class="step-title">Build polynomial:</span>
+              $$P(x) = 0 + 1(x-1) + (-0.167)(x-1)(x-2)$$
+              $$P(x) = (x-1) - 0.167(x-1)(x-2)$$
+            </div>
+
+            <div class="key-insight">
+              <strong>Adding New Point:</strong> If you get a 4th point, just add one more row and column. Don't
+              recalculate everything!
+            </div>
+          </div>
+        </div>
+
+        <!-- NEWTON FORWARD/BACKWARD -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Newton Forward/Backward Differences</div>
+          <div class="method-form">
+            For EQUALLY SPACED points only
+            <div class="var-def">Forward: near start, Backward: near end</div>
+          </div>
+
+          <div class="modal-payload">
+            <h3>Newton Forward & Backward - Complete Guide</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>Special simplified forms of Newton's divided differences when points are EQUALLY SPACED. Uses simpler
+              \(\Delta\) (forward) or \(\nabla\) (backward) notation.</p>
+
+            <h4>🎯 When to Use</h4>
+            <p><strong>Forward:</strong> Use when interpolating near the BEGINNING of table. <br>
+              <strong>Backward:</strong> Use when interpolating near the END of table.
+            </p>
+
+            <h4>📋 Forward Difference Table</h4>
+            <div class="formula-box">
+              $$\Delta y_i = y_{i+1} - y_i$$
+              $$\Delta^2 y_i = \Delta y_{i+1} - \Delta y_i$$
+              $$\Delta^3 y_i = \Delta^2 y_{i+1} - \Delta^2 y_i$$
+            </div>
+
+            <div class="formula-box">
+              <strong>Newton Forward Formula:</strong>
+              $$P(x_0 + rh) = y_0 + r\Delta y_0 + \frac{r(r-1)}{2!}\Delta^2 y_0 + \frac{r(r-1)(r-2)}{3!}\Delta^3 y_0 +
+              \cdots$$
+              where \(r = \frac{x - x_0}{h}\), \(h\) = spacing.
+            </div>
+
+            <h4>📊 Example: Forward Difference</h4>
+            <p>Points at x = 0, 1, 2, 3 with y = 1, 3, 7, 13. (h=1)</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>x</th>
+                  <th>y</th>
+                  <th>\(\Delta y\)</th>
+                  <th>\(\Delta^2 y\)</th>
+                  <th>\(\Delta^3 y\)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td><strong>1</strong></td>
+                  <td><strong>2</strong></td>
+                  <td><strong>2</strong></td>
+                  <td><strong>0</strong></td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>2</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>7</td>
+                  <td>6</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>13</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>To find y at x=0.5: \(r = (0.5-0)/1 = 0.5\)</p>
+            $$P(0.5) = 1 + 0.5(2) + \frac{0.5(-0.5)}{2}(2) = 1 + 1 - 0.25 = 1.75$$
+
+            <div class="common-mistake">
+              <strong>Mistake:</strong> Using Forward when x is near END of table. This gives poor accuracy. Use
+              Backward instead!
+            </div>
+          </div>
+        </div>
+
+        <!-- INVERSE INTERPOLATION -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Inverse Interpolation</div>
+          <div class="method-form">
+            Given y, find x
+            <div class="var-def">Swap roles: treat y as independent variable</div>
+          </div>
+
+          <div class="modal-payload">
+            <h3>Inverse Interpolation</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>Normal interpolation: given x, find y. <strong>Inverse:</strong> given y, find x.</p>
+
+            <h4>📋 Methods</h4>
+            <ol>
+              <li><strong>Method 1 (Swap):</strong> Build Lagrange/Newton with \(x_i\) as "y-values" and \(y_i\) as
+                "x-values". Evaluate at the given y.</li>
+              <li><strong>Method 2 (Iteration):</strong> Build normal \(y = P(x)\), then solve \(P(x) - y_{target} = 0\)
+                using Newton's method.</li>
+            </ol>
+
+            <h4>📊 Example: Method 1</h4>
+            <p>Table: (x=1, y=2), (x=2, y=5), (x=3, y=10). Find x when y=7.</p>
+            <p>Build Lagrange treating y as input:</p>
+            $$x(y) = 1 \cdot \frac{(y-5)(y-10)}{(2-5)(2-10)} + 2 \cdot \frac{(y-2)(y-10)}{(5-2)(5-10)} + 3 \cdot
+            \frac{(y-2)(y-5)}{(10-2)(10-5)}$$
+            <p>Evaluate at y=7 to get x ≈ 2.4.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CURVE FITTING -->
+      <h2 data-en="📉 Curve Fitting" data-tr="📉 Eğri Uydurma">📉 Curve Fitting</h2>
+      <div class="grid-2">
+
+        <!-- LEAST SQUARES -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Least Squares Regression</div>
+          <div class="method-form">
+            Minimize \(\sum (y_i - \hat{y}_i)^2\)
+            <div class="var-def">where: \(\hat{y} = a_0 + a_1 x\) (linear model)</div>
+          </div>
+
+          <div class="modal-payload">
+            <h3>Least Squares - Complete Guide</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>Least squares finds the "best fit" line (or curve) through data points by minimizing the sum of squared
+              vertical distances (residuals).</p>
+
+            <h4>🎯 Why Squared?</h4>
+            <p>Squaring ensures positive values and penalizes large errors more than small ones. Also makes calculus
+              derivatives easier.</p>
+
+            <h4>📋 Linear Regression Formulas</h4>
+            <p>For model \(y = a_0 + a_1 x\):</p>
+            <div class="formula-box">
+              <strong>Normal Equations (from calculus):</strong>
+              $$n a_0 + (\sum x_i) a_1 = \sum y_i$$
+              $$(\sum x_i) a_0 + (\sum x_i^2) a_1 = \sum x_i y_i$$
+            </div>
+
+            <div class="formula-box">
+              <strong>Direct formulas:</strong>
+              $$a_1 = \frac{n\sum xy - (\sum x)(\sum y)}{n\sum x^2 - (\sum x)^2}$$
+              $$a_0 = \bar{y} - a_1 \bar{x}$$
+              where \(\bar{x} = \frac{\sum x}{n}\), \(\bar{y} = \frac{\sum y}{n}\).
+            </div>
+
+            <h4>📊 Complete Example</h4>
+            <p>Fit line through: (1, 2.5), (2, 4), (3, 5.5), (4, 7).</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>\(x\)</th>
+                  <th>\(y\)</th>
+                  <th>\(x^2\)</th>
+                  <th>\(xy\)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>2.5</td>
+                  <td>1</td>
+                  <td>2.5</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>4.0</td>
+                  <td>4</td>
+                  <td>8.0</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>5.5</td>
+                  <td>9</td>
+                  <td>16.5</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>7.0</td>
+                  <td>16</td>
+                  <td>28.0</td>
+                </tr>
+                <tr style="font-weight:bold; border-top: 2px solid #333;">
+                  <td>\(\sum = 10\)</td>
+                  <td>\(\sum = 19\)</td>
+                  <td>\(\sum = 30\)</td>
+                  <td>\(\sum = 55\)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="step-box">
+              <span class="step-title">Solve normal equations:</span>
+              \(4a_0 + 10a_1 = 19\) <br>
+              \(10a_0 + 30a_1 = 55\)
+            </div>
+
+            <div class="step-box">
+              <span class="step-title">Or use direct formula:</span>
+              $$a_1 = \frac{4(55) - 10(19)}{4(30) - 10^2} = \frac{220 - 190}{120 - 100} = \frac{30}{20} = 1.5$$
+              $$a_0 = \frac{19}{4} - 1.5(\frac{10}{4}) = 4.75 - 3.75 = 1.0$$
+            </div>
+
+            <p><strong>Result:</strong> \(y = 1.0 + 1.5x\)</p>
+
+            <div class="section-divider"></div>
+
+            <h4>⚠️ Goodness of Fit</h4>
+            <div class="formula-box">
+              <strong>Standard Deviation:</strong>
+              $$S_y = \sqrt{\frac{S_r}{n-2}}$$
+              where \(S_r = \sum (y_i - \hat{y}_i)^2\) (sum of residuals squared).
+            </div>
+
+            <div class="formula-box">
+              <strong>Coefficient of Determination:</strong>
+              $$r^2 = \frac{S_t - S_r}{S_t}$$
+              where \(S_t = \sum (y_i - \bar{y})^2\). Value near 1 = good fit.
+            </div>
+          </div>
+        </div>
+
+        <!-- EXPONENTIAL FITTING -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Exponential Fitting</div>
+          <div class="method-form">
+            \(y = ae^{bx}\) &rarr; Linearize &rarr; \(\ln y = \ln a + bx\)
+            <div class="var-def">Apply least squares to transformed data</div>
+          </div>
+
+          <div class="modal-payload">
+            <h3>Exponential Function Fitting</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>When data follows exponential growth/decay, fit model \(y = ae^{bx}\) by transforming to linear form.</p>
+
+            <h4>📋 Algorithm</h4>
+            <ol>
+              <li>Take natural log: \(\ln y = \ln a + bx\).</li>
+              <li>Let \(Y = \ln y\), \(A = \ln a\). Now it's linear: \(Y = A + bx\).</li>
+              <li>Build table with columns: \(x, y, Y=\ln y, x^2, xY\).</li>
+              <li>Apply least squares to find \(A\) and \(b\).</li>
+              <li>Convert back: \(a = e^A\).</li>
+            </ol>
+
+            <h4>📊 Example</h4>
+            <p>Data: (0, 1), (1, 2.7), (2, 7.4).</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>x</th>
+                  <th>y</th>
+                  <th>\(Y = \ln y\)</th>
+                  <th>\(x^2\)</th>
+                  <th>\(xY\)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>1.0</td>
+                  <td>0.00</td>
+                  <td>0</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2.7</td>
+                  <td>0.99</td>
+                  <td>1</td>
+                  <td>0.99</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>7.4</td>
+                  <td>2.00</td>
+                  <td>4</td>
+                  <td>4.00</td>
+                </tr>
+                <tr style="font-weight:bold;">
+                  <td>3</td>
+                  <td></td>
+                  <td>2.99</td>
+                  <td>5</td>
+                  <td>4.99</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>Solve for \(A\) and \(b\), then \(a = e^A\).</p>
+
+            <div class="common-mistake">
+              <strong>Mistake:</strong> Forgetting to convert \(A\) back to \(a\) using exponential!
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- NUMERICAL INTEGRATION -->
+      <h2 data-en="∫ Numerical Integration" data-tr="∫ Sayısal İntegrasyon">∫ Numerical Integration</h2>
+      <div class="methods-grid">
+
+        <!-- TRAPEZOIDAL -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Trapezoidal Rule</div>
+          <div class="method-form">
+            \(I \approx \frac{h}{2}[f_0 + 2\sum_{i=1}^{n-1} f_i + f_n]\)
+            <div class="var-def">where: h = (b-a)/n, n = number of segments</div>
+          </div>
+          <div class="key-insight">Exact for linear functions (degree 1)</div>
+
+          <div class="modal-payload">
+            <h3>Trapezoidal Rule - Complete Guide</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>Trapezoidal rule approximates the area under a curve by dividing it into trapezoids instead of
+              rectangles.</p>
+
+            <h4>🎯 Derivation</h4>
+            <p>For single segment [a, b]:</p>
+            <ul>
+              <li>Trapezoid area = \(\frac{1}{2}(base)(height_1 + height_2)\)</li>
+              <li>Here: \(base = h = b-a\), heights = \(f(a)\) and \(f(b)\)</li>
+              <li>Area = \(\frac{h}{2}[f(a) + f(b)]\)</li>
+            </ul>
+
+            <h4>📋 Multiple Segment (Composite) Algorithm</h4>
+            <ol>
+              <li>Divide [a, b] into \(n\) segments of width \(h = (b-a)/n\).</li>
+              <li>Points: \(x_0=a, x_1=a+h, x_2=a+2h, \ldots, x_n=b\).</li>
+              <li>Evaluate \(f\) at each point.</li>
+              <li>Apply formula: \(I \approx \frac{h}{2}[f_0 + 2(f_1 + f_2 + \cdots + f_{n-1}) + f_n]\).</li>
+            </ol>
+
+            <div class="section-divider"></div>
+
+            <h4>📊 Complete Example</h4>
+            <p>Approximate \(\int_0^4 x^2 dx\) with \(n=4\) segments.</p>
+            <p>\(h = (4-0)/4 = 1\). Points: 0, 1, 2, 3, 4.</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>i</th>
+                  <th>\(x_i\)</th>
+                  <th>\(f(x_i) = x^2\)</th>
+                  <th>Coefficient</th>
+                  <th>Weighted</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>4</td>
+                  <td>2</td>
+                  <td>8</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>3</td>
+                  <td>9</td>
+                  <td>2</td>
+                  <td>18</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>4</td>
+                  <td>16</td>
+                  <td>1</td>
+                  <td>16</td>
+                </tr>
+                <tr style="font-weight:bold;">
+                  <td colspan="4">Sum of weighted values:</td>
+                  <td>44</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="step-box">
+              <span class="step-title">Calculate:</span>
+              $$I \approx \frac{1}{2} \times 44 = 22$$
+            </div>
+
+            <p><strong>True value:</strong> \(\int_0^4 x^2 dx = \frac{x^3}{3}\big|_0^4 = \frac{64}{3} = 21.33\)</p>
+            <p><strong>Error:</strong> \(22 - 21.33 = 0.67\) (about 3% error)</p>
+
+            <div class="section-divider"></div>
+
+            <h4>⚠️ Error Analysis</h4>
+            <div class="formula-box">
+              <strong>Truncation Error (single segment):</strong>
+              $$E = -\frac{1}{12}h^3 f''(\xi)$$
+              where \(\xi \in [a, b]\).
+            </div>
+
+            <div class="formula-box">
+              <strong>Composite Error:</strong>
+              $$E = -\frac{(b-a)h^2}{12} f''(\xi)$$
+              Error is \(O(h^2)\) - halving h quarters the error.
+            </div>
+
+            <h4>🔍 Maximum Polynomial Degree</h4>
+            <p><strong>Question:</strong> What's the highest degree polynomial the trapezoidal rule integrates exactly?
+            </p>
+            <p><strong>Answer:</strong> Degree 1 (linear). For \(f(x) = ax + b\), trapezoid gives exact area.</p>
+
+            <div class="key-insight">
+              <strong>When to use:</strong> Simple implementation, moderate accuracy. <br>
+              <strong>Better alternative:</strong> Simpson's for same points but higher accuracy.
+            </div>
+          </div>
+        </div>
+
+        <!-- SIMPSON'S 1/3 -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Simpson's 1/3 Rule</div>
+          <div class="method-form">
+            \(I \approx \frac{h}{3}[f_0 + 4\sum_{odd} f_i + 2\sum_{even} f_i + f_n]\)
+            <div class="var-def">Requires ODD number of points (EVEN segments)</div>
+          </div>
+          <div class="key-insight">Exact for cubics (degree 3)!</div>
+
+          <div class="modal-payload">
+            <h3>Simpson's 1/3 Rule - Complete Guide</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>Simpson's rule fits parabolas (quadratic curves) through successive triplets of points, giving better
+              accuracy than trapezoids.</p>
+
+            <h4>🎯 Derivation</h4>
+            <p>For 3 points (2 segments), fit parabola \(y = Ax^2 + Bx + C\) and integrate analytically. Result:</p>
+            $$I \approx \frac{h}{3}[f_0 + 4f_1 + f_2]$$
+            <p>The "1/3" comes from this coefficient.</p>
+
+            <h4>📋 Composite Algorithm</h4>
+            <p><strong>Requirement:</strong> EVEN number of segments (ODD number of points).</p>
+            <ol>
+              <li>Check: \(n\) must be even.</li>
+              <li>Pattern: coefficients are 1, 4, 2, 4, 2, ..., 4, 1.</li>
+              <li>Formula: \(I \approx \frac{h}{3}[f_0 + 4(f_1 + f_3 + f_5 + \cdots) + 2(f_2 + f_4 + \cdots) + f_n]\).
+              </li>
+            </ol>
+
+            <div class="section-divider"></div>
+
+            <h4>📊 Complete Example</h4>
+            <p>Same integral: \(\int_0^4 x^2 dx\) with \(n=4\) segments.</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>i</th>
+                  <th>\(x_i\)</th>
+                  <th>\(f(x_i) = x^2\)</th>
+                  <th>Simpson Coef</th>
+                  <th>Weighted</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>4</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>4</td>
+                  <td>2</td>
+                  <td>8</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>3</td>
+                  <td>9</td>
+                  <td>4</td>
+                  <td>36</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>4</td>
+                  <td>16</td>
+                  <td>1</td>
+                  <td>16</td>
+                </tr>
+                <tr style="font-weight:bold;">
+                  <td colspan="4">Sum:</td>
+                  <td>64</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="step-box">
+              <span class="step-title">Calculate:</span>
+              $$I \approx \frac{1}{3} \times 64 = 21.33$$
+            </div>
+
+            <p><strong>True value:</strong> 21.33. <strong>Error:</strong> 0! (EXACT for this quadratic!)</p>
+
+            <div class="section-divider"></div>
+
+            <h4>⚠️ Error Analysis</h4>
+            <div class="formula-box">
+              <strong>Truncation Error:</strong>
+              $$E = -\frac{(b-a)h^4}{180} f^{(4)}(\xi)$$
+              Error is \(O(h^4)\) - much better than Trapezoidal's \(O(h^2)\).
+            </div>
+
+            <h4>🔍 Exact for What Degree?</h4>
+            <p><strong>Surprising fact:</strong> Simpson's 1/3 is exact for cubics (degree 3), even though it uses
+              parabolas (degree 2)! This is due to symmetry.</p>
+
+            <div class="common-mistake">
+              <strong>Mistake:</strong> Using odd number of segments. Simpson's 1/3 REQUIRES even segments (like 2, 4,
+              6). For odd segments, use Simpson's 3/8 or combine methods.
+            </div>
+          </div>
+        </div>
+
+        <!-- ROMBERG -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Romberg Integration</div>
+          <div class="method-form">
+            \(I_{j,k} = \frac{4^{k-1} I_{j,k-1} - I_{j-1,k-1}}{4^{k-1} - 1}\)
+            <div class="var-def">Richardson extrapolation on Trapezoidal estimates</div>
+          </div>
+
+          <div class="modal-payload">
+            <h3>Romberg Integration - Complete Guide</h3>
+
+            <h4>📌 What is it?</h4>
+            <p>Romberg integration combines Trapezoidal rule estimates with different step sizes using Richardson
+              extrapolation to achieve very high accuracy.</p>
+
+            <h4>🎯 Key Idea</h4>
+            <p>If you have two estimates with step sizes \(h\) and \(h/2\), you can combine them to eliminate the
+              leading error term, producing a much more accurate result.</p>
+
+            <h4>📋 Algorithm</h4>
+            <ol>
+              <li>Compute \(I_{1,1}\) using Trapezoidal with 1 segment (h = b-a).</li>
+              <li>Compute \(I_{2,1}\) using Trapezoidal with 2 segments (h/2).</li>
+              <li>Extrapolate: \(I_{2,2} = \frac{4I_{2,1} - I_{1,1}}{3}\). (This is Simpson's!)</li>
+              <li>Compute \(I_{3,1}\) with 4 segments.</li>
+              <li>Build pyramid: each level removes another order of error.</li>
+            </ol>
+
+            <div class="section-divider"></div>
+
+            <h4>📊 Example Table Structure</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>j (segments)</th>
+                  <th>\(O(h^2)\)</th>
+                  <th>\(O(h^4)\)</th>
+                  <th>\(O(h^6)\)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>\(I_{1,1}\)</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>\(I_{2,1}\)</td>
+                  <td>\(I_{2,2}\)</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>\(I_{3,1}\)</td>
+                  <td>\(I_{3,2}\)</td>
+                  <td>\(I_{3,3}\)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="formula-box">
+              <strong>Extrapolation Formula:</strong>
+              $$I_{j,k} = \frac{4^{k-1} I_{j,k-1} - I_{j-1,k-1}}{4^{k-1} - 1}$$
+            </div>
+
+            <p><strong>Special cases:</strong> Column 2 (\(k=1 \to k=2\)): divide by 3 (Simpson). Column 3: divide by
+              15.</p>
+
+            <div class="key-insight">
+              <strong>Best value:</strong> Bottom-right of table (\(I_{n,n}\)) has highest accuracy. <br>
+              <strong>Efficiency:</strong> Reuses function evaluations efficiently using "nested" trapezoidal
+              calculations.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="info-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Method Details</h2>
+        <button class="close-btn" onclick="closeModal()">×</button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>
