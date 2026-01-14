@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,6 +27,7 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       overflow: hidden;
     }
+
     header {
       background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
       color: white;
@@ -482,10 +483,15 @@
         <div class="card">
           <h3>Intermediate Value Theorem (IVT)</h3>
           <div class="formula-box">
-            \(f(a) \cdot f(b) < 0 \implies \exists c \in (a,b): f(c)=0\) <div class="var-def">where: f is continuous on
+            \(f(a) \cdot f(b) < 0 \implies \exists c \in (a,b): f(c)=0\) <div class="var-def"
+              data-en="where: f is continuous on [a,b], f(a) and f(b) have opposite signs"
+              data-tr="burada: f, [a,b] aralığında sürekli, f(a) ve f(b) zıt işaretli">where: f is continuous on
               [a,b], f(a) and f(b) have opposite signs</div>
         </div>
-        <p><strong>Use:</strong> Check if root exists in interval before starting iterative methods.</p>
+        <p><strong data-en="Use:" data-tr="Kullanım:">Use:</strong> <span
+            data-en="Check if root exists in interval before starting iterative methods."
+            data-tr="İteratif metodlara başlamadan önce aralıkta kök olup olmadığını kontrol et.">Check if root exists
+            in interval before starting iterative methods.</span></p>
       </div>
 
       <div class="method-card" onclick="openModal(this)">
@@ -496,32 +502,47 @@
         </div>
 
         <div class="modal-payload">
-          <h3>Taylor Series - Complete Theory</h3>
+          <h3 data-en="Taylor Series - Complete Theory" data-tr="Taylor Serileri - Tam Teori">Taylor Series - Complete
+            Theory</h3>
 
-          <h4>📌 What is it?</h4>
-          <p>Taylor Series approximates any smooth function as a polynomial. It represents a function using its
+          <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+          <p data-en="Taylor Series approximates any smooth function as a polynomial. It represents a function using its derivatives at a single point."
+            data-tr="Taylor Serisi, herhangi bir düzgün fonksiyonu bir polinom olarak yaklaştırır. Bir fonksiyonu tek bir noktadaki türevlerini kullanarak temsil eder.">
+            Taylor Series approximates any smooth function as a polynomial. It represents a function using its
             derivatives at a single point.</p>
 
           <div class="formula-box">
-            <strong>General Taylor Series (around point a):</strong>
+            <strong data-en="General Taylor Series (around point a):"
+              data-tr="Genel Taylor Serisi (a noktası etrafında):">General Taylor Series (around point a):</strong>
             $$f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + \cdots$$
           </div>
 
           <div class="formula-box">
-            <strong>Maclaurin Series (special case, a=0):</strong>
+            <strong data-en="Maclaurin Series (special case, a=0):"
+              data-tr="Maclaurin Serisi (özel durum, a=0):">Maclaurin Series (special case, a=0):</strong>
             $$f(x) = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \cdots$$
           </div>
 
-          <h4>🎯 Why does it work?</h4>
-          <p>Each term adds more accuracy by accounting for the function's curvature. The first derivative captures
+          <h4 data-en="🎯 Why does it work?" data-tr="🎯 Neden çalışır?">🎯 Why does it work?</h4>
+          <p data-en="Each term adds more accuracy by accounting for the function's curvature. The first derivative captures slope, second derivative captures concavity, etc."
+            data-tr="Her terim, fonksiyonun eğriliğini hesaba katarak daha fazla doğruluk ekler. Birinci türev eğimi, ikinci türev onkavlığı yakalar vb.">
+            Each term adds more accuracy by accounting for the function's curvature. The first derivative captures
             slope, second derivative captures concavity, etc.</p>
 
-          <h4>📋 Algorithm Steps</h4>
+          <h4 data-en="📋 Algorithm Steps" data-tr="📋 Algoritma Adımları">📋 Algorithm Steps</h4>
           <ol>
-            <li>Choose expansion point \(a\) (usually 0 for Maclaurin).</li>
-            <li>Calculate derivatives: \(f(a), f'(a), f''(a), \ldots, f^{(n)}(a)\).</li>
-            <li>Substitute into formula: \(P_n(x) = \sum_{i=0}^n \frac{f^{(i)}(a)}{i!}(x-a)^i\).</li>
-            <li>Use \(P_n(x)\) to approximate \(f(x)\) near \(a\).</li>
+            <li data-en="Choose expansion point \(a\) (usually 0 for Maclaurin)."
+              data-tr="Genişleme noktası \(a\) seç (Maclaurin için genellikle 0).">Choose expansion point \(a\) (usually
+              0 for Maclaurin).</li>
+            <li data-en="Calculate derivatives: \(f(a), f'(a), f''(a), \ldots, f^{(n)}(a)\)."
+              data-tr="Türevleri hesapla: \(f(a), f'(a), f''(a), \ldots, f^{(n)}(a)\).">Calculate derivatives: \(f(a),
+              f'(a), f''(a), \ldots, f^{(n)}(a)\).</li>
+            <li data-en="Substitute into formula: \(P_n(x) = \sum_{i=0}^n \frac{f^{(i)}(a)}{i!}(x-a)^i\)."
+              data-tr="Formülde yerine koy: \(P_n(x) = \sum_{i=0}^n \frac{f^{(i)}(a)}{i!}(x-a)^i\).">Substitute into
+              formula: \(P_n(x) = \sum_{i=0}^n \frac{f^{(i)}(a)}{i!}(x-a)^i\).</li>
+            <li data-en="Use \(P_n(x)\) to approximate \(f(x)\) near \(a\)."
+              data-tr="\(a\) yakınında \(f(x)\)'i yaklaştırmak için \(P_n(x)\) kullan.">Use \(P_n(x)\) to approximate
+              \(f(x)\) near \(a\).</li>
           </ol>
 
           <div class="section-divider"></div>
@@ -580,30 +601,42 @@
     </div>
 
     <!-- SECTION: ERROR ANALYSIS -->
-    <h2>⚠️ Error Analysis</h2>
+    <h2 data-en="⚠️ Error Analysis" data-tr="⚠️ Hata Analizi">⚠️ Error Analysis</h2>
     <div class="formula-grid">
       <div class="formula-box">
-        <strong>True Error:</strong> \(E_t = \text{True Value} - \text{Approximate Value}\)
-        <div class="var-def">Positive if underestimate, negative if overestimate</div>
+        <strong data-en="True Error:" data-tr="Gerçek Hata:">True Error:</strong> \(E_t = \text{True Value} -
+        \text{Approximate Value}\)
+        <div class="var-def" data-en="Positive if underestimate, negative if overestimate"
+          data-tr="Düşük tahmin ise pozitif, yüksekse negatif">Positive if underestimate, negative if overestimate</div>
       </div>
       <div class="formula-box">
-        <strong>Absolute Error:</strong> \(|E_t|\)
-        <div class="var-def">Always positive, magnitude of error</div>
+        <strong data-en="Absolute Error:" data-tr="Mutlak Hata:">Absolute Error:</strong> \(|E_t|\)
+        <div class="var-def" data-en="Always positive, magnitude of error" data-tr="Daima pozitif, hatanın büyüklüğü">
+          Always positive, magnitude of error</div>
       </div>
       <div class="formula-box">
-        <strong>Relative True Error:</strong> \(\epsilon_t = \frac{|E_t|}{|\text{True}|}\)
-        <div class="var-def">Error as fraction of true value</div>
+        <strong data-en="Relative True Error:" data-tr="Bağıl Gerçek Hata:">Relative True Error:</strong> \(\epsilon_t =
+        \frac{|E_t|}{|\text{True}|}\)
+        <div class="var-def" data-en="Error as fraction of true value" data-tr="Gerçek değerin kesri olarak hata">Error
+          as fraction of true value</div>
       </div>
       <div class="formula-box">
-        <strong>Percent Relative Error:</strong> \(\epsilon_t \times 100\%\)
+        <strong data-en="Percent Relative Error:" data-tr="Yüzde Bağıl Hata:">Percent Relative Error:</strong>
+        \(\epsilon_t \times 100\%\)
       </div>
       <div class="formula-box">
-        <strong>Approx Relative Error:</strong> \(\epsilon_a = \left|\frac{x_{new} - x_{old}}{x_{new}}\right|\)
-        <div class="var-def">Used in iterations when true value unknown</div>
+        <strong data-en="Approx Relative Error:" data-tr="Yaklaşık Bağıl Hata:">Approx Relative Error:</strong>
+        \(\epsilon_a = \left|\frac{x_{new} - x_{old}}{x_{new}}\right|\)
+        <div class="var-def" data-en="Used in iterations when true value unknown"
+          data-tr="Gerçek değer bilinmediğinde iterasyonlarda kullanılır">Used in iterations when true value unknown
+        </div>
       </div>
       <div class="formula-box">
-        <strong>Truncation Error:</strong> Error from stopping an infinite process
-        <div class="var-def">e.g., stopping Taylor series after n terms</div>
+        <strong data-en="Truncation Error:" data-tr="Kesme Hatası:">Truncation Error:</strong> <span
+          data-en="Error from stopping an infinite process" data-tr="Sonsuz bir işlemi durdurmanın hatası">Error from
+          stopping an infinite process</span>
+        <div class="var-def" data-en="e.g., stopping Taylor series after n terms"
+          data-tr="örn: Taylor serisini n terimden sonra durdurmak">e.g., stopping Taylor series after n terms</div>
       </div>
     </div>
 
@@ -616,41 +649,65 @@
         <div class="method-title">1. Bisection Method</div>
         <div class="method-form">
           \(m = \frac{a + b}{2}\)
-          <div class="var-def">where: a = lower bound, b = upper bound, m = midpoint</div>
+          <div class="var-def" data-en="where: a = lower bound, b = upper bound, m = midpoint"
+            data-tr="burada: a = alt sınır, b = üst sınır, m = orta nokta">where: a = lower bound, b = upper bound, m =
+            midpoint</div>
         </div>
-        <div class="when-to-use">If \(f(a) \cdot f(m) < 0\), root in [a,m]. Otherwise in [m,b].</div>
+        <div class="when-to-use" data-en="If \(f(a) \cdot f(m) < 0\), root in [a,m]. Otherwise in [m,b]."
+          data-tr="Eğer \(f(a) \cdot f(m) < 0\) ise, kök [a,m] içinde. Aksi halde [m,b] içinde.">If \(f(a) \cdot f(m) <
+            0\), root in [a,m]. Otherwise in [m,b].</div>
 
             <div class="modal-payload">
-              <h3>Bisection Method - Complete Guide</h3>
+              <h3 data-en="Bisection Method - Complete Guide" data-tr="Bisection (İkiye Bölme) Metodu - Tam Rehber">
+                Bisection Method - Complete Guide</h3>
 
-              <h4>📌 What is it?</h4>
-              <p>Bisection is a bracketing method that repeatedly halves an interval until the root is isolated to
+              <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+              <p data-en="Bisection is a bracketing method that repeatedly halves an interval until the root is isolated to desired accuracy. It's the simplest and most robust root-finding method."
+                data-tr="Bisection, kök istenen hassasiyete ulaşana kadar aralığı sürekli ikiye bölen bir aralık daraltma metodudur. En basit ve en sağlam kök bulma yöntemidir.">
+                Bisection is a bracketing method that repeatedly halves an interval until the root is isolated to
                 desired accuracy. It's the simplest and most robust root-finding method.</p>
 
-              <h4>🎯 Mathematical Foundation</h4>
-              <p>Based on <strong>Intermediate Value Theorem</strong>: If \(f\) is continuous on \([a,b]\) and \(f(a)
+              <h4 data-en="🎯 Mathematical Foundation" data-tr="🎯 Matematiksel Temel">🎯 Mathematical Foundation</h4>
+              <p data-en="Based on Intermediate Value Theorem: If f is continuous on [a,b] and f(a)*f(b) < 0, then there exists at least one root in (a,b)."
+                data-tr="Ara Değer Teoremi'ne dayanır: Eğer f, [a,b] aralığında sürekliyse ve f(a)*f(b) < 0 ise, (a,b) arasında en az bir kök vardır.">
+                Based on <strong>Intermediate Value Theorem</strong>: If \(f\) is continuous on \([a,b]\) and \(f(a)
                 \cdot f(b) < 0\), then there exists at least one root in \((a,b)\).</p>
 
-                  <h4>📋 Algorithm</h4>
+                  <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
                   <ol>
-                    <li><strong>Verify:</strong> Check \(f(a) \cdot f(b) < 0\) (opposite signs).</li>
-                    <li><strong>Compute midpoint:</strong> \(m = (a+b)/2\).</li>
-                    <li><strong>Evaluate:</strong> Calculate \(f(m)\).</li>
-                    <li><strong>Update interval:</strong>
+                    <li data-en="Verify: Check f(a)*f(b) < 0 (opposite signs)."
+                      data-tr="Doğrula: f(a)*f(b) < 0 olduğunu (zıt işaretler) kontrol et."><strong>Verify:</strong>
+                      Check \(f(a) \cdot f(b) < 0\) (opposite signs).</li>
+                    <li data-en="Compute midpoint: m = (a+b)/2." data-tr="Orta noktayı hesapla: m = (a+b)/2.">
+                      <strong>Compute midpoint:</strong> \(m = (a+b)/2\).
+                    </li>
+                    <li data-en="Evaluate: Calculate f(m)." data-tr="Değerlendir: f(m)'i hesapla.">
+                      <strong>Evaluate:</strong> Calculate \(f(m)\).
+                    </li>
+                    <li data-en="Update interval:" data-tr="Aralığı güncelle:"><strong>Update interval:</strong>
                       <ul>
-                        <li>If \(f(a) \cdot f(m) < 0\): root is in \([a,m]\), set \(b=m\).</li>
-                        <li>If \(f(m) \cdot f(b) < 0\): root is in \([m,b]\), set \(a=m\).</li>
-                        <li>If \(f(m) = 0\): exact root found!</li>
+                        <li data-en="If f(a)*f(m) < 0: root is in [a,m], set b=m."
+                          data-tr="Eğer f(a)*f(m) < 0 ise: kök [a,m] içinde, b=m yap for.">If \(f(a) \cdot f(m) < 0\):
+                            root is in \([a,m]\), set \(b=m\).</li>
+                        <li data-en="If f(m)*f(b) < 0: root is in [m,b], set a=m."
+                          data-tr="Eğer f(m)*f(b) < 0 ise: kök [m,b] içinde, a=m yap.">If \(f(m) \cdot f(b) < 0\): root
+                            is in \([m,b]\), set \(a=m\).</li>
+                        <li data-en="If f(m) = 0: exact root found!" data-tr="Eğer f(m) = 0 ise: tam kök bulundu!">If
+                          \(f(m) = 0\): exact root found!</li>
                       </ul>
                     </li>
-                    <li><strong>Repeat</strong> until \(|b-a| < \epsilon\) or \(|f(m)| < \epsilon\).</li>
+                    <li data-en="Repeat until |b-a| < epsilon or |f(m)| < epsilon."
+                      data-tr="|b-a| < epsilon veya |f(m)| < epsilon olana kadar tekrarla."><strong>Repeat</strong>
+                      until \(|b-a| < \epsilon\) or \(|f(m)| < \epsilon\).</li>
                   </ol>
 
                   <div class="section-divider"></div>
 
                   <h4>📊 Complete Example: Find root of \(f(x) = x^2 - 3\)</h4>
-                  <p><strong>Initial interval:</strong> \([1, 2]\). <strong>Goal:</strong> 3 iterations.</p>
-                  <p><strong>Verify IVT:</strong> \(f(1) = -2\), \(f(2) = 1\). Signs differ ✓</p>
+                  <p><strong data-en="Initial interval:" data-tr="Başlangıç aralığı:">Initial interval:</strong> \([1,
+                    2]\). <strong data-en="Goal:" data-tr="Hedef:">Goal:</strong> 3 iterations.</p>
+                  <p><strong data-en="Verify IVT:" data-tr="IVT Doğrulama:">Verify IVT:</strong> \(f(1) = -2\), \(f(2) =
+                    1\). <span data-en="Signs differ ✓" data-tr="İşaretler farklı ✓">Signs differ ✓</span></p>
 
                   <table>
                     <thead>
@@ -662,7 +719,8 @@
                         <th>\(f(a)\)</th>
                         <th>\(f(m)\)</th>
                         <th>\(f(b)\)</th>
-                        <th>Sign of \(f(a) \cdot f(m)\)</th>
+                        <th data-en="Sign of \(f(a) \cdot f(m)\)" data-tr="\(f(a) \cdot f(m)\) İşareti">Sign of \(f(a)
+                          \cdot f(m)\)</th>
                         <th>Update</th>
                       </tr>
                     </thead>
@@ -675,7 +733,7 @@
                         <td>-2.000</td>
                         <td>-0.750</td>
                         <td>+1.000</td>
-                        <td>+ (same)</td>
+                        <td data-en="+ (same)" data-tr="+ (aynı)">+ (same)</td>
                         <td>\(a=1.5\)</td>
                       </tr>
                       <tr>
@@ -686,7 +744,7 @@
                         <td>-0.750</td>
                         <td>+0.0625</td>
                         <td>+1.000</td>
-                        <td>- (differ)</td>
+                        <td data-en="- (differ)" data-tr="- (farklı)">- (differ)</td>
                         <td>\(b=1.75\)</td>
                       </tr>
                       <tr>
@@ -697,45 +755,69 @@
                         <td>-0.750</td>
                         <td>-0.359</td>
                         <td>+0.0625</td>
-                        <td>+ (same)</td>
+                        <td data-en="+ (same)" data-tr="+ (aynı)">+ (same)</td>
                         <td>\(a=1.625\)</td>
                       </tr>
                     </tbody>
                   </table>
 
-                  <p><strong>Result after 3 iterations:</strong> Root is approximately \(m \approx 1.6875\) (midpoint of
-                    [1.625, 1.75]).</p>
+                  <p><strong data-en="Result after 3 iterations:" data-tr="3 iterasyon sonrası sonuç:">Result after 3
+                      iterations:</strong> <span
+                      data-en="Root is approximately \(m \approx 1.6875\) (midpoint of [1.625, 1.75])."
+                      data-tr="Kök yaklaşık olarak \(m \approx 1.6875\) ([1.625, 1.75] orta noktası).">Root is
+                      approximately \(m \approx 1.6875\) (midpoint of
+                      [1.625, 1.75]).</span></p>
                   <p><small>True root: \(\sqrt{3} = 1.732\), Error = 0.044</small></p>
 
                   <div class="section-divider"></div>
 
-                  <h4>⚙️ Convergence Analysis</h4>
+                  <h4 data-en="⚙️ Convergence Analysis" data-tr="⚙️ Yakinsama Analizi">⚙️ Convergence Analysis</h4>
                   <div class="formula-box">
-                    <strong>Error Bound:</strong> \(|x_n - x_{true}| \le \frac{b-a}{2^n}\)
+                    <strong data-en="Error Bound:" data-tr="Hata Sınırı:">Error Bound:</strong> \(|x_n - x_{true}| \le
+                    \frac{b-a}{2^n}\)
                   </div>
-                  <p>After each iteration, the interval halves. This is <strong>linear convergence</strong> (slow but
+                  <p data-en="After each iteration, the interval halves. This is Linear Convergence (slow but guaranteed)."
+                    data-tr="Her iterasyonda aralık yarıya iner. Bu Doğrusal Yakınsamadır (yavaş ama garantili).">After
+                    each iteration, the interval halves. This is <strong>linear convergence</strong> (slow but
                     guaranteed).</p>
 
                   <div class="formula-box">
-                    <strong>Number of iterations needed:</strong>
+                    <strong data-en="Number of iterations needed:" data-tr="Gereken iterasyon sayısı:">Number of
+                      iterations needed:</strong>
                     $$n \ge \frac{\log(b-a) - \log(\epsilon)}{\log 2}$$
-                    where \(\epsilon\) is desired tolerance.
+                    <div class="var-def" data-en="where epsilon is desired tolerance."
+                      data-tr="burada epsilon istenen tolerans.">where \(\epsilon\) is desired tolerance.</div>
                   </div>
 
-                  <p><strong>Example:</strong> For interval [1,2] and tolerance 0.001: \(n \ge \frac{\log 1 - \log
-                    0.001}{\log 2} = \frac{6.91}{0.693} \approx 10\) iterations.</p>
+                  <p data-en="Example: For interval [1,2] and tolerance 0.001: approx 10 iterations."
+                    data-tr="Örnek: [1,2] aralığı ve 0.001 tolerans için: yaklaşık 10 iterasyon.">
+                    <strong>Example:</strong> For interval [1,2] and tolerance 0.001: \(n \ge \frac{\log 1 - \log
+                    0.001}{\log 2} = \frac{6.91}{0.693} \approx 10\) iterations.
+                  </p>
 
                   <div class="common-mistake">
-                    <strong>Mistake 1:</strong> Forgetting to check IVT first. If \(f(a)\) and \(f(b)\) have same sign,
-                    method won't work! <br>
-                    <strong>Mistake 2:</strong> Confusing which endpoint to replace. Always replace the one that gives
-                    same sign as \(f(m)\).
+                    <strong data-en="Mistake 1:" data-tr="Hata 1:">Mistake 1:</strong> <span
+                      data-en="Forgetting to check IVT first. If f(a) and f(b) have same sign, method won't work!"
+                      data-tr="Önce IVT'yi kontrol etmeyi unutmak. Eğer f(a) ve f(b) aynı işaretliyse metod çalışmaz!">Forgetting
+                      to check IVT first. If \(f(a)\) and \(f(b)\) have same sign,
+                      method won't work!</span> <br>
+                    <strong data-en="Mistake 2:" data-tr="Hata 2:">Mistake 2:</strong> <span
+                      data-en="Confusing which endpoint to replace. Always replace the one that gives same sign as f(m)."
+                      data-tr="Hangi uç noktanın değiştirileceğini karıştırmak. Daima f(m) ile aynı işareti vereni değiştirin.">Confusing
+                      which endpoint to replace. Always replace the one that gives
+                      same sign as \(f(m)\).</span>
                   </div>
 
                   <div class="key-insight">
-                    <strong>Advantages:</strong> Always converges (if IVT satisfied), simple, robust. <br>
-                    <strong>Disadvantages:</strong> Slow convergence, cannot find multiple roots, cannot find roots
-                    where function touches x-axis (tangent).
+                    <strong data-en="Advantages:" data-tr="Avantajlar:">Advantages:</strong> <span
+                      data-en="Always converges (if IVT satisfied), simple, robust."
+                      data-tr="Her zaman yakınsar (eğer IVT sağlanırsa), basit, sağlam.">Always converges (if IVT
+                      satisfied), simple, robust.</span> <br>
+                    <strong data-en="Disadvantages:" data-tr="Dezavantajlar:">Disadvantages:</strong> <span
+                      data-en="Slow convergence, cannot find multiple roots, cannot find roots where function touches x-axis (tangent)."
+                      data-tr="Yavaş yakınsama, çoklu kökleri bulamaz, fonksiyonun x-eksenine teğet olduğu kökleri bulamaz.">Slow
+                      convergence, cannot find multiple roots, cannot find roots
+                      where function touches x-axis (tangent).</span>
                   </div>
             </div>
         </div>
@@ -745,31 +827,46 @@
           <div class="method-title">2. Newton-Raphson Method</div>
           <div class="method-form">
             \(x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}\)
-            <div class="var-def">where: f'(x) = derivative at x, x_i = current guess</div>
+            <div class="var-def" data-en="where: f'(x) = derivative at x, x_i = current guess"
+              data-tr="burada: f'(x) = x'teki türev, x_i = mevcut tahmin">where: f'(x) = derivative at x, x_i = current
+              guess</div>
           </div>
-          <div class="key-insight">Quadratic convergence (very fast) when it works!</div>
+          <div class="key-insight" data-en="Quadratic convergence (very fast) when it works!"
+            data-tr="Çalıştığında karesel yakınsama (çok hızlı)!">Quadratic convergence (very fast) when it works!</div>
 
           <div class="modal-payload">
-            <h3>Newton-Raphson Method - Complete Guide</h3>
+            <h3 data-en="Newton-Raphson Method - Complete Guide" data-tr="Newton-Raphson Metodu - Tam Rehber">
+              Newton-Raphson Method - Complete Guide</h3>
 
-            <h4>📌 What is it?</h4>
-            <p>Newton's method uses the tangent line at a point to approximate where the function crosses zero. It's an
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Newton's method uses the tangent line at a point to approximate where the function crosses zero. It's an open method (doesn't need bracketing) with extremely fast convergence."
+              data-tr="Newton metodu, fonksiyonun sıfırı kestiği noktayı yaklaşık olarak bulmak için bir noktadaki teğet doğrusunu kullanır. Aşırı hızlı yakınsamaya sahip açık bir metoddur (aralık gerektirmez).">
+              Newton's method uses the tangent line at a point to approximate where the function crosses zero. It's an
               open method (doesn't need bracketing) with extremely fast convergence.</p>
 
-            <h4>🎯 Mathematical Derivation</h4>
-            <p>The tangent line at \((x_i, f(x_i))\) has equation:</p>
+            <h4 data-en="🎯 Mathematical Derivation" data-tr="🎯 Matematiksel Türetim">🎯 Mathematical Derivation</h4>
+            <p data-en="The tangent line at (x_i, f(x_i)) has equation:"
+              data-tr="(x_i, f(x_i)) noktasındaki teğet doğrusunun denklemi:">The tangent line at \((x_i, f(x_i))\) has
+              equation:</p>
             $$y - f(x_i) = f'(x_i)(x - x_i)$$
-            <p>Setting \(y=0\) (finding where tangent crosses x-axis):</p>
+            <p data-en="Setting y=0 (finding where tangent crosses x-axis):"
+              data-tr="y=0 koyarak (teğetin x-eksenini kestiği yeri bularak):">Setting \(y=0\) (finding where tangent
+              crosses x-axis):</p>
             $$0 - f(x_i) = f'(x_i)(x_{i+1} - x_i)$$
             $$x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$$
 
-            <h4>📋 Algorithm</h4>
+            <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
             <ol>
-              <li>Choose initial guess \(x_0\) (near expected root).</li>
-              <li>Compute \(f(x_i)\) and \(f'(x_i)\).</li>
-              <li>Calculate \(x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}\).</li>
-              <li>Check stopping criteria: \(|x_{i+1} - x_i| < \epsilon\) or \(|f(x_{i+1})| < \epsilon\).</li>
-              <li>Repeat from step 2.</li>
+              <li data-en="Choose initial guess x0 (near expected root)."
+                data-tr="Başlangıç tahmini x0 seç (beklenen köke yakın).">Choose initial guess \(x_0\) (near expected
+                root).</li>
+              <li data-en="Compute f(xi) and f'(xi)." data-tr="f(xi) ve f'(xi) hesapla.">Compute \(f(x_i)\) and
+                \(f'(x_i)\).</li>
+              <li data-en="Calculate next point using formula." data-tr="Formülü kullanarak sonraki noktayı hesapla.">
+                Calculate \(x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}\).</li>
+              <li data-en="Check stopping criteria." data-tr="Durma kriterlerini kontrol et.">Check stopping criteria:
+                \(|x_{i+1} - x_i| < \epsilon\) or \(|f(x_{i+1})| < \epsilon\).</li>
+              <li data-en="Repeat from step 2." data-tr="2. adımdan tekrarla.">Repeat from step 2.</li>
             </ol>
 
             <div class="section-divider"></div>
@@ -825,39 +922,60 @@
 
             <div class="section-divider"></div>
 
-            <h4>⚙️ Convergence Analysis</h4>
+            <h4 data-en="⚙️ Convergence Analysis" data-tr="⚙️ Yakınsama Analizi">⚙️ Convergence Analysis</h4>
             <div class="formula-box">
-              <strong>Convergence Order:</strong> Quadratic (errors roughly square each iteration)
+              <strong data-en="Convergence Order:" data-tr="Yakınsama Derecesi:">Convergence Order:</strong> <span
+                data-en="Quadratic (errors roughly square each iteration)"
+                data-tr="Karesel (hatalar her iterasyonda kabaca karesi alınır)">Quadratic (errors roughly square each
+                iteration)</span>
               $$|e_{i+1}| \approx C|e_i|^2$$
-              where \(e_i = x_i - x_{true}\).
+              <div class="var-def" data-en="where e_i = x_i - x_true" data-tr="burada e_i = x_i - x_gercek">where \(e_i
+                = x_i - x_{true}\).</div>
             </div>
-            <p>This means if error is 0.01, next error is ~0.0001. Very fast!</p>
+            <p data-en="This means if error is 0.01, next error is ~0.0001. Very fast!"
+              data-tr="Bu demektir ki hata 0.01 ise, sonraki hata ~0.0001 olur. Çok hızlı!">This means if error is 0.01,
+              next error is ~0.0001. Very fast!</p>
 
             <div class="formula-box">
-              <strong>Convergence Conditions:</strong>
+              <strong data-en="Convergence Conditions:" data-tr="Yakınsama Koşulları:">Convergence Conditions:</strong>
               <ul>
-                <li>\(f'(x) \ne 0\) near root (no horizontal tangents)</li>
-                <li>\(f''(x)\) continuous</li>
-                <li>Initial guess \(x_0\) sufficiently close to root</li>
+                <li data-en="f'(x) != 0 near root (no horizontal tangents)"
+                  data-tr="kök yakınında f'(x) != 0 (yatay teğet yok)">\(f'(x) \ne 0\) near root (no horizontal
+                  tangents)</li>
+                <li data-en="f''(x) continuous" data-tr="f''(x) sürekli">\(f''(x)\) continuous</li>
+                <li data-en="Initial guess x0 sufficiently close to root"
+                  data-tr="Başlangıç tahmini x0 köke yeterince yakın">Initial guess \(x_0\) sufficiently close to root
+                </li>
               </ul>
             </div>
 
             <div class="section-divider"></div>
 
-            <h4>⚠️ Failure Modes</h4>
+            <h4 data-en="⚠️ Failure Modes" data-tr="⚠️ Başarısızlık Modları">⚠️ Failure Modes</h4>
             <div class="common-mistake">
-              <strong>Failure 1: Division by zero</strong> - If \(f'(x_i) = 0\), method crashes. Happens at local
-              extrema. <br><br>
-              <strong>Failure 2: Divergence</strong> - Poor initial guess can cause oscillation or divergence away from
-              root. <br><br>
-              <strong>Failure 3: Cycling</strong> - Can get stuck in periodic loop for certain functions.
+              <strong data-en="Failure 1: Division by zero" data-tr="Hata 1: Sıfıra bölme">Failure 1: Division by
+                zero</strong> - <span data-en="If f'(xi) = 0, method crashes. Happens at local extrema."
+                data-tr="Eğer f'(xi) = 0 ise metod çöker. Yerel ekstremumlarda olur.">If \(f'(x_i) = 0\), method
+                crashes. Happens at local extrema.</span> <br><br>
+              <strong data-en="Failure 2: Divergence" data-tr="Hata 2: Iraksama">Failure 2: Divergence</strong> - <span
+                data-en="Poor initial guess can cause oscillation or divergence away from root."
+                data-tr="Kötü başlangıç tahmini salınıma veya kökten uzaklaşmaya neden olabilir.">Poor initial guess can
+                cause oscillation or divergence away from root.</span> <br><br>
+              <strong data-en="Failure 3: Cycling" data-tr="Hata 3: Döngü">Failure 3: Cycling</strong> - <span
+                data-en="Can get stuck in periodic loop for certain functions."
+                data-tr="Bazı fonksiyonlar için periyodik döngüye girebilir.">Can get stuck in periodic loop for certain
+                functions.</span>
             </div>
 
             <div class="key-insight">
-              <strong>When to use:</strong> Fast convergence needed, derivative is easy to calculate, good initial guess
-              available. <br>
-              <strong>When NOT to use:</strong> Derivative hard/impossible to find, multiple roots nearby, no good
-              initial guess.
+              <strong data-en="When to use:" data-tr="Ne zaman kullanılır:">When to use:</strong> <span
+                data-en="Fast convergence needed, derivative is easy to calculate, good initial guess available."
+                data-tr="Hızlı yakınsama gerektiğinde, türevi hesaplamak kolaysa, iyi bir başlangıç tahmini varsa.">Fast
+                convergence needed, derivative is easy to calculate, good initial guess available.</span> <br>
+              <strong data-en="When NOT to use:" data-tr="Ne zaman KULLANILMAZ:">When NOT to use:</strong> <span
+                data-en="Derivative hard/impossible to find, multiple roots nearby, no good initial guess."
+                data-tr="Türevi bulmak zorsa/imkansızsa, yakında birden çok kök varsa, iyi bir başlangıç tahmini yoksa.">Derivative
+                hard/impossible to find, multiple roots nearby, no good initial guess.</span>
             </div>
           </div>
         </div>
@@ -867,37 +985,51 @@
           <div class="method-title">3. Regula Falsi (False Position)</div>
           <div class="method-form">
             \(c = \frac{a \cdot f(b) - b \cdot f(a)}{f(b) - f(a)}\)
-            <div class="var-def">where: [a,b] = bracket, c = linear interpolation point</div>
+            <div class="var-def" data-en="where: [a,b] = bracket, c = linear interpolation point"
+              data-tr="burada: [a,b] = aralık, c = doğrusal enterpolasyon noktası">where: [a,b] = bracket, c = linear
+              interpolation point</div>
           </div>
 
           <div class="modal-payload">
-            <h3>Regula Falsi - Complete Guide</h3>
+            <h3 data-en="Regula Falsi - Complete Guide" data-tr="Regula Falsi (Doğrusal Enterpolasyon) - Tam Rehber">
+              Regula Falsi - Complete Guide</h3>
 
-            <h4>📌 What is it?</h4>
-            <p>Regula Falsi (False Position) is similar to Bisection but uses linear interpolation instead of midpoint.
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Regula Falsi (False Position) is similar to Bisection but uses linear interpolation instead of midpoint. It connects points (a, f(a)) and (b, f(b)) with a straight line and finds where this line crosses the x-axis."
+              data-tr="Regula Falsi (Yanlış Konum), Bisection'a benzer ancak orta nokta yerine doğrusal enterpolasyon kullanır. (a, f(a)) ve (b, f(b)) noktalarını düz bir çizgiyle birleştirir ve bu çizginin x-eksenini kestiği yeri bulur.">
+              Regula Falsi (False Position) is similar to Bisection but uses linear interpolation instead of midpoint.
               It connects points (a, f(a)) and (b, f(b)) with a straight line and finds where this line crosses the
               x-axis.</p>
 
-            <h4>🎯 Mathematical Foundation</h4>
-            <p>The line through \((a, f(a))\) and \((b, f(b))\) has slope:</p>
+            <h4 data-en="🎯 Mathematical Foundation" data-tr="🎯 Matematiksel Temel">🎯 Mathematical Foundation</h4>
+            <p data-en="The line through (a, f(a)) and (b, f(b)) has slope:"
+              data-tr="(a, f(a)) ve (b, f(b))'den geçen doğrunun eğimi:">The line through \((a, f(a))\) and \((b,
+              f(b))\) has slope:</p>
             $$m = \frac{f(b) - f(a)}{b - a}$$
-            <p>Using point-slope form and setting y=0:</p>
+            <p data-en="Using point-slope form and setting y=0:" data-tr="Nokta-eğim formunu kullanarak ve y=0 alarak:">
+              Using point-slope form and setting y=0:</p>
             $$0 - f(a) = \frac{f(b)-f(a)}{b-a}(c - a)$$
-            <p>Solving for c:</p>
+            <p data-en="Solving for c:" data-tr="c için çözüm:">Solving for c:</p>
             $$c = a - f(a) \frac{b-a}{f(b)-f(a)} = \frac{af(b) - bf(a)}{f(b)-f(a)}$$
 
-            <h4>📋 Algorithm</h4>
+            <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
             <ol>
-              <li>Verify \(f(a) \cdot f(b) < 0\).</li>
-              <li>Compute \(c = \frac{af(b) - bf(a)}{f(b)-f(a)}\).</li>
-              <li>Evaluate \(f(c)\).</li>
-              <li>If \(f(a) \cdot f(c) < 0\): set \(b=c\). Otherwise: set \(a=c\).</li>
-              <li>Repeat until \(|b-a| < \epsilon\).</li>
+              <li data-en="Verify f(a)*f(b) < 0." data-tr="f(a)*f(b) < 0 olduğunu doğrula.">Verify \(f(a) \cdot f(b) <
+                  0\).</li>
+              <li data-en="Compute c using formula." data-tr="Formülü kullanarak c hesapla.">Compute \(c = \frac{af(b) -
+                bf(a)}{f(b)-f(a)}\).</li>
+              <li data-en="Evaluate f(c)." data-tr="f(c)'yi hesapla.">Evaluate \(f(c)\).</li>
+              <li data-en="If f(a)*f(c) < 0: set b=c. Otherwise: set a=c."
+                data-tr="Eğer f(a)*f(c) < 0 ise: b=c yap. Aksi halde: a=c yap.">If \(f(a) \cdot f(c) < 0\): set \(b=c\).
+                  Otherwise: set \(a=c\).</li>
+              <li data-en="Repeat until convergence." data-tr="Yakınsayana kadar tekrarla.">Repeat until \(|b-a| <
+                  \epsilon\).</li>
             </ol>
 
             <div class="section-divider"></div>
 
-            <h4>📊 Example: \(f(x) = x^2 - 3\) on [1, 2]</h4>
+            <h4 data-en="📊 Example: f(x) = x^2 - 3 on [1, 2]" data-tr="📊 Örnek: [1, 2] üzerinde f(x) = x^2 - 3">📊
+              Example: \(f(x) = x^2 - 3\) on [1, 2]</h4>
 
             <table>
               <thead>
@@ -937,13 +1069,20 @@
             </table>
 
             <div class="common-mistake">
-              <strong>One-sided Convergence:</strong> Often one endpoint stays fixed for many iterations while the other
-              converges. This slows convergence compared to Bisection in some cases.
+              <strong data-en="One-sided Convergence:" data-tr="Tek Taraflı Yakınsama:">One-sided Convergence:</strong>
+              <span
+                data-en="Often one endpoint stays fixed for many iterations while the other converges. This slows convergence compared to Bisection in some cases."
+                data-tr="Genellikle bir uç nokta birçok iterasyon boyunca sabit kalırken diğeri yakınsar. Bu, bazı durumlarda Bisection'a göre yakınsamayı yavaşlatır.">Often
+                one endpoint stays fixed for many iterations while the other
+                converges. This slows convergence compared to Bisection in some cases.</span>
             </div>
 
             <div class="key-insight">
-              <strong>Comparison:</strong> Usually faster than Bisection but can be slower if curvature is high. More
-              accurate choice of new point than simple midpoint.
+              <strong data-en="Comparison:" data-tr="Karşılaştırma:">Comparison:</strong> <span
+                data-en="Usually faster than Bisection but can be slower if curvature is high. More accurate choice of new point than simple midpoint."
+                data-tr="Genellikle Bisection'dan daha hızlıdır ancak eğrilik yüksekse daha yavaş olabilir. Basit orta noktadan daha doğru bir yeni nokta seçimidir.">Usually
+                faster than Bisection but can be slower if curvature is high. More
+                accurate choice of new point than simple midpoint.</span>
             </div>
           </div>
         </div>
@@ -960,85 +1099,114 @@
           <div class="method-title">LU Decomposition</div>
           <div class="method-form">
             \(A = L \cdot U\)
-            <div class="var-def">where: L = lower triangular, U = upper triangular</div>
+            <div class="var-def" data-en="where: L = lower triangular, U = upper triangular"
+              data-tr="burada: L = alt üçgen, U = üst üçgen">where: L = lower triangular, U = upper triangular</div>
           </div>
 
           <div class="modal-payload">
-            <h3>LU Decomposition - Complete Guide</h3>
+            <h3 data-en="LU Decomposition - Complete Guide" data-tr="LU Ayrıştırması - Tam Rehber">LU Decomposition -
+              Complete Guide</h3>
 
-            <h4>📌 What is it?</h4>
-            <p>LU Decomposition factors a matrix \(A\) into a product of lower triangular matrix \(L\) and upper
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="LU Decomposition factors a matrix A into a product of lower triangular matrix L and upper triangular matrix U. This allows solving Ax=b efficiently, especially for multiple right-hand sides."
+              data-tr="LU Ayrıştırması, bir A matrisini alt üçgen L ve üst üçgen U matrislerinin çarpımına ayırır. Bu, özellikle çoklu sağ taraf vektörleri için Ax=b'yi verimli bir şekilde çözmeyi sağlar.">
+              LU Decomposition factors a matrix \(A\) into a product of lower triangular matrix \(L\) and upper
               triangular matrix \(U\). This allows solving \(Ax=b\) efficiently, especially for multiple right-hand
               sides.</p>
 
-            <h4>🎯 Why is it useful?</h4>
-            <p>Instead of solving \(Ax=b\) directly (expensive), we:</p>
+            <h4 data-en="🎯 Why is it useful?" data-tr="🎯 Neden yararlıdır?">🎯 Why is it useful?</h4>
+            <p data-en="Instead of solving Ax=b directly (expensive), we:"
+              data-tr="Ax=b'yi doğrudan çözmek yerine (pahalı), biz:">Instead of solving \(Ax=b\) directly (expensive),
+              we:</p>
             <ol>
-              <li>Decompose once: \(A = LU\) (costly but done once)</li>
-              <li>Solve \(Ly = b\) by forward substitution (cheap)</li>
-              <li>Solve \(Ux = y\) by back substitution (cheap)</li>
+              <li data-en="Decompose once: A = LU (costly but done once)"
+                data-tr="Bir kez ayrıştır: A = LU (pahalı ama bir kez yapılır)">Decompose once: \(A = LU\) (costly but
+                done once)</li>
+              <li data-en="Solve Ly = b by forward substitution (cheap)"
+                data-tr="Ly = b'yi ileri yerine koyma ile çöz (ucuz)">Solve \(Ly = b\) by forward substitution (cheap)
+              </li>
+              <li data-en="Solve Ux = y by back substitution (cheap)"
+                data-tr="Ux = y'yi geri yerine koyma ile çöz (ucuz)">Solve \(Ux = y\) by back substitution (cheap)</li>
             </ol>
-            <p>If you have many systems with same \(A\) but different \(b\), you decompose once and reuse!</p>
+            <p data-en="If you have many systems with same A but different b, you decompose once and reuse!"
+              data-tr="Eğer aynı A ama farklı b'ye sahip birçok sisteminiz varsa, bir kez ayrıştırıp tekrar kullanırsınız!">
+              If you have many systems with same \(A\) but different \(b\), you decompose once and reuse!</p>
 
-            <h4>📋 Doolittle's Method (L has 1s on diagonal)</h4>
+            <h4 data-en="📋 Doolittle's Method (L has 1s on diagonal)"
+              data-tr="📋 Doolittle Metodu (L'nin köşegeninde 1'ler vardır)">📋 Doolittle's Method (L has 1s on
+              diagonal)</h4>
 
             <div class="formula-box">
               $$L = \begin{bmatrix} 1 & 0 & 0 \\ l_{21} & 1 & 0 \\ l_{31} & l_{32} & 1 \end{bmatrix}, \quad U =
               \begin{bmatrix} u_{11} & u_{12} & u_{13} \\ 0 & u_{22} & u_{23} \\ 0 & 0 & u_{33} \end{bmatrix}$$
             </div>
 
-            <p><strong>Formulas:</strong></p>
+            <p><strong data-en="Formulas:" data-tr="Formüller:">Formulas:</strong></p>
             <ul>
-              <li>First row of U: \(u_{1j} = a_{1j}\) for all j</li>
-              <li>First column of L: \(l_{i1} = \frac{a_{i1}}{u_{11}}\) for \(i > 1\)</li>
+              <li data-en="First row of U: u1j = a1j for all j" data-tr="U'nun ilk satırı: her j için u1j = a1j">First
+                row of U: \(u_{1j} = a_{1j}\) for all j</li>
+              <li data-en="First column of L: li1 = ai1 / u11 for i > 1"
+                data-tr="L'nin ilk sütunu: i > 1 için li1 = ai1 / u11">First column of L: \(l_{i1} =
+                \frac{a_{i1}}{u_{11}}\) for \(i > 1\)</li>
               <li>General: \(u_{ij} = a_{ij} - \sum_{k=1}^{i-1} l_{ik}u_{kj}\) for \(i \le j\)</li>
               <li>General: \(l_{ij} = \frac{1}{u_{jj}}(a_{ij} - \sum_{k=1}^{j-1} l_{ik}u_{kj})\) for \(i > j\)</li>
             </ul>
 
             <div class="section-divider"></div>
 
-            <h4>📊 Complete Example</h4>
-            <p>Decompose:</p>
+            <h4 data-en="📊 Complete Example" data-tr="📊 Tam Örnek">📊 Complete Example</h4>
+            <p data-en="Decompose:" data-tr="Ayrıştır:">Decompose:</p>
             $$A = \begin{bmatrix} 2 & 1 & 1 \\ 4 & 3 & 3 \\ 8 & 7 & 9 \end{bmatrix}$$
 
             <div class="step-box">
-              <span class="step-title">Step 1: First row of U (copy row 1)</span>
+              <span class="step-title" data-en="Step 1: First row of U (copy row 1)"
+                data-tr="Adım 1: U'nun ilk satırı (satır 1'i kopyala)">Step 1: First row of U (copy row 1)</span>
               $$U_{row1} = [2, 1, 1]$$
             </div>
 
             <div class="step-box">
-              <span class="step-title">Step 2: First column of L</span>
+              <span class="step-title" data-en="Step 2: First column of L" data-tr="Adım 2: L'nin ilk sütunu">Step 2:
+                First column of L</span>
               \(l_{21} = \frac{a_{21}}{u_{11}} = \frac{4}{2} = 2\) <br>
               \(l_{31} = \frac{a_{31}}{u_{11}} = \frac{8}{2} = 4\)
             </div>
 
             <div class="step-box">
-              <span class="step-title">Step 3: Second row of U</span>
+              <span class="step-title" data-en="Step 3: Second row of U" data-tr="Adım 3: U'nun ikinci satırı">Step 3:
+                Second row of U</span>
               \(u_{22} = a_{22} - l_{21}u_{12} = 3 - 2(1) = 1\) <br>
               \(u_{23} = a_{23} - l_{21}u_{13} = 3 - 2(1) = 1\)
             </div>
 
             <div class="step-box">
-              <span class="step-title">Step 4: Second column of L</span>
+              <span class="step-title" data-en="Step 4: Second column of L" data-tr="Adım 4: L'nin ikinci sütunu">Step
+                4: Second column of L</span>
               \(l_{32} = \frac{a_{32} - l_{31}u_{12}}{u_{22}} = \frac{7 - 4(1)}{1} = 3\)
             </div>
 
             <div class="step-box">
-              <span class="step-title">Step 5: Final element</span>
+              <span class="step-title" data-en="Step 5: Final element" data-tr="Adım 5: Son eleman">Step 5: Final
+                element</span>
               \(u_{33} = a_{33} - l_{31}u_{13} - l_{32}u_{23} = 9 - 4(1) - 3(1) = 2\)
             </div>
 
-            <p><strong>Result:</strong></p>
+            <p><strong data-en="Result:" data-tr="Sonuç:">Result:</strong></p>
             $$L = \begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 4 & 3 & 1 \end{bmatrix}, \quad U = \begin{bmatrix} 2 & 1 & 1
             \\ 0 & 1 & 1 \\ 0 & 0 & 2 \end{bmatrix}$$
 
             <div class="key-insight">
-              <strong>Verification:</strong> Always multiply \(L \times U\) to check you get back \(A\)!
+              <strong data-en="Verification:" data-tr="Doğrulama:">Verification:</strong> <span
+                data-en="Always multiply L * U to check you get back A!"
+                data-tr="A'yı geri elde edip etmediğinizi kontrol etmek için daima L * U çarpımı yapın!">Always multiply
+                \(L \times U\) to check you get back \(A\)!</span>
             </div>
 
             <div class="common-mistake">
-              <strong>Mistake:</strong> Confusing Doolittle (L has 1s) with Crout (U has 1s). Check which is required in
-              exam!
+              <strong data-en="Mistake:" data-tr="Hata:">Mistake:</strong> <span
+                data-en="Confusing Doolittle (L has 1s) with Crout (U has 1s). Check which is required in exam!"
+                data-tr="Doolittle (L'de 1'ler var) ile Crout (U'da 1'ler var) yöntemlerini karıştırmak. Sınavda hangisinin istendiğini kontrol edin!">Confusing
+                Doolittle (L has 1s) with Crout (U has 1s). Check which is required in
+                exam!</span>
             </div>
           </div>
         </div>
@@ -1051,104 +1219,143 @@
       <div class="methods-grid">
 
         <!-- LAGRANGE -->
+        <!-- LAGRANGE -->
         <div class="method-card" onclick="openModal(this)">
           <div class="method-title">Lagrange Interpolation</div>
           <div class="method-form">
             \(P(x) = \sum_{i=0}^n y_i L_i(x)\)
-            <div class="var-def">where: \(L_i(x) = \prod_{j \ne i} \frac{x-x_j}{x_i-x_j}\)</div>
+            <div class="var-def" data-en="where: L_i(x) is basis function" data-tr="burada: L_i(x) baz fonksiyonudur">
+              where: \(L_i(x) = \prod_{j \ne i} \frac{x-x_j}{x_i-x_j}\)</div>
           </div>
-          <div class="when-to-use">Polynomial passing through given points (x_i, y_i)</div>
+          <div class="when-to-use" data-en="Polynomial passing through given points (x_i, y_i)"
+            data-tr="Verilen (x_i, y_i) noktalarından geçen polinom">Polynomial passing through given points (x_i, y_i)
+          </div>
 
           <div class="modal-payload">
-            <h3>Lagrange Interpolation - Complete Guide</h3>
+            <h3 data-en="Lagrange Interpolation - Complete Guide" data-tr="Lagrange İnterpolasyonu - Tam Rehber">
+              Lagrange Interpolation - Complete Guide</h3>
 
-            <h4>📌 What is it?</h4>
-            <p>Lagrange interpolation constructs a polynomial of degree \(n\) that passes exactly through \(n+1\) given
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Lagrange interpolation constructs a polynomial of degree n that passes exactly through n+1 given points. Each point contributes a 'basis function' that is 1 at that point and 0 at all others."
+              data-tr="Lagrange interpolasyonu, verilen n+1 noktadan tam olarak geçen n. dereceden bir polinom oluşturur. Her nokta, o noktada 1 ve diğerlerinde 0 olan bir 'baz fonksiyonu' ile katkıda bulunur.">
+              Lagrange interpolation constructs a polynomial of degree \(n\) that passes exactly through \(n+1\) given
               points. Each point contributes a "basis function" that is 1 at that point and 0 at all others.</p>
 
-            <h4>🎯 Mathematical Foundation</h4>
-            <p>The Lagrange basis polynomial \(L_i(x)\) has special properties:</p>
+            <h4 data-en="🎯 Mathematical Foundation" data-tr="🎯 Matematiksel Temel">🎯 Mathematical Foundation</h4>
+            <p data-en="The Lagrange basis polynomial L_i(x) has special properties:"
+              data-tr="Lagrange baz polinomu L_i(x) özel özelliklere sahiptir:">The Lagrange basis polynomial \(L_i(x)\)
+              has special properties:</p>
             <ul>
-              <li>\(L_i(x_i) = 1\) (equals 1 at its own point)</li>
-              <li>\(L_i(x_j) = 0\) for all \(j \ne i\) (equals 0 at all other points)</li>
+              <li data-en="L_i(x_i) = 1 (equals 1 at its own point)"
+                data-tr="L_i(x_i) = 1 (kendi noktasında 1'e eşittir)">\(L_i(x_i) = 1\) (equals 1 at its own point)</li>
+              <li data-en="L_i(x_j) = 0 for all j != i (equals 0 at all other points)"
+                data-tr="j != i için L_i(x_j) = 0 (diğer tüm noktalarda 0'a eşittir)">\(L_i(x_j) = 0\) for all \(j \ne
+                i\) (equals 0 at all other points)</li>
             </ul>
 
             <div class="formula-box">
-              <strong>Basis Function:</strong>
+              <strong data-en="Basis Function:" data-tr="Baz Fonksiyonu:">Basis Function:</strong>
               $$L_i(x) =
               \frac{(x-x_0)(x-x_1)\cdots(x-x_{i-1})(x-x_{i+1})\cdots(x-x_n)}{(x_i-x_0)(x_i-x_1)\cdots(x_i-x_{i-1})(x_i-x_{i+1})\cdots(x_i-x_n)}$$
             </div>
 
             <div class="formula-box">
-              <strong>Complete Polynomial:</strong>
+              <strong data-en="Complete Polynomial:" data-tr="Tam Polinom:">Complete Polynomial:</strong>
               $$P(x) = y_0 L_0(x) + y_1 L_1(x) + \cdots + y_n L_n(x)$$
             </div>
 
-            <h4>📋 Algorithm</h4>
+            <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
             <ol>
-              <li>For each point \(i\), build \(L_i(x)\) by:
+              <li data-en="For each point i, build L_i(x) by:" data-tr="Her bir i noktası için L_i(x)'i oluştur:">For
+                each point \(i\), build \(L_i(x)\) by:
                 <ul>
-                  <li>Numerator: product of \((x - x_j)\) for all \(j \ne i\)</li>
-                  <li>Denominator: product of \((x_i - x_j)\) for all \(j \ne i\)</li>
+                  <li data-en="Numerator: product of (x - x_j) for all j != i"
+                    data-tr="Pay: tüm j != i için (x - x_j) çarpımı">Numerator: product of \((x - x_j)\) for all \(j \ne
+                    i\)</li>
+                  <li data-en="Denominator: product of (x_i - x_j) for all j != i"
+                    data-tr="Payda: tüm j != i için (x_i - x_j) çarpımı">Denominator: product of \((x_i - x_j)\) for all
+                    \(j \ne i\)</li>
                 </ul>
               </li>
-              <li>Multiply each \(L_i(x)\) by its corresponding \(y_i\).</li>
-              <li>Sum all terms: \(P(x) = \sum y_i L_i(x)\).</li>
+              <li data-en="Multiply each L_i(x) by its corresponding y_i."
+                data-tr="Her bir L_i(x)'i kendi y_i değeriyle çarp.">Multiply each \(L_i(x)\) by its corresponding
+                \(y_i\).</li>
+              <li data-en="Sum all terms: P(x) = sum(y_i * L_i(x))."
+                data-tr="Tüm terimleri topla: P(x) = toplam(y_i * L_i(x)).">Sum all terms: \(P(x) = \sum y_i L_i(x)\).
+              </li>
             </ol>
 
             <div class="section-divider"></div>
 
-            <h4>📊 Complete Example: 3 Points</h4>
-            <p>Find polynomial through: (0, 1), (1, 3), (2, 2).</p>
+            <h4 data-en="📊 Complete Example: 3 Points" data-tr="📊 Tam Örnek: 3 Nokta">📊 Complete Example: 3 Points
+            </h4>
+            <p data-en="Find polynomial through: (0, 1), (1, 3), (2, 2)."
+              data-tr="Şu noktalardan geçen polinomu bul: (0, 1), (1, 3), (2, 2).">Find polynomial through: (0, 1), (1,
+              3), (2, 2).</p>
 
             <div class="step-box">
-              <span class="step-title">Step 1: Build \(L_0(x)\) (for point x_0=0)</span>
+              <span class="step-title" data-en="Step 1: Build L0(x) (for point x0=0)"
+                data-tr="Adım 1: L0(x) oluştur (x0=0 için)">Step 1: Build \(L_0(x)\) (for point x_0=0)</span>
               Numerator: \((x-1)(x-2)\) (skip x_0) <br>
               Denominator: \((0-1)(0-2) = (-1)(-2) = 2\) <br>
               $$L_0(x) = \frac{(x-1)(x-2)}{2}$$
             </div>
 
             <div class="step-box">
-              <span class="step-title">Step 2: Build \(L_1(x)\) (for point x_1=1)</span>
+              <span class="step-title" data-en="Step 2: Build L1(x) (for point x1=1)"
+                data-tr="Adım 2: L1(x) oluştur (x1=1 için)">Step 2: Build \(L_1(x)\) (for point x_1=1)</span>
               Numerator: \((x-0)(x-2)\) (skip x_1) <br>
               Denominator: \((1-0)(1-2) = (1)(-1) = -1\) <br>
               $$L_1(x) = \frac{x(x-2)}{-1} = -x(x-2)$$
             </div>
 
             <div class="step-box">
-              <span class="step-title">Step 3: Build \(L_2(x)\) (for point x_2=2)</span>
+              <span class="step-title" data-en="Step 3: Build L2(x) (for point x2=2)"
+                data-tr="Adım 3: L2(x) oluştur (x2=2 için)">Step 3: Build \(L_2(x)\) (for point x_2=2)</span>
               Numerator: \((x-0)(x-1)\) (skip x_2) <br>
               Denominator: \((2-0)(2-1) = (2)(1) = 2\) <br>
               $$L_2(x) = \frac{x(x-1)}{2}$$
             </div>
 
             <div class="step-box">
-              <span class="step-title">Step 4: Combine</span>
+              <span class="step-title" data-en="Step 4: Combine" data-tr="Adım 4: Birleştir">Step 4: Combine</span>
               $$P(x) = 1 \cdot L_0 + 3 \cdot L_1 + 2 \cdot L_2$$
               $$= \frac{(x-1)(x-2)}{2} - 3x(x-2) + \frac{2x(x-1)}{2}$$
               $$= \frac{(x-1)(x-2)}{2} - 3x(x-2) + x(x-1)$$
             </div>
 
-            <p>Expanding and simplifying: \(P(x) = -2.5x^2 + 4.5x + 1\)</p>
+            <p data-en="Expanding and simplifying:" data-tr="Açıp sadeleştirince:">Expanding and simplifying: \(P(x) =
+              -2.5x^2 + 4.5x + 1\)</p>
 
             <div class="section-divider"></div>
 
-            <h4>⚠️ Error Analysis</h4>
+            <h4 data-en="⚠️ Error Analysis" data-tr="⚠️ Hata Analizi">⚠️ Error Analysis</h4>
             <div class="formula-box">
-              <strong>Interpolation Error:</strong>
+              <strong data-en="Interpolation Error:" data-tr="İnterpolasyon Hatası:">Interpolation Error:</strong>
               $$E(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)(x-x_1)\cdots(x-x_n)$$
-              where \(\xi\) is between min and max of \(x_0, x_1, \ldots, x_n, x\).
+              <div class="var-def" data-en="where xi is between min and max of x0...xn, x"
+                data-tr="burada xi, x0...xn ve x'in en küçük ve en büyük değerleri arasındadır">where \(\xi\) is between
+                min and max of \(x_0, x_1, \ldots, x_n, x\).</div>
             </div>
 
             <div class="common-mistake">
-              <strong>Runge's Phenomenon:</strong> For equally spaced points and high degree, Lagrange can oscillate
-              wildly at boundaries. Use more points near edges or use spline interpolation instead.
+              <strong data-en="Runge's Phenomenon:" data-tr="Runge Fenomeni:">Runge's Phenomenon:</strong> <span
+                data-en="For equally spaced points and high degree, Lagrange can oscillate wildly at boundaries. Use more points near edges or use spline interpolation instead."
+                data-tr="Eşit aralıklı noktalar ve yüksek derece için, Lagrange sınırlarda aşırı salınım yapabilir. Kenarlara yakın daha fazla nokta kullanın veya spline interpolasyonu kullanın.">For
+                equally spaced points and high degree, Lagrange can oscillate
+                wildly at boundaries. Use more points near edges or use spline interpolation instead.</span>
             </div>
 
             <div class="key-insight">
-              <strong>Advantages:</strong> Direct formula, no need for divided difference table. <br>
-              <strong>Disadvantages:</strong> Expensive to compute (many multiplications), adding new point requires
-              full recalculation.
+              <strong data-en="Advantages:" data-tr="Avantajlar:">Advantages:</strong> <span
+                data-en="Direct formula, no need for divided difference table."
+                data-tr="Doğrudan formül, bölünmüş fark tablosuna gerek yok.">Direct formula, no need for divided
+                difference table.</span> <br>
+              <strong data-en="Disadvantages:" data-tr="Dezavantajlar:">Disadvantages:</strong> <span
+                data-en="Expensive to compute (many multiplications), adding new point requires full recalculation."
+                data-tr="Hesaplaması pahalı (çok çarpma), yeni nokta eklemek tam yeniden hesaplama gerektirir.">Expensive
+                to compute (many multiplications), adding new point requires
+                full recalculation.</span>
             </div>
           </div>
         </div>
@@ -1158,46 +1365,66 @@
           <div class="method-title">Newton Divided Differences</div>
           <div class="method-form">
             \(P(x) = b_0 + b_1(x-x_0) + b_2(x-x_0)(x-x_1) + \cdots\)
-            <div class="var-def">where: \(b_i\) = divided difference coefficients from table</div>
+            <div class="var-def" data-en="where: b_i = divided difference coefficients from table"
+              data-tr="burada: b_i = tablodan alınan bölünmüş fark katsayıları">where: \(b_i\) = divided difference
+              coefficients from table</div>
           </div>
 
           <div class="modal-payload">
-            <h3>Newton Divided Differences - Complete Guide</h3>
+            <h3 data-en="Newton Divided Differences - Complete Guide" data-tr="Newton Bölünmüş Farklar - Tam Rehber">
+              Newton Divided Differences - Complete Guide</h3>
 
-            <h4>📌 What is it?</h4>
-            <p>Newton's form uses divided differences to build an interpolating polynomial. Main advantage: easy to add
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Newton's form uses divided differences to build an interpolating polynomial. Main advantage: easy to add new points incrementally (unlike Lagrange)."
+              data-tr="Newton formu, enterpolasyon polinomunu oluşturmak için bölünmüş farkları kullanır. Ana avantaj: yeni noktaları artımlı olarak eklemek kolaydır (Lagrange'ın aksine).">
+              Newton's form uses divided differences to build an interpolating polynomial. Main advantage: easy to add
               new points increamentally (unlike Lagrange).</p>
 
-            <h4>🎯 Divided Difference Definitions</h4>
+            <h4 data-en="🎯 Divided Difference Definitions" data-tr="🎯 Bölünmüş Fark Tanımları">🎯 Divided Difference
+              Definitions</h4>
             <div class="formula-box">
-              <strong>0th difference:</strong> \(f[x_i] = y_i\) <br>
-              <strong>1st difference:</strong> \(f[x_i, x_{i+1}] = \frac{f[x_{i+1}] - f[x_i]}{x_{i+1} - x_i}\) <br>
-              <strong>2nd difference:</strong> \(f[x_i, x_{i+1}, x_{i+2}] = \frac{f[x_{i+1}, x_{i+2}] - f[x_i,
-              x_{i+1}]}{x_{i+2} - x_i}\) <br>
-              <strong>nth difference:</strong> Recursive pattern continues
+              <strong data-en="0th difference:" data-tr="0. fark:">0th difference:</strong> \(f[x_i] = y_i\) <br>
+              <strong data-en="1st difference:" data-tr="1. fark:">1st difference:</strong> \(f[x_i, x_{i+1}] =
+              \frac{f[x_{i+1}] - f[x_i]}{x_{i+1} - x_i}\) <br>
+              <strong data-en="2nd difference:" data-tr="2. fark:">2nd difference:</strong> \(f[x_i, x_{i+1}, x_{i+2}] =
+              \frac{f[x_{i+1}, x_{i+2}] - f[x_i, x_{i+1}]}{x_{i+2} - x_i}\) <br>
+              <strong data-en="nth difference:" data-tr="n. fark:">nth difference:</strong> <span
+                data-en="Recursive pattern continues" data-tr="Özyinelemeli desen devam eder">Recursive pattern
+                continues</span>
             </div>
 
-            <h4>📋 Algorithm - Build Table</h4>
+            <h4 data-en="📋 Algorithm - Build Table" data-tr="📋 Algoritma - Tablo Oluştur">📋 Algorithm - Build Table
+            </h4>
             <ol>
-              <li>Column 0: List \(x_i\) and \(y_i\) values.</li>
-              <li>Column 1 (1st diff): \(\frac{y_{i+1} - y_i}{x_{i+1} - x_i}\) for each consecutive pair.</li>
-              <li>Column 2 (2nd diff): Use formula on column 1 values.</li>
-              <li>Continue until you have one value in final column.</li>
-              <li>Coefficients \(b_i\) are the FIRST value in each column.</li>
+              <li data-en="Column 0: List x_i and y_i values." data-tr="Sütun 0: x_i ve y_i değerlerini listele.">Column
+                0: List \(x_i\) and \(y_i\) values.</li>
+              <li data-en="Column 1 (1st diff): (y_i+1 - y_i)/(x_i+1 - x_i) for each consecutive pair."
+                data-tr="Sütun 1 (1. fark): Her ardışık çift için (y_i+1 - y_i)/(x_i+1 - x_i).">Column 1 (1st diff):
+                \(\frac{y_{i+1} - y_i}{x_{i+1} - x_i}\) for each consecutive pair.</li>
+              <li data-en="Column 2 (2nd diff): Use formula on column 1 values."
+                data-tr="Sütun 2 (2. fark): Sütun 1 değerleri üzerinde formülü kullan.">Column 2 (2nd diff): Use formula
+                on column 1 values.</li>
+              <li data-en="Continue until you have one value in final column."
+                data-tr="Son sütunda bir değer kalana kadar devam et.">Continue until you have one value in final
+                column.</li>
+              <li data-en="Coefficients b_i are the FIRST value in each column."
+                data-tr="Katsayılar b_i her sütundaki İLK değerdir.">Coefficients \(b_i\) are the FIRST value in each
+                column.</li>
             </ol>
 
             <div class="section-divider"></div>
 
-            <h4>📊 Complete Example</h4>
-            <p>Points: (1, 0), (2, 1), (4, 2).</p>
+            <h4 data-en="📊 Complete Example" data-tr="📊 Tam Örnek">📊 Complete Example</h4>
+            <p data-en="Points: (1, 0), (2, 1), (4, 2)." data-tr="Noktalar: (1, 0), (2, 1), (4, 2).">Points: (1, 0), (2,
+              1), (4, 2).</p>
 
             <table>
               <thead>
                 <tr>
                   <th>\(x_i\)</th>
-                  <th>\(f[x_i]\) (y)</th>
-                  <th>1st Diff \(f[x_i,x_{i+1}]\)</th>
-                  <th>2nd Diff \(f[x_i,x_{i+1},x_{i+2}]\)</th>
+                  <th data-en="f[x_i] (y)" data-tr="f[x_i] (y)">\(f[x_i]\) (y)</th>
+                  <th data-en="1st Diff" data-tr="1. Fark">1st Diff \(f[x_i,x_{i+1}]\)</th>
+                  <th data-en="2nd Diff" data-tr="2. Fark">2nd Diff \(f[x_i,x_{i+1},x_{i+2}]\)</th>
                 </tr>
               </thead>
               <tbody>
@@ -1222,19 +1449,23 @@
             </table>
 
             <div class="step-box">
-              <span class="step-title">Coefficients from table:</span>
+              <span class="step-title" data-en="Coefficients from table:" data-tr="Tablodan katsayılar:">Coefficients
+                from table:</span>
               \(b_0 = 0\), \(b_1 = 1\), \(b_2 = -0.167\)
             </div>
 
             <div class="step-box">
-              <span class="step-title">Build polynomial:</span>
+              <span class="step-title" data-en="Build polynomial:" data-tr="Polinomu oluştur:">Build polynomial:</span>
               $$P(x) = 0 + 1(x-1) + (-0.167)(x-1)(x-2)$$
               $$P(x) = (x-1) - 0.167(x-1)(x-2)$$
             </div>
 
             <div class="key-insight">
-              <strong>Adding New Point:</strong> If you get a 4th point, just add one more row and column. Don't
-              recalculate everything!
+              <strong data-en="Adding New Point:" data-tr="Yeni Nokta Ekleme:">Adding New Point:</strong> <span
+                data-en="If you get a 4th point, just add one more row and column. Don't recalculate everything!"
+                data-tr="Eğer 4. bir nokta gelirse, sadece bir satır ve bir sütun daha ekleyin. Her şeyi yeniden hesaplamayın!">If
+                you get a 4th point, just add one more row and column. Don't
+                recalculate everything!</span>
             </div>
           </div>
         </div>
@@ -1243,23 +1474,34 @@
         <div class="method-card" onclick="openModal(this)">
           <div class="method-title">Newton Forward/Backward Differences</div>
           <div class="method-form">
-            For EQUALLY SPACED points only
-            <div class="var-def">Forward: near start, Backward: near end</div>
+            <span data-en="For EQUALLY SPACED points only" data-tr="Sadece EŞİT ARALIKLI noktalar için">For EQUALLY
+              SPACED points only</span>
+            <div class="var-def" data-en="Forward: near start, Backward: near end"
+              data-tr="İleri: başa yakın, Geri: sona yakın">Forward: near start, Backward: near end</div>
           </div>
 
           <div class="modal-payload">
-            <h3>Newton Forward & Backward - Complete Guide</h3>
+            <h3 data-en="Newton Forward & Backward - Complete Guide" data-tr="Newton İleri & Geri - Tam Rehber">Newton
+              Forward & Backward - Complete Guide</h3>
 
-            <h4>📌 What is it?</h4>
-            <p>Special simplified forms of Newton's divided differences when points are EQUALLY SPACED. Uses simpler
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Special simplified forms of Newton's divided differences when points are EQUALLY SPACED. Uses simpler Delta (forward) or Nabla (backward) notation."
+              data-tr="Noktaların EŞİT ARALIKLI olduğu durumda Newton bölünmüş farklarının özel basitleştirilmiş halleri. Daha basit Delta (ileri) veya Nabla (geri) notasyonu kullanır.">
+              Special simplified forms of Newton's divided differences when points are EQUALLY SPACED. Uses simpler
               \(\Delta\) (forward) or \(\nabla\) (backward) notation.</p>
 
-            <h4>🎯 When to Use</h4>
-            <p><strong>Forward:</strong> Use when interpolating near the BEGINNING of table. <br>
-              <strong>Backward:</strong> Use when interpolating near the END of table.
+            <h4 data-en="🎯 When to Use" data-tr="🎯 Ne Zaman Kullanılır">🎯 When to Use</h4>
+            <p><strong data-en="Forward:" data-tr="İleri:">Forward:</strong> <span
+                data-en="Use when interpolating near the BEGINNING of table."
+                data-tr="Tablonun BAŞINA yakın interpolasyon yaparken kullanın.">Use when interpolating near the
+                BEGINNING of table.</span> <br>
+              <strong data-en="Backward:" data-tr="Geri:">Backward:</strong> <span
+                data-en="Use when interpolating near the END of table."
+                data-tr="Tablonun SONUNA yakın interpolasyon yaparken kullanın.">Use when interpolating near the END of
+                table.</span>
             </p>
 
-            <h4>📋 Forward Difference Table</h4>
+            <h4 data-en="📋 Forward Difference Table" data-tr="📋 İleri Fark Tablosu">📋 Forward Difference Table</h4>
             <div class="formula-box">
               $$\Delta y_i = y_{i+1} - y_i$$
               $$\Delta^2 y_i = \Delta y_{i+1} - \Delta y_i$$
@@ -1267,14 +1509,18 @@
             </div>
 
             <div class="formula-box">
-              <strong>Newton Forward Formula:</strong>
+              <strong data-en="Newton Forward Formula:" data-tr="Newton İleri Formülü:">Newton Forward Formula:</strong>
               $$P(x_0 + rh) = y_0 + r\Delta y_0 + \frac{r(r-1)}{2!}\Delta^2 y_0 + \frac{r(r-1)(r-2)}{3!}\Delta^3 y_0 +
               \cdots$$
-              where \(r = \frac{x - x_0}{h}\), \(h\) = spacing.
+              <div class="var-def" data-en="where r = (x - x0)/h, h = spacing"
+                data-tr="burada r = (x - x0)/h, h = aralık">where \(r = \frac{x - x_0}{h}\), \(h\) = spacing.</div>
             </div>
 
-            <h4>📊 Example: Forward Difference</h4>
-            <p>Points at x = 0, 1, 2, 3 with y = 1, 3, 7, 13. (h=1)</p>
+            <h4 data-en="📊 Example: Forward Difference" data-tr="📊 Örnek: İleri Fark">📊 Example: Forward Difference
+            </h4>
+            <p data-en="Points at x = 0, 1, 2, 3 with y = 1, 3, 7, 13. (h=1)"
+              data-tr="x = 0, 1, 2, 3 noktalarında y = 1, 3, 7, 13. (h=1)">Points at x = 0, 1, 2, 3 with y = 1, 3, 7,
+              13. (h=1)</p>
 
             <table>
               <thead>
@@ -1318,12 +1564,15 @@
               </tbody>
             </table>
 
-            <p>To find y at x=0.5: \(r = (0.5-0)/1 = 0.5\)</p>
+            <p data-en="To find y at x=0.5: r = (0.5-0)/1 = 0.5"
+              data-tr="x=0.5'te y'yi bulmak için: r = (0.5-0)/1 = 0.5">To find y at x=0.5: \(r = (0.5-0)/1 = 0.5\)</p>
             $$P(0.5) = 1 + 0.5(2) + \frac{0.5(-0.5)}{2}(2) = 1 + 1 - 0.25 = 1.75$$
 
             <div class="common-mistake">
-              <strong>Mistake:</strong> Using Forward when x is near END of table. This gives poor accuracy. Use
-              Backward instead!
+              <strong data-en="Mistake:" data-tr="Hata:">Mistake:</strong> <span
+                data-en="Using Forward when x is near END of table. This gives poor accuracy. Use Backward instead!"
+                data-tr="x tablonun SONUNA yakınken İleri farkı kullanmak. Bu kötü doğruluk verir. Yerine Geri farkı kullanın!">Using
+                Forward when x is near END of table. This gives poor accuracy. Use Backward instead!</span>
             </div>
           </div>
         </div>
@@ -1332,30 +1581,48 @@
         <div class="method-card" onclick="openModal(this)">
           <div class="method-title">Inverse Interpolation</div>
           <div class="method-form">
-            Given y, find x
-            <div class="var-def">Swap roles: treat y as independent variable</div>
+            <span data-en="Given y, find x" data-tr="y verildiğinde x'i bul">Given y, find x</span>
+            <div class="var-def" data-en="Swap roles: treat y as independent variable"
+              data-tr="Rolleri değiştir: y'yi bağımsız değişken olarak ele al">Swap roles: treat y as independent
+              variable</div>
           </div>
 
           <div class="modal-payload">
-            <h3>Inverse Interpolation</h3>
+            <h3 data-en="Inverse Interpolation" data-tr="Ters İnterpolasyon">Inverse Interpolation</h3>
 
-            <h4>📌 What is it?</h4>
-            <p>Normal interpolation: given x, find y. <strong>Inverse:</strong> given y, find x.</p>
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p><span data-en="Normal interpolation: given x, find y."
+                data-tr="Normal interpolasyon: x verildiğinde y'yi bul.">Normal interpolation: given x, find y.</span>
+              <strong data-en="Inverse:" data-tr="Ters:">Inverse:</strong> <span data-en="given y, find x."
+                data-tr="y verildiğinde x'i bul.">given y, find x.</span>
+            </p>
 
-            <h4>📋 Methods</h4>
+            <h4 data-en="📋 Methods" data-tr="📋 Yöntemler">📋 Methods</h4>
             <ol>
-              <li><strong>Method 1 (Swap):</strong> Build Lagrange/Newton with \(x_i\) as "y-values" and \(y_i\) as
-                "x-values". Evaluate at the given y.</li>
-              <li><strong>Method 2 (Iteration):</strong> Build normal \(y = P(x)\), then solve \(P(x) - y_{target} = 0\)
-                using Newton's method.</li>
+              <li
+                data-en="Method 1 (Swap): Build Lagrange/Newton with xi as 'y-values' and yi as 'x-values'. Evaluate at the given y."
+                data-tr="Yöntem 1 (Değiştir): xi'leri 'y-değerleri' ve yi'leri 'x-değerleri' olarak alarak Lagrange/Newton oluştur. Verilen y'de hesapla.">
+                <strong data-en="Method 1 (Swap):" data-tr="Yöntem 1 (Değiştir):">Method 1 (Swap):</strong> Build
+                Lagrange/Newton with \(x_i\) as "y-values" and \(y_i\) as "x-values". Evaluate at the given y.
+              </li>
+              <li
+                data-en="Method 2 (Iteration): Build normal y = P(x), then solve P(x) - y_target = 0 using Newton's method."
+                data-tr="Yöntem 2 (İterasyon): Normal y = P(x) oluştur, sonra Newton yöntemi ile P(x) - y_hedef = 0 çöz.">
+                <strong data-en="Method 2 (Iteration):" data-tr="Yöntem 2 (İterasyon):">Method 2 (Iteration):</strong>
+                Build normal \(y = P(x)\), then solve \(P(x) - y_{target} = 0\) using Newton's method.
+              </li>
             </ol>
 
-            <h4>📊 Example: Method 1</h4>
-            <p>Table: (x=1, y=2), (x=2, y=5), (x=3, y=10). Find x when y=7.</p>
-            <p>Build Lagrange treating y as input:</p>
+            <h4 data-en="📊 Example: Method 1" data-tr="📊 Örnek: Yöntem 1">📊 Example: Method 1</h4>
+            <p data-en="Table: (x=1, y=2), (x=2, y=5), (x=3, y=10). Find x when y=7."
+              data-tr="Tablo: (x=1, y=2), (x=2, y=5), (x=3, y=10). y=7 olduğunda x'i bul.">Table: (x=1, y=2), (x=2,
+              y=5), (x=3, y=10). Find x when y=7.</p>
+            <p data-en="Build Lagrange treating y as input:" data-tr="y'yi girdi olarak alarak Lagrange oluştur:">Build
+              Lagrange treating y as input:</p>
             $$x(y) = 1 \cdot \frac{(y-5)(y-10)}{(2-5)(2-10)} + 2 \cdot \frac{(y-2)(y-10)}{(5-2)(5-10)} + 3 \cdot
             \frac{(y-2)(y-5)}{(10-2)(10-5)}$$
-            <p>Evaluate at y=7 to get x ≈ 2.4.</p>
+            <p data-en="Evaluate at y=7 to get x ≈ 2.4." data-tr="y=7'de hesapla ve x ≈ 2.4 bul.">Evaluate at y=7 to get
+              x ≈ 2.4.</p>
           </div>
         </div>
 
@@ -1370,37 +1637,50 @@
           <div class="method-title">Least Squares Regression</div>
           <div class="method-form">
             Minimize \(\sum (y_i - \hat{y}_i)^2\)
-            <div class="var-def">where: \(\hat{y} = a_0 + a_1 x\) (linear model)</div>
+            <div class="var-def" data-en="where: y_hat = a0 + a1 x (linear model)"
+              data-tr="burada: y_hat = a0 + a1 x (doğrusal model)">where: \(\hat{y} = a_0 + a_1 x\) (linear model)</div>
           </div>
 
           <div class="modal-payload">
-            <h3>Least Squares - Complete Guide</h3>
+            <h3 data-en="Least Squares - Complete Guide" data-tr="En Küçük Kareler - Tam Rehber">Least Squares -
+              Complete Guide</h3>
 
-            <h4>📌 What is it?</h4>
-            <p>Least squares finds the "best fit" line (or curve) through data points by minimizing the sum of squared
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Least squares finds the 'best fit' line (or curve) through data points by minimizing the sum of squared vertical distances (residuals)."
+              data-tr="En küçük kareler, karesel dikey mesafelerin (kalıntıların) toplamını en aza indirerek veri noktaları boyunca 'en uygun' doğruyu (veya eğriyi) bulur.">
+              Least squares finds the "best fit" line (or curve) through data points by minimizing the sum of squared
               vertical distances (residuals).</p>
 
-            <h4>🎯 Why Squared?</h4>
-            <p>Squaring ensures positive values and penalizes large errors more than small ones. Also makes calculus
+            <h4 data-en="🎯 Why Squared?" data-tr="🎯 Neden Karesel?">🎯 Why Squared?</h4>
+            <p data-en="Squaring ensures positive values and penalizes large errors more than small ones. Also makes calculus derivatives easier."
+              data-tr="Kare alma pozitif değerler sağlar ve büyük hataları küçük olanlardan daha fazla cezalandırır. Ayrıca kalkülüs türevlerini kolaylaştırır.">
+              Squaring ensures positive values and penalizes large errors more than small ones. Also makes calculus
               derivatives easier.</p>
 
-            <h4>📋 Linear Regression Formulas</h4>
-            <p>For model \(y = a_0 + a_1 x\):</p>
+            <h4 data-en="📋 Linear Regression Formulas" data-tr="📋 Doğrusal Regresyon Formülleri">📋 Linear Regression
+              Formulas</h4>
+            <p data-en="For model y = a0 + a1 x:" data-tr="y = a0 + a1 x modeli için:">For model \(y = a_0 + a_1 x\):
+            </p>
             <div class="formula-box">
-              <strong>Normal Equations (from calculus):</strong>
+              <strong data-en="Normal Equations (from calculus):" data-tr="Normal Denklemler (kalkülüsden):">Normal
+                Equations (from calculus):</strong>
               $$n a_0 + (\sum x_i) a_1 = \sum y_i$$
               $$(\sum x_i) a_0 + (\sum x_i^2) a_1 = \sum x_i y_i$$
             </div>
 
             <div class="formula-box">
-              <strong>Direct formulas:</strong>
+              <strong data-en="Direct formulas:" data-tr="Doğrudan formüller:">Direct formulas:</strong>
               $$a_1 = \frac{n\sum xy - (\sum x)(\sum y)}{n\sum x^2 - (\sum x)^2}$$
               $$a_0 = \bar{y} - a_1 \bar{x}$$
-              where \(\bar{x} = \frac{\sum x}{n}\), \(\bar{y} = \frac{\sum y}{n}\).
+              <div class="var-def" data-en="where x_bar = sum(x)/n, y_bar = sum(y)/n"
+                data-tr="burada x_bar = toplam(x)/n, y_bar = toplam(y)/n">where \(\bar{x} = \frac{\sum x}{n}\),
+                \(\bar{y} = \frac{\sum y}{n}\).</div>
             </div>
 
-            <h4>📊 Complete Example</h4>
-            <p>Fit line through: (1, 2.5), (2, 4), (3, 5.5), (4, 7).</p>
+            <h4 data-en="📊 Complete Example" data-tr="📊 Tam Örnek">📊 Complete Example</h4>
+            <p data-en="Fit line through: (1, 2.5), (2, 4), (3, 5.5), (4, 7)."
+              data-tr="Şu noktalardan geçen doğruyu uydur: (1, 2.5), (2, 4), (3, 5.5), (4, 7).">Fit line through: (1,
+              2.5), (2, 4), (3, 5.5), (4, 7).</p>
 
             <table>
               <thead>
@@ -1446,32 +1726,39 @@
             </table>
 
             <div class="step-box">
-              <span class="step-title">Solve normal equations:</span>
+              <span class="step-title" data-en="Solve normal equations:" data-tr="Normal denklemleri çöz:">Solve normal
+                equations:</span>
               \(4a_0 + 10a_1 = 19\) <br>
               \(10a_0 + 30a_1 = 55\)
             </div>
 
             <div class="step-box">
-              <span class="step-title">Or use direct formula:</span>
+              <span class="step-title" data-en="Or use direct formula:" data-tr="Veya doğrudan formülü kullan:">Or use
+                direct formula:</span>
               $$a_1 = \frac{4(55) - 10(19)}{4(30) - 10^2} = \frac{220 - 190}{120 - 100} = \frac{30}{20} = 1.5$$
               $$a_0 = \frac{19}{4} - 1.5(\frac{10}{4}) = 4.75 - 3.75 = 1.0$$
             </div>
 
-            <p><strong>Result:</strong> \(y = 1.0 + 1.5x\)</p>
+            <p><strong data-en="Result:" data-tr="Sonuç:">Result:</strong> \(y = 1.0 + 1.5x\)</p>
 
             <div class="section-divider"></div>
 
-            <h4>⚠️ Goodness of Fit</h4>
+            <h4 data-en="⚠️ Goodness of Fit" data-tr="⚠️ Uyum İyiliği">⚠️ Goodness of Fit</h4>
             <div class="formula-box">
-              <strong>Standard Deviation:</strong>
+              <strong data-en="Standard Deviation:" data-tr="Standart Sapma:">Standard Deviation:</strong>
               $$S_y = \sqrt{\frac{S_r}{n-2}}$$
-              where \(S_r = \sum (y_i - \hat{y}_i)^2\) (sum of residuals squared).
+              <div class="var-def" data-en="where Sr = sum(yi - y_hat_i)^2 (sum of residuals squared)"
+                data-tr="burada Sr = toplam(yi - y_hat_i)^2 (kalıntıların kareleri toplamı)">where \(S_r = \sum (y_i -
+                \hat{y}_i)^2\) (sum of residuals squared).</div>
             </div>
 
             <div class="formula-box">
-              <strong>Coefficient of Determination:</strong>
+              <strong data-en="Coefficient of Determination:" data-tr="Belirlilik Katsayısı:">Coefficient of
+                Determination:</strong>
               $$r^2 = \frac{S_t - S_r}{S_t}$$
-              where \(S_t = \sum (y_i - \bar{y})^2\). Value near 1 = good fit.
+              <div class="var-def" data-en="where St = sum(yi - y_bar)^2. Value near 1 = good fit."
+                data-tr="burada St = toplam(yi - y_bar)^2. 1'e yakın değer = iyi uyum.">where \(S_t = \sum (y_i -
+                \bar{y})^2\). Value near 1 = good fit.</div>
             </div>
           </div>
         </div>
@@ -1481,26 +1768,38 @@
           <div class="method-title">Exponential Fitting</div>
           <div class="method-form">
             \(y = ae^{bx}\) &rarr; Linearize &rarr; \(\ln y = \ln a + bx\)
-            <div class="var-def">Apply least squares to transformed data</div>
+            <div class="var-def" data-en="Apply least squares to transformed data"
+              data-tr="Dönüştürülmüş veriye en küçük kareler uygula">Apply least squares to transformed data</div>
           </div>
 
           <div class="modal-payload">
-            <h3>Exponential Function Fitting</h3>
+            <h3 data-en="Exponential Function Fitting" data-tr="Üstel Fonksiyon Uydurma">Exponential Function Fitting
+            </h3>
 
-            <h4>📌 What is it?</h4>
-            <p>When data follows exponential growth/decay, fit model \(y = ae^{bx}\) by transforming to linear form.</p>
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="When data follows exponential growth/decay, fit model y = ae^bx by transforming to linear form."
+              data-tr="Veriler üstel büyüme/azalma izlediğinde, doğrusal forma dönüştürerek y = ae^bx modelini uydurun.">
+              When data follows exponential growth/decay, fit model \(y = ae^{bx}\) by transforming to linear form.</p>
 
-            <h4>📋 Algorithm</h4>
+            <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
             <ol>
-              <li>Take natural log: \(\ln y = \ln a + bx\).</li>
-              <li>Let \(Y = \ln y\), \(A = \ln a\). Now it's linear: \(Y = A + bx\).</li>
-              <li>Build table with columns: \(x, y, Y=\ln y, x^2, xY\).</li>
-              <li>Apply least squares to find \(A\) and \(b\).</li>
-              <li>Convert back: \(a = e^A\).</li>
+              <li data-en="Take natural log: ln(y) = ln(a) + bx." data-tr="Doğal logaritma al: ln(y) = ln(a) + bx.">Take
+                natural log: \(\ln y = \ln a + bx\).</li>
+              <li data-en="Let Y = ln(y), A = ln(a). Now it's linear: Y = A + bx."
+                data-tr="Y = ln(y), A = ln(a) olsun. Şimdi doğrusaldır: Y = A + bx.">Let \(Y = \ln y\), \(A = \ln a\).
+                Now it's linear: \(Y = A + bx\).</li>
+              <li data-en="Build table with columns: x, y, Y=ln(y), x^2, xY."
+                data-tr="Sütunlarla tablo oluştur: x, y, Y=ln(y), x^2, xY.">Build table with columns: \(x, y, Y=\ln y,
+                x^2, xY\).</li>
+              <li data-en="Apply least squares to find A and b."
+                data-tr="A ve b'yi bulmak için en küçük kareler uygula.">Apply least squares to find \(A\) and \(b\).
+              </li>
+              <li data-en="Convert back: a = e^A." data-tr="Geri dönüştür: a = e^A.">Convert back: \(a = e^A\).</li>
             </ol>
 
-            <h4>📊 Example</h4>
-            <p>Data: (0, 1), (1, 2.7), (2, 7.4).</p>
+            <h4 data-en="📊 Example" data-tr="📊 Örnek">📊 Example</h4>
+            <p data-en="Data: (0, 1), (1, 2.7), (2, 7.4)." data-tr="Veri: (0, 1), (1, 2.7), (2, 7.4).">Data: (0, 1), (1,
+              2.7), (2, 7.4).</p>
 
             <table>
               <thead>
@@ -1544,10 +1843,14 @@
               </tbody>
             </table>
 
-            <p>Solve for \(A\) and \(b\), then \(a = e^A\).</p>
+            <p data-en="Solve for A and b, then a = e^A." data-tr="A ve b için çöz, sonra a = e^A.">Solve for \(A\) and
+              \(b\), then \(a = e^A\).</p>
 
             <div class="common-mistake">
-              <strong>Mistake:</strong> Forgetting to convert \(A\) back to \(a\) using exponential!
+              <strong data-en="Mistake:" data-tr="Hata:">Mistake:</strong> <span
+                data-en="Forgetting to convert A back to a using exponential!"
+                data-tr="A'yı üstel kullanarak a'ya geri dönüştürmeyi unutmak!">Forgetting to convert \(A\) back to
+                \(a\) using exponential!</span>
             </div>
           </div>
         </div>
@@ -1563,38 +1866,59 @@
           <div class="method-title">Trapezoidal Rule</div>
           <div class="method-form">
             \(I \approx \frac{h}{2}[f_0 + 2\sum_{i=1}^{n-1} f_i + f_n]\)
-            <div class="var-def">where: h = (b-a)/n, n = number of segments</div>
+            <div class="var-def" data-en="where: h = (b-a)/n, n = number of segments"
+              data-tr="burada: h = (b-a)/n, n = segment sayısı">where: h = (b-a)/n, n = number of segments</div>
           </div>
-          <div class="key-insight">Exact for linear functions (degree 1)</div>
+          <div class="key-insight" data-en="Exact for linear functions (degree 1)"
+            data-tr="Doğrusal fonksiyonlar için tamdır (derece 1)">Exact for linear functions (degree 1)</div>
 
           <div class="modal-payload">
-            <h3>Trapezoidal Rule - Complete Guide</h3>
+            <h3 data-en="Trapezoidal Rule - Complete Guide" data-tr="Trapez Kuralı - Tam Rehber">Trapezoidal Rule -
+              Complete Guide</h3>
 
-            <h4>📌 What is it?</h4>
-            <p>Trapezoidal rule approximates the area under a curve by dividing it into trapezoids instead of
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Trapezoidal rule approximates the area under a curve by dividing it into trapezoids instead of rectangles."
+              data-tr="Trapez kuralı, bir eğrinin altındaki alanı dikdörtgenler yerine yamuklara bölerek yaklaşık olarak hesaplar.">
+              Trapezoidal rule approximates the area under a curve by dividing it into trapezoids instead of
               rectangles.</p>
 
-            <h4>🎯 Derivation</h4>
-            <p>For single segment [a, b]:</p>
+            <h4 data-en="🎯 Derivation" data-tr="🎯 Türetim">🎯 Derivation</h4>
+            <p data-en="For single segment [a, b]:" data-tr="Tek segment [a, b] için:">For single segment [a, b]:</p>
             <ul>
-              <li>Trapezoid area = \(\frac{1}{2}(base)(height_1 + height_2)\)</li>
-              <li>Here: \(base = h = b-a\), heights = \(f(a)\) and \(f(b)\)</li>
-              <li>Area = \(\frac{h}{2}[f(a) + f(b)]\)</li>
+              <li data-en="Trapezoid area = 1/2 * (base)(height1 + height2)"
+                data-tr="Yamuk alanı = 1/2 * (taban)(yükseklik1 + yükseklik2)">Trapezoid area =
+                \(\frac{1}{2}(base)(height_1 + height_2)\)</li>
+              <li data-en="Here: base = h = b-a, heights = f(a) and f(b)"
+                data-tr="Burada: taban = h = b-a, yükseklikler = f(a) ve f(b)">Here: \(base = h = b-a\), heights =
+                \(f(a)\) and \(f(b)\)</li>
+              <li data-en="Area = h/2 * [f(a) + f(b)]" data-tr="Alan = h/2 * [f(a) + f(b)]">Area = \(\frac{h}{2}[f(a) +
+                f(b)]\)</li>
             </ul>
 
-            <h4>📋 Multiple Segment (Composite) Algorithm</h4>
+            <h4 data-en="📋 Multiple Segment (Composite) Algorithm" data-tr="📋 Çoklu Segment (Bileşik) Algoritması">📋
+              Multiple Segment (Composite) Algorithm</h4>
             <ol>
-              <li>Divide [a, b] into \(n\) segments of width \(h = (b-a)/n\).</li>
-              <li>Points: \(x_0=a, x_1=a+h, x_2=a+2h, \ldots, x_n=b\).</li>
-              <li>Evaluate \(f\) at each point.</li>
-              <li>Apply formula: \(I \approx \frac{h}{2}[f_0 + 2(f_1 + f_2 + \cdots + f_{n-1}) + f_n]\).</li>
+              <li data-en="Divide [a, b] into n segments of width h = (b-a)/n."
+                data-tr="[a, b] aralığını h = (b-a)/n genişliğinde n segmente böl.">Divide [a, b] into \(n\) segments of
+                width \(h = (b-a)/n\).</li>
+              <li data-en="Points: x0=a, x1=a+h, x2=a+2h, ..., xn=b."
+                data-tr="Noktalar: x0=a, x1=a+h, x2=a+2h, ..., xn=b.">Points: \(x_0=a, x_1=a+h, x_2=a+2h, \ldots,
+                x_n=b\).</li>
+              <li data-en="Evaluate f at each point." data-tr="Her noktada f'yi hesapla.">Evaluate \(f\) at each point.
+              </li>
+              <li data-en="Apply formula: I ≈ h/2 * [f0 + 2(f1 + f2 + ... + fn-1) + fn]."
+                data-tr="Formülü uygula: I ≈ h/2 * [f0 + 2(f1 + f2 + ... + fn-1) + fn].">Apply formula: \(I \approx
+                \frac{h}{2}[f_0 + 2(f_1 + f_2 + \cdots + f_{n-1}) + f_n]\).</li>
             </ol>
 
             <div class="section-divider"></div>
 
-            <h4>📊 Complete Example</h4>
-            <p>Approximate \(\int_0^4 x^2 dx\) with \(n=4\) segments.</p>
-            <p>\(h = (4-0)/4 = 1\). Points: 0, 1, 2, 3, 4.</p>
+            <h4 data-en="📊 Complete Example" data-tr="📊 Tam Örnek">📊 Complete Example</h4>
+            <p data-en="Approximate integral of x^2 from 0 to 4 with n=4 segments."
+              data-tr="n=4 segment ile 0'dan 4'e x^2 integralini yaklaşık hesapla.">Approximate \(\int_0^4 x^2 dx\) with
+              \(n=4\) segments.</p>
+            <p data-en="h = (4-0)/4 = 1. Points: 0, 1, 2, 3, 4." data-tr="h = (4-0)/4 = 1. Noktalar: 0, 1, 2, 3, 4.">\(h
+              = (4-0)/4 = 1\). Points: 0, 1, 2, 3, 4.</p>
 
             <table>
               <thead>
@@ -1602,8 +1926,8 @@
                   <th>i</th>
                   <th>\(x_i\)</th>
                   <th>\(f(x_i) = x^2\)</th>
-                  <th>Coefficient</th>
-                  <th>Weighted</th>
+                  <th data-en="Coefficient" data-tr="Katsayı">Coefficient</th>
+                  <th data-en="Weighted" data-tr="Ağırlıklı">Weighted</th>
                 </tr>
               </thead>
               <tbody>
@@ -1643,43 +1967,62 @@
                   <td>16</td>
                 </tr>
                 <tr style="font-weight:bold;">
-                  <td colspan="4">Sum of weighted values:</td>
+                  <td colspan="4" data-en="Sum of weighted values:" data-tr="Ağırlıklı değerlerin toplamı:">Sum of
+                    weighted values:</td>
                   <td>44</td>
                 </tr>
               </tbody>
             </table>
 
             <div class="step-box">
-              <span class="step-title">Calculate:</span>
+              <span class="step-title" data-en="Calculate:" data-tr="Hesapla:">Calculate:</span>
               $$I \approx \frac{1}{2} \times 44 = 22$$
             </div>
 
-            <p><strong>True value:</strong> \(\int_0^4 x^2 dx = \frac{x^3}{3}\big|_0^4 = \frac{64}{3} = 21.33\)</p>
-            <p><strong>Error:</strong> \(22 - 21.33 = 0.67\) (about 3% error)</p>
+            <p><strong data-en="True value:" data-tr="Gerçek değer:">True value:</strong> \(\int_0^4 x^2 dx =
+              \frac{x^3}{3}\big|_0^4 = \frac{64}{3} = 21.33\)</p>
+            <p><strong data-en="Error:" data-tr="Hata:">Error:</strong> \(22 - 21.33 = 0.67\) <span
+                data-en="(about 3% error)" data-tr="(yaklaşık %3 hata)">(about 3% error)</span></p>
 
             <div class="section-divider"></div>
 
-            <h4>⚠️ Error Analysis</h4>
+            <h4 data-en="⚠️ Error Analysis" data-tr="⚠️ Hata Analizi">⚠️ Error Analysis</h4>
             <div class="formula-box">
-              <strong>Truncation Error (single segment):</strong>
+              <strong data-en="Truncation Error (single segment):" data-tr="Kesme Hatası (tek segment):">Truncation
+                Error (single segment):</strong>
               $$E = -\frac{1}{12}h^3 f''(\xi)$$
-              where \(\xi \in [a, b]\).
+              <div class="var-def" data-en="where xi in [a, b]" data-tr="burada xi [a, b] arasındadır">where \(\xi \in
+                [a, b]\).</div>
             </div>
 
             <div class="formula-box">
-              <strong>Composite Error:</strong>
+              <strong data-en="Composite Error:" data-tr="Bileşik Hata:">Composite Error:</strong>
               $$E = -\frac{(b-a)h^2}{12} f''(\xi)$$
-              Error is \(O(h^2)\) - halving h quarters the error.
+              <span data-en="Error is O(h^2) - halving h quarters the error."
+                data-tr="Hata O(h^2) mertebesindedir - h'yi yarıya indirmek hatayı dörtte bire indirir.">Error is
+                \(O(h^2)\) - halving h quarters the error.</span>
             </div>
 
-            <h4>🔍 Maximum Polynomial Degree</h4>
-            <p><strong>Question:</strong> What's the highest degree polynomial the trapezoidal rule integrates exactly?
+            <h4 data-en="🔍 Maximum Polynomial Degree" data-tr="🔍 Maksimum Polinom Derecesi">🔍 Maximum Polynomial
+              Degree</h4>
+            <p><strong data-en="Question:" data-tr="Soru:">Question:</strong> <span
+                data-en="What's the highest degree polynomial the trapezoidal rule integrates exactly?"
+                data-tr="Trapez kuralının tam olarak entegre ettiği en yüksek dereceli polinom nedir?">What's the
+                highest degree polynomial the trapezoidal rule integrates exactly?</span>
             </p>
-            <p><strong>Answer:</strong> Degree 1 (linear). For \(f(x) = ax + b\), trapezoid gives exact area.</p>
+            <p><strong data-en="Answer:" data-tr="Cevap:">Answer:</strong> <span
+                data-en="Degree 1 (linear). For f(x) = ax + b, trapezoid gives exact area."
+                data-tr="Derece 1 (doğrusal). f(x) = ax + b için trapez tam alan verir.">Degree 1 (linear). For \(f(x) =
+                ax + b\), trapezoid gives exact area.</span></p>
 
             <div class="key-insight">
-              <strong>When to use:</strong> Simple implementation, moderate accuracy. <br>
-              <strong>Better alternative:</strong> Simpson's for same points but higher accuracy.
+              <strong data-en="When to use:" data-tr="Ne zaman kullanılır:">When to use:</strong> <span
+                data-en="Simple implementation, moderate accuracy." data-tr="Basit uygulama, orta doğruluk.">Simple
+                implementation, moderate accuracy.</span> <br>
+              <strong data-en="Better alternative:" data-tr="Daha iyi alternatif:">Better alternative:</strong> <span
+                data-en="Simpson's for same points but higher accuracy."
+                data-tr="Aynı noktalar için ancak daha yüksek doğruluk için Simpson.">Simpson's for same points but
+                higher accuracy.</span>
             </div>
           </div>
         </div>
@@ -1689,35 +2032,52 @@
           <div class="method-title">Simpson's 1/3 Rule</div>
           <div class="method-form">
             \(I \approx \frac{h}{3}[f_0 + 4\sum_{odd} f_i + 2\sum_{even} f_i + f_n]\)
-            <div class="var-def">Requires ODD number of points (EVEN segments)</div>
+            <div class="var-def" data-en="Requires ODD number of points (EVEN segments)"
+              data-tr="TEK sayıda nokta (ÇİFT segment) gerektirir">Requires ODD number of points (EVEN segments)</div>
           </div>
-          <div class="key-insight">Exact for cubics (degree 3)!</div>
+          <div class="key-insight" data-en="Exact for cubics (degree 3)!" data-tr="Kübikler için tamdır (derece 3)!">
+            Exact for cubics (degree 3)!</div>
 
           <div class="modal-payload">
-            <h3>Simpson's 1/3 Rule - Complete Guide</h3>
+            <h3 data-en="Simpson's 1/3 Rule - Complete Guide" data-tr="Simpson 1/3 Kuralı - Tam Rehber">Simpson's 1/3
+              Rule - Complete Guide</h3>
 
-            <h4>📌 What is it?</h4>
-            <p>Simpson's rule fits parabolas (quadratic curves) through successive triplets of points, giving better
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Simpson's rule fits parabolas (quadratic curves) through successive triplets of points, giving better accuracy than trapezoids."
+              data-tr="Simpson kuralı, ardışık üçlü nokta gruplarından paraboller (ikinci dereceden eğriler) geçirerek trapezlerden daha iyi doğruluk sağlar.">
+              Simpson's rule fits parabolas (quadratic curves) through successive triplets of points, giving better
               accuracy than trapezoids.</p>
 
-            <h4>🎯 Derivation</h4>
-            <p>For 3 points (2 segments), fit parabola \(y = Ax^2 + Bx + C\) and integrate analytically. Result:</p>
+            <h4 data-en="🎯 Derivation" data-tr="🎯 Türetim">🎯 Derivation</h4>
+            <p data-en="For 3 points (2 segments), fit parabola y = Ax^2 + Bx + C and integrate analytically. Result:"
+              data-tr="3 nokta (2 segment) için, y = Ax^2 + Bx + C parabolü uydur ve analitik olarak integre et. Sonuç:">
+              For 3 points (2 segments), fit parabola \(y = Ax^2 + Bx + C\) and integrate analytically. Result:</p>
             $$I \approx \frac{h}{3}[f_0 + 4f_1 + f_2]$$
-            <p>The "1/3" comes from this coefficient.</p>
+            <p data-en="The '1/3' comes from this coefficient." data-tr="'1/3' bu katsayıdan gelir.">The "1/3" comes
+              from this coefficient.</p>
 
-            <h4>📋 Composite Algorithm</h4>
-            <p><strong>Requirement:</strong> EVEN number of segments (ODD number of points).</p>
+            <h4 data-en="📋 Composite Algorithm" data-tr="📋 Bileşik Algoritma">📋 Composite Algorithm</h4>
+            <p><strong data-en="Requirement:" data-tr="Gereksinim:">Requirement:</strong> <span
+                data-en="EVEN number of segments (ODD number of points)."
+                data-tr="ÇİFT sayıda segment (TEK sayıda nokta).">EVEN number of segments (ODD number of points).</span>
+            </p>
             <ol>
-              <li>Check: \(n\) must be even.</li>
-              <li>Pattern: coefficients are 1, 4, 2, 4, 2, ..., 4, 1.</li>
-              <li>Formula: \(I \approx \frac{h}{3}[f_0 + 4(f_1 + f_3 + f_5 + \cdots) + 2(f_2 + f_4 + \cdots) + f_n]\).
+              <li data-en="Check: n must be even." data-tr="Kontrol: n çift olmalı.">Check: \(n\) must be even.</li>
+              <li data-en="Pattern: coefficients are 1, 4, 2, 4, 2, ..., 4, 1."
+                data-tr="Desen: katsayılar 1, 4, 2, 4, 2, ..., 4, 1.">Pattern: coefficients are 1, 4, 2, 4, 2, ..., 4,
+                1.</li>
+              <li data-en="Formula: I ≈ h/3 * [f0 + 4(f1 + f3 + ...) + 2(f2 + f4 + ...) + fn]."
+                data-tr="Formül: I ≈ h/3 * [f0 + 4(f1 + f3 + ...) + 2(f2 + f4 + ...) + fn].">Formula: \(I \approx
+                \frac{h}{3}[f_0 + 4(f_1 + f_3 + f_5 + \cdots) + 2(f_2 + f_4 + \cdots) + f_n]\).
               </li>
             </ol>
 
             <div class="section-divider"></div>
 
-            <h4>📊 Complete Example</h4>
-            <p>Same integral: \(\int_0^4 x^2 dx\) with \(n=4\) segments.</p>
+            <h4 data-en="📊 Complete Example" data-tr="📊 Tam Örnek">📊 Complete Example</h4>
+            <p data-en="Same integral: integral x^2 from 0 to 4 with n=4 segments."
+              data-tr="Aynı integral: n=4 segment ile 0'dan 4'e x^2 integrali.">Same integral: \(\int_0^4 x^2 dx\) with
+              \(n=4\) segments.</p>
 
             <table>
               <thead>
@@ -1725,8 +2085,8 @@
                   <th>i</th>
                   <th>\(x_i\)</th>
                   <th>\(f(x_i) = x^2\)</th>
-                  <th>Simpson Coef</th>
-                  <th>Weighted</th>
+                  <th data-en="Simpson Coef" data-tr="Simpson Katsayısı">Simpson Coef</th>
+                  <th data-en="Weighted" data-tr="Ağırlıklı">Weighted</th>
                 </tr>
               </thead>
               <tbody>
@@ -1766,35 +2126,46 @@
                   <td>16</td>
                 </tr>
                 <tr style="font-weight:bold;">
-                  <td colspan="4">Sum:</td>
+                  <td colspan="4" data-en="Sum:" data-tr="Toplam:">Sum:</td>
                   <td>64</td>
                 </tr>
               </tbody>
             </table>
 
             <div class="step-box">
-              <span class="step-title">Calculate:</span>
+              <span class="step-title" data-en="Calculate:" data-tr="Hesapla:">Calculate:</span>
               $$I \approx \frac{1}{3} \times 64 = 21.33$$
             </div>
 
-            <p><strong>True value:</strong> 21.33. <strong>Error:</strong> 0! (EXACT for this quadratic!)</p>
+            <p><strong data-en="True value:" data-tr="Gerçek değer:">True value:</strong> 21.33. <strong
+                data-en="Error:" data-tr="Hata:">Error:</strong> 0! <span data-en="(EXACT for this quadratic!)"
+                data-tr="(Bu karesel denklem için TAMDIR!)">(EXACT for this quadratic!)</span></p>
 
             <div class="section-divider"></div>
 
-            <h4>⚠️ Error Analysis</h4>
+            <h4 data-en="⚠️ Error Analysis" data-tr="⚠️ Hata Analizi">⚠️ Error Analysis</h4>
             <div class="formula-box">
-              <strong>Truncation Error:</strong>
+              <strong data-en="Truncation Error:" data-tr="Kesme Hatası:">Truncation Error:</strong>
               $$E = -\frac{(b-a)h^4}{180} f^{(4)}(\xi)$$
-              Error is \(O(h^4)\) - much better than Trapezoidal's \(O(h^2)\).
+              <span data-en="Error is O(h^4) - much better than Trapezoidal's O(h^2)."
+                data-tr="Hata O(h^4) mertebesindedir - Trapez'in O(h^2) hatasından çok daha iyidir.">Error is \(O(h^4)\)
+                - much better than Trapezoidal's \(O(h^2)\).</span>
             </div>
 
-            <h4>🔍 Exact for What Degree?</h4>
-            <p><strong>Surprising fact:</strong> Simpson's 1/3 is exact for cubics (degree 3), even though it uses
-              parabolas (degree 2)! This is due to symmetry.</p>
+            <h4 data-en="🔍 Exact for What Degree?" data-tr="🔍 Hangi Dereceye Kadar Tam?">🔍 Exact for What Degree?
+            </h4>
+            <p><strong data-en="Surprising fact:" data-tr="Şaşırtıcı gerçek:">Surprising fact:</strong> <span
+                data-en="Simpson's 1/3 is exact for cubics (degree 3), even though it uses parabolas (degree 2)! This is due to symmetry."
+                data-tr="Simpson 1/3 kuralı, paraboller (derece 2) kullanmasına rağmen kübikler (derece 3) için tamdır! Bu simetri nedeniyledir.">Simpson's
+                1/3 is exact for cubics (degree 3), even though it uses
+                parabolas (degree 2)! This is due to symmetry.</span></p>
 
             <div class="common-mistake">
-              <strong>Mistake:</strong> Using odd number of segments. Simpson's 1/3 REQUIRES even segments (like 2, 4,
-              6). For odd segments, use Simpson's 3/8 or combine methods.
+              <strong data-en="Mistake:" data-tr="Hata:">Mistake:</strong> <span
+                data-en="Using odd number of segments. Simpson's 1/3 REQUIRES even segments (like 2, 4, 6). For odd segments, use Simpson's 3/8 or combine methods."
+                data-tr="Tek sayıda segment kullanmak. Simpson 1/3, ÇİFT sayıda segment GEREKTİRİR (2, 4, 6 gibi). Tek segmentler için Simpson 3/8'i kullanın veya yöntemleri birleştirin.">Using
+                odd number of segments. Simpson's 1/3 REQUIRES even segments (like 2, 4,
+                6). For odd segments, use Simpson's 3/8 or combine methods.</span>
             </div>
           </div>
         </div>
@@ -1804,36 +2175,52 @@
           <div class="method-title">Romberg Integration</div>
           <div class="method-form">
             \(I_{j,k} = \frac{4^{k-1} I_{j,k-1} - I_{j-1,k-1}}{4^{k-1} - 1}\)
-            <div class="var-def">Richardson extrapolation on Trapezoidal estimates</div>
+            <div class="var-def" data-en="Richardson extrapolation on Trapezoidal estimates"
+              data-tr="Trapez tahminleri üzerinde Richardson ekstrapolasyonu">Richardson extrapolation on Trapezoidal
+              estimates</div>
           </div>
 
           <div class="modal-payload">
-            <h3>Romberg Integration - Complete Guide</h3>
+            <h3 data-en="Romberg Integration - Complete Guide" data-tr="Romberg İntegrasyonu - Tam Rehber">Romberg
+              Integration - Complete Guide</h3>
 
-            <h4>📌 What is it?</h4>
-            <p>Romberg integration combines Trapezoidal rule estimates with different step sizes using Richardson
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Romberg integration combines Trapezoidal rule estimates with different step sizes using Richardson extrapolation to achieve very high accuracy."
+              data-tr="Romberg integrasyonu, çok yüksek doğruluk elde etmek için Richardson ekstrapolasyonu kullanarak farklı adım boyutlarına sahip Trapez kuralı tahminlerini birleştirir.">
+              Romberg integration combines Trapezoidal rule estimates with different step sizes using Richardson
               extrapolation to achieve very high accuracy.</p>
 
-            <h4>🎯 Key Idea</h4>
-            <p>If you have two estimates with step sizes \(h\) and \(h/2\), you can combine them to eliminate the
+            <h4 data-en="🎯 Key Idea" data-tr="🎯 Ana Fikir">🎯 Key Idea</h4>
+            <p data-en="If you have two estimates with step sizes h and h/2, you can combine them to eliminate the leading error term, producing a much more accurate result."
+              data-tr="h ve h/2 adım boyutlarına sahip iki tahmininiz varsa, bunları birleştirerek önde gelen hata terimini ortadan kaldırabilir ve çok daha doğru bir sonuç elde edebilirsiniz.">
+              If you have two estimates with step sizes \(h\) and \(h/2\), you can combine them to eliminate the
               leading error term, producing a much more accurate result.</p>
 
-            <h4>📋 Algorithm</h4>
+            <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
             <ol>
-              <li>Compute \(I_{1,1}\) using Trapezoidal with 1 segment (h = b-a).</li>
-              <li>Compute \(I_{2,1}\) using Trapezoidal with 2 segments (h/2).</li>
-              <li>Extrapolate: \(I_{2,2} = \frac{4I_{2,1} - I_{1,1}}{3}\). (This is Simpson's!)</li>
-              <li>Compute \(I_{3,1}\) with 4 segments.</li>
-              <li>Build pyramid: each level removes another order of error.</li>
+              <li data-en="Compute I_1,1 using Trapezoidal with 1 segment (h = b-a)."
+                data-tr="1 segment ile Trapez kullanarak I_1,1'i hesapla (h = b-a).">Compute \(I_{1,1}\) using
+                Trapezoidal with 1 segment (h = b-a).</li>
+              <li data-en="Compute I_2,1 using Trapezoidal with 2 segments (h/2)."
+                data-tr="2 segment ile Trapez kullanarak I_2,1'i hesapla (h/2).">Compute \(I_{2,1}\) using Trapezoidal
+                with 2 segments (h/2).</li>
+              <li data-en="Extrapolate: I_2,2 = (4*I_2,1 - I_1,1)/3. (This is Simpson's!)"
+                data-tr="Ekstrapole et: I_2,2 = (4*I_2,1 - I_1,1)/3. (Bu Simpson'dır!)">Extrapolate: \(I_{2,2} =
+                \frac{4I_{2,1} - I_{1,1}}{3}\). (This is Simpson's!)</li>
+              <li data-en="Compute I_3,1 with 4 segments." data-tr="4 segment ile I_3,1'i hesapla.">Compute \(I_{3,1}\)
+                with 4 segments.</li>
+              <li data-en="Build pyramid: each level removes another order of error."
+                data-tr="Piramidi oluştur: her seviye başka bir hata derecesini kaldırır.">Build pyramid: each level
+                removes another order of error.</li>
             </ol>
 
             <div class="section-divider"></div>
 
-            <h4>📊 Example Table Structure</h4>
+            <h4 data-en="📊 Example Table Structure" data-tr="📊 Örnek Tablo Yapısı">📊 Example Table Structure</h4>
             <table>
               <thead>
                 <tr>
-                  <th>j (segments)</th>
+                  <th data-en="j (segments)" data-tr="j (segmentler)">j (segments)</th>
                   <th>\(O(h^2)\)</th>
                   <th>\(O(h^4)\)</th>
                   <th>\(O(h^6)\)</th>
@@ -1862,17 +2249,26 @@
             </table>
 
             <div class="formula-box">
-              <strong>Extrapolation Formula:</strong>
+              <strong data-en="Extrapolation Formula:" data-tr="Ekstrapolasyon Formülü:">Extrapolation Formula:</strong>
               $$I_{j,k} = \frac{4^{k-1} I_{j,k-1} - I_{j-1,k-1}}{4^{k-1} - 1}$$
             </div>
 
-            <p><strong>Special cases:</strong> Column 2 (\(k=1 \to k=2\)): divide by 3 (Simpson). Column 3: divide by
+            <p data-en="Special cases: Column 2 (k=1 to k=2): divide by 3 (Simpson). Column 3: divide by 15."
+              data-tr="Özel durumlar: Sütun 2 (k=1'den k=2'ye): 3'e böl (Simpson). Sütun 3: 15'e böl."><strong
+                data-en="Special cases:" data-tr="Özel durumlar:">Special cases:</strong> Column 2 (\(k=1 \to k=2\)):
+              divide by 3 (Simpson). Column 3: divide by
               15.</p>
 
             <div class="key-insight">
-              <strong>Best value:</strong> Bottom-right of table (\(I_{n,n}\)) has highest accuracy. <br>
-              <strong>Efficiency:</strong> Reuses function evaluations efficiently using "nested" trapezoidal
-              calculations.
+              <strong data-en="Best value:" data-tr="En iyi değer:">Best value:</strong> <span
+                data-en="Bottom-right of table (I_n,n) has highest accuracy."
+                data-tr="Tablonun sağ alt köşesi (I_n,n) en yüksek doğruluğa sahiptir.">Bottom-right of table
+                (\(I_{n,n}\)) has highest accuracy.</span> <br>
+              <strong data-en="Efficiency:" data-tr="Verimlilik:">Efficiency:</strong> <span
+                data-en="Reuses function evaluations efficiently using 'nested' trapezoidal calculations."
+                data-tr="'İç içe' trapez hesaplamaları kullanarak fonksiyon değerlendirmelerini verimli bir şekilde yeniden kullanır.">Reuses
+                function evaluations efficiently using "nested" trapezoidal
+                calculations.</span>
             </div>
           </div>
         </div>
@@ -1894,6 +2290,4 @@
 
 </body>
 
-
 </html>
-
