@@ -237,6 +237,81 @@
       }
     }
 
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        border-radius: 12px;
+      }
+
+      header {
+        padding: 25px 15px;
+        position: relative;
+        /* Contain the toggle */
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        margin-top: 40px;
+        /* Space for toggle if top-right */
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .content {
+        padding: 15px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin: 25px 0 15px 0;
+      }
+
+      /* Adjust Toggle to be less intrusive */
+      .lang-toggle {
+        top: 15px;
+        right: 15px;
+        padding: 6px 14px;
+        font-size: 0.8rem;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      /* Make math formulas scrollable if too long */
+      .method-form,
+      .formula-box,
+      .step-box {
+        overflow-x: auto;
+      }
+
+      /* Adjust Grid Gap */
+      .grid-2,
+      .methods-grid {
+        gap: 20px;
+      }
+
+      /* Mobile Modal Tweaks */
+      .modal-content {
+        width: 95%;
+        margin: 5px;
+      }
+
+      .modal-header {
+        padding: 15px 20px;
+      }
+
+      .modal-body {
+        padding: 15px 20px;
+      }
+
+      .close-btn {
+        font-size: 1.5rem;
+      }
+    }
+
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -1087,133 +1162,281 @@
           </div>
         </div>
 
+
+        <!-- FIXED POINT ITERATION -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Fixed Point Iteration</div>
+          <div class="method-form">
+            \(x_{n+1} = g(x_n)\)
+            <div class="var-def" data-en="where: f(x)=0 rearranged to x=g(x)"
+              data-tr="burada: f(x)=0, x=g(x) olarak yeniden düzenlenir">where: f(x)=0 rearranged to x=g(x)</div>
+          </div>
+          <div class="when-to-use" data-en="Easy to rearrange equation to x = g(x) form"
+            data-tr="Denklemi x = g(x) formuna dönüştürmek kolay">Easy to rearrange equation to x = g(x) form</div>
+          <div class="key-insight" data-en="Convergence requires |g'(x)| < 1"
+            data-tr="Yakınsama için |g'(x)| < 1 gereklidir">
+            Convergence requires |g'(x)| < 1</div>
+
+              <div class="modal-payload">
+                <h3 data-en="Fixed Point Iteration - Complete Guide" data-tr="Sabit Nokta İterasyonu - Tam Rehber">Fixed
+                  Point Iteration - Complete Guide</h3>
+
+                <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+                <p data-en="Transform f(x)=0 into the form x=g(x), then iterate: starting from x0, compute x1=g(x0), x2=g(x1), ... until convergence."
+                  data-tr="f(x)=0'ı x=g(x) formuna dönüştür, sonra iterasyon yap: x0'dan başlayarak x1=g(x0), x2=g(x1), ... yakınsayana kadar hesapla.">
+                  Transform \(f(x)=0\) into the form \(x=g(x)\), then iterate: starting from \(x_0\), compute
+                  \(x_1=g(x_0)\), \(x_2=g(x_1)\), ... until convergence.</p>
+
+                <h4 data-en="🎯 Convergence Condition" data-tr="🎯 Yakınsama Koşulu">🎯 Convergence Condition</h4>
+                <p data-en="For the iteration to converge to root α:" data-tr="İterasyonun α köküne yakınsaması için:">
+                  For the iteration to converge to root \(\alpha\):</p>
+                <div class="formula-box">
+                  <strong data-en="Theorem:" data-tr="Teorem:">Theorem:</strong>
+                  $$|g'(\alpha)| < 1$$ <div class="var-def"
+                    data-en="If |g'(α)| < 1, iteration converges. If |g'(α)| > 1, it diverges."
+                    data-tr="Eğer |g'(α)| < 1 ise iterasyon yakınsar. Eğer |g'(α)| > 1 ise ıraksar.">
+                    If \(|g'(\alpha)| < 1\), iteration converges. If \(|g'(\alpha)|> 1\), it diverges.
+                </div>
+              </div>
+
+              <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
+              <ol>
+                <li data-en="Rearrange f(x)=0 to x=g(x)." data-tr="f(x)=0'ı x=g(x) olarak yeniden düzenle.">Rearrange
+                  \(f(x)=0\) to \(x=g(x)\).</li>
+                <li data-en="Choose initial guess x0." data-tr="Başlangıç tahmini x0 seç.">Choose initial guess \(x_0\).
+                </li>
+                <li data-en="Compute xn+1 = g(xn)." data-tr="xn+1 = g(xn) hesapla.">Compute \(x_{n+1} = g(x_n)\).</li>
+                <li data-en="Check |xn+1 - xn| < tolerance." data-tr="|xn+1 - xn| < tolerans kontrolü yap.">Check
+                  \(|x_{n+1} - x_n| < \text{tolerance}\).</li>
+                <li data-en="Repeat until convergence." data-tr="Yakınsayana kadar tekrarla.">Repeat until convergence.
+                </li>
+              </ol>
+
+              <div class="section-divider"></div>
+
+              <h4 data-en="📊 Example: Solve x = cos(x)" data-tr="📊 Örnek: x = cos(x) çöz">📊 Example: Solve x = cos(x)
+              </h4>
+              <p data-en="Here f(x) = x - cos(x) = 0 is already in form x = g(x) = cos(x)."
+                data-tr="Burada f(x) = x - cos(x) = 0 zaten x = g(x) = cos(x) formunda.">
+                Here \(f(x) = x - \cos(x) = 0\) is already in form \(x = g(x) = \cos(x)\).</p>
+              <p data-en="Check: g'(x) = -sin(x), and |g'(α)| ≈ 0.67 < 1, so it will converge!"
+                data-tr="Kontrol: g'(x) = -sin(x), ve |g'(α)| ≈ 0.67 < 1, dolayısıyla yakınsayacak!">
+                Check: \(g'(x) = -\sin(x)\), and \(|g'(\alpha)| \approx 0.67 < 1\), so it will converge!</p>
+
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>n</th>
+                        <th>\(x_n\)</th>
+                        <th>\(g(x_n) = \cos(x_n)\)</th>
+                        <th data-en="Error" data-tr="Hata">Error</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>0</td>
+                        <td>0.500</td>
+                        <td>0.8776</td>
+                        <td>-</td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>0.8776</td>
+                        <td>0.6390</td>
+                        <td>0.3776</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>0.6390</td>
+                        <td>0.8027</td>
+                        <td>0.1637</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>0.8027</td>
+                        <td>0.6945</td>
+                        <td>0.1082</td>
+                      </tr>
+                      <tr>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                      </tr>
+                      <tr style="font-weight:bold;">
+                        <td>~25</td>
+                        <td>0.7391</td>
+                        <td>0.7391</td>
+                        <td>
+                          < 0.0001</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <div class="common-mistake">
+                    <strong data-en="Divergence:" data-tr="Iraksama:">Divergence:</strong>
+                    <span
+                      data-en="Different rearrangements of the same equation can converge or diverge! For x^2 - 2 = 0, using x = 2/x diverges, but x = sqrt(2) or x = (x+2/x)/2 converges."
+                      data-tr="Aynı denklemin farklı düzenlemeleri yakınsayabilir veya ıraksar! x^2 - 2 = 0 için, x = 2/x ıraksar ama x = sqrt(2) veya x = (x+2/x)/2 yakınsar.">
+                      Different rearrangements of the same equation can converge or diverge! For \(x^2 - 2 = 0\),
+                      using \(x = 2/x\) diverges, but \(x = \sqrt{2}\) or \(x = (x+2/x)/2\) converges.</span>
+                  </div>
+
+                  <div class="key-insight">
+                    <strong data-en="Speed:" data-tr="Hız:">Speed:</strong>
+                    <span data-en="Convergence is linear: error reduces by factor |g'(α)| each iteration."
+                      data-tr="Yakınsama doğrusaldır: hata her iterasyonda |g'(α)| faktörü kadar azalır.">
+                      Convergence is linear: error reduces by factor \(|g'(\alpha)|\) each iteration.</span>
+                  </div>
+          </div>
+        </div>
+        <!-- SECANT METHOD -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Secant Method</div>
+          <div class="method-form">
+            \(x_{n+1} = x_n - f(x_n) \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}\)
+            <div class="var-def" data-en="Like Newton but approximates derivative"
+              data-tr="Newton gibi ama türevi yaklaştırır">Like Newton but approximates derivative</div>
+          </div>
+          <div class="when-to-use" data-en="Derivative difficult or expensive to compute"
+            data-tr="Türev hesaplamak zor veya maliyetli">Derivative difficult or expensive to compute</div>
+          <div class="key-insight" data-en="Superlinear convergence (~1.618)" data-tr="Süperlineer yakınsama (~1.618)">
+            Superlinear convergence (~1.618)</div>
+
+          <div class="modal-payload">
+            <h3 data-en="Secant Method - Complete Guide" data-tr="Secant Yöntemi - Tam Rehber">Secant Method - Complete
+              Guide</h3>
+
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Secant method is like Newton's method but approximates the derivative using a finite difference (secant line) instead of computing f'(x)."
+              data-tr="Secant yöntemi Newton yöntemine benzer ancak f'(x) hesaplamak yerine sonlu fark (secant doğrusu) kullanarak türevi yaklaştırır.">
+              Secant method is like Newton's method but approximates the derivative using a finite difference (secant
+              line) instead of computing \(f'(x)\).</p>
+
+            <h4 data-en="🎯 Derivation" data-tr="🎯 Türetim">🎯 Derivation</h4>
+            <p data-en="Newton's method: xn+1 = xn - f(xn)/f'(xn)" data-tr="Newton yöntemi: xn+1 = xn - f(xn)/f'(xn)">
+              Newton's method: \(x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\)</p>
+            <p data-en="Approximate derivative:" data-tr="Türevi yaklaştır:">Approximate derivative:</p>
+            $$f'(x_n) \approx \frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}$$
+            <p data-en="Substituting gives Secant formula:" data-tr="Yerine koyduğumuzda Secant formülü:">Substituting
+              gives
+              Secant formula:</p>
+            $$x_{n+1} = x_n - f(x_n) \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}$$
+
+            <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
+            <ol>
+              <li data-en="Choose two initial guesses x0 and x1." data-tr="İki başlangıç tahmini x0 ve x1 seç.">Choose
+                two
+                initial guesses \(x_0\) and \(x_1\).</li>
+              <li data-en="Compute f(x0) and f(x1)." data-tr="f(x0) ve f(x1) hesapla.">Compute \(f(x_0)\) and
+                \(f(x_1)\).
+              </li>
+              <li data-en="Compute next approximation using Secant formula."
+                data-tr="Secant formülünü kullanarak sonraki yaklaşımı hesapla.">Compute next approximation using Secant
+                formula.</li>
+              <li data-en="Update: xn-1 ← xn, xn ← xn+1." data-tr="Güncelle: xn-1 ← xn, xn ← xn+1.">Update: \(x_{n-1}
+                \leftarrow x_n\), \(x_n \leftarrow x_{n+1}\).</li>
+              <li data-en="Repeat until |f(xn+1)| < tolerance." data-tr="|f(xn+1)| < tolerans olana kadar tekrarla.">
+                Repeat until \(|f(x_{n+1})| < \text{tolerance}\).</li>
+            </ol>
+
+            <div class="section-divider"></div>
+
+            <h4 data-en="📊 Example: Solve x^3 - 2 = 0" data-tr="📊 Örnek: x^3 - 2 = 0 çöz">📊 Example: Solve x^3 - 2 =
+              0
+            </h4>
+            <p data-en="Find cube root of 2. Start with x0=1, x1=2."
+              data-tr="2'nin küp kökünü bul. x0=1, x1=2 ile başla.">
+              Find cube root of 2. Start with \(x_0=1, x_1=2\).</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>n</th>
+                  <th>\(x_{n-1}\)</th>
+                  <th>\(x_n\)</th>
+                  <th>\(f(x_n)\)</th>
+                  <th>\(x_{n+1}\)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>-</td>
+                  <td>1.000</td>
+                  <td>-1.000</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>1.000</td>
+                  <td>2.000</td>
+                  <td>6.000</td>
+                  <td>1.143</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>2.000</td>
+                  <td>1.143</td>
+                  <td>-0.507</td>
+                  <td>1.233</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>1.143</td>
+                  <td>1.233</td>
+                  <td>-0.124</td>
+                  <td>1.259</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>1.233</td>
+                  <td>1.259</td>
+                  <td>-0.004</td>
+                  <td>1.260</td>
+                </tr>
+                <tr style="font-weight:bold;">
+                  <td>5</td>
+                  <td>1.259</td>
+                  <td>1.260</td>
+                  <td>
+                    <0.0001< /td>
+                  <td>✓</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 data-en="⚠️ Convergence Rate" data-tr="⚠️ Yakınsama Hızı">⚠️ Convergence Rate</h4>
+            <div class="formula-box">
+              <strong data-en="Order:" data-tr="Mertebe:">Order:</strong> $$\phi = \frac{1 + \sqrt{5}}{2} \approx
+              1.618$$
+              <div class="var-def" data-en="Golden ratio! Faster than linear, slower than quadratic (Newton's)."
+                data-tr="Altın oran! Lineerden hızlı, Newton'un kareselinden yavaş.">
+                Golden ratio! Faster than linear, slower than quadratic (Newton's).</div>
+            </div>
+
+            <div class="key-insight">
+              <strong data-en="Comparison:" data-tr="Karşılaştırma:">Comparison:</strong>
+              <span
+                data-en="Secant needs 2 points, no derivative. Newton needs 1 point + derivative. Secant often better when derivatives are expensive."
+                data-tr="Secant 2 nokta gerektirir, türev gerektirmez. Newton 1 nokta + türev gerektirir. Türevler pahalı olduğunda Secant genellikle daha iyidir.">
+                Secant needs 2 points, no derivative. Newton needs 1 point + derivative. Secant often better when
+                derivatives are expensive.</span>
+            </div>
+
+            <div class="common-mistake">
+              <strong data-en="Division by zero:" data-tr="Sıfıra bölme:">Division by zero:</strong>
+              <span data-en="If f(xn) = f(xn-1), method fails! Choose initial guesses wisely."
+                data-tr="Eğer f(xn) = f(xn-1) ise yöntem başarısız olur! Başlangıç tahminlerini dikkatli seçin.">
+                If \(f(x_n) = f(x_{n-1})\), method fails! Choose initial guesses wisely.</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Continue with other sections similarly expanded... -->
       <!-- For brevity, I'll show one more complete section -->
 
-      <h2 data-en="📐 Linear Systems" data-tr="📐 Doğrusal Sistemler">📐 Linear Systems</h2>
-      <div class="grid-2">
-
-        <div class="method-card" onclick="openModal(this)">
-          <div class="method-title">LU Decomposition</div>
-          <div class="method-form">
-            \(A = L \cdot U\)
-            <div class="var-def" data-en="where: L = lower triangular, U = upper triangular"
-              data-tr="burada: L = alt üçgen, U = üst üçgen">where: L = lower triangular, U = upper triangular</div>
-          </div>
-
-          <div class="modal-payload">
-            <h3 data-en="LU Decomposition - Complete Guide" data-tr="LU Ayrıştırması - Tam Rehber">LU Decomposition -
-              Complete Guide</h3>
-
-            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
-            <p data-en="LU Decomposition factors a matrix A into a product of lower triangular matrix L and upper triangular matrix U. This allows solving Ax=b efficiently, especially for multiple right-hand sides."
-              data-tr="LU Ayrıştırması, bir A matrisini alt üçgen L ve üst üçgen U matrislerinin çarpımına ayırır. Bu, özellikle çoklu sağ taraf vektörleri için Ax=b'yi verimli bir şekilde çözmeyi sağlar.">
-              LU Decomposition factors a matrix \(A\) into a product of lower triangular matrix \(L\) and upper
-              triangular matrix \(U\). This allows solving \(Ax=b\) efficiently, especially for multiple right-hand
-              sides.</p>
-
-            <h4 data-en="🎯 Why is it useful?" data-tr="🎯 Neden yararlıdır?">🎯 Why is it useful?</h4>
-            <p data-en="Instead of solving Ax=b directly (expensive), we:"
-              data-tr="Ax=b'yi doğrudan çözmek yerine (pahalı), biz:">Instead of solving \(Ax=b\) directly (expensive),
-              we:</p>
-            <ol>
-              <li data-en="Decompose once: A = LU (costly but done once)"
-                data-tr="Bir kez ayrıştır: A = LU (pahalı ama bir kez yapılır)">Decompose once: \(A = LU\) (costly but
-                done once)</li>
-              <li data-en="Solve Ly = b by forward substitution (cheap)"
-                data-tr="Ly = b'yi ileri yerine koyma ile çöz (ucuz)">Solve \(Ly = b\) by forward substitution (cheap)
-              </li>
-              <li data-en="Solve Ux = y by back substitution (cheap)"
-                data-tr="Ux = y'yi geri yerine koyma ile çöz (ucuz)">Solve \(Ux = y\) by back substitution (cheap)</li>
-            </ol>
-            <p data-en="If you have many systems with same A but different b, you decompose once and reuse!"
-              data-tr="Eğer aynı A ama farklı b'ye sahip birçok sisteminiz varsa, bir kez ayrıştırıp tekrar kullanırsınız!">
-              If you have many systems with same \(A\) but different \(b\), you decompose once and reuse!</p>
-
-            <h4 data-en="📋 Doolittle's Method (L has 1s on diagonal)"
-              data-tr="📋 Doolittle Metodu (L'nin köşegeninde 1'ler vardır)">📋 Doolittle's Method (L has 1s on
-              diagonal)</h4>
-
-            <div class="formula-box">
-              $$L = \begin{bmatrix} 1 & 0 & 0 \\ l_{21} & 1 & 0 \\ l_{31} & l_{32} & 1 \end{bmatrix}, \quad U =
-              \begin{bmatrix} u_{11} & u_{12} & u_{13} \\ 0 & u_{22} & u_{23} \\ 0 & 0 & u_{33} \end{bmatrix}$$
-            </div>
-
-            <p><strong data-en="Formulas:" data-tr="Formüller:">Formulas:</strong></p>
-            <ul>
-              <li data-en="First row of U: u1j = a1j for all j" data-tr="U'nun ilk satırı: her j için u1j = a1j">First
-                row of U: \(u_{1j} = a_{1j}\) for all j</li>
-              <li data-en="First column of L: li1 = ai1 / u11 for i > 1"
-                data-tr="L'nin ilk sütunu: i > 1 için li1 = ai1 / u11">First column of L: \(l_{i1} =
-                \frac{a_{i1}}{u_{11}}\) for \(i > 1\)</li>
-              <li>General: \(u_{ij} = a_{ij} - \sum_{k=1}^{i-1} l_{ik}u_{kj}\) for \(i \le j\)</li>
-              <li>General: \(l_{ij} = \frac{1}{u_{jj}}(a_{ij} - \sum_{k=1}^{j-1} l_{ik}u_{kj})\) for \(i > j\)</li>
-            </ul>
-
-            <div class="section-divider"></div>
-
-            <h4 data-en="📊 Complete Example" data-tr="📊 Tam Örnek">📊 Complete Example</h4>
-            <p data-en="Decompose:" data-tr="Ayrıştır:">Decompose:</p>
-            $$A = \begin{bmatrix} 2 & 1 & 1 \\ 4 & 3 & 3 \\ 8 & 7 & 9 \end{bmatrix}$$
-
-            <div class="step-box">
-              <span class="step-title" data-en="Step 1: First row of U (copy row 1)"
-                data-tr="Adım 1: U'nun ilk satırı (satır 1'i kopyala)">Step 1: First row of U (copy row 1)</span>
-              $$U_{row1} = [2, 1, 1]$$
-            </div>
-
-            <div class="step-box">
-              <span class="step-title" data-en="Step 2: First column of L" data-tr="Adım 2: L'nin ilk sütunu">Step 2:
-                First column of L</span>
-              \(l_{21} = \frac{a_{21}}{u_{11}} = \frac{4}{2} = 2\) <br>
-              \(l_{31} = \frac{a_{31}}{u_{11}} = \frac{8}{2} = 4\)
-            </div>
-
-            <div class="step-box">
-              <span class="step-title" data-en="Step 3: Second row of U" data-tr="Adım 3: U'nun ikinci satırı">Step 3:
-                Second row of U</span>
-              \(u_{22} = a_{22} - l_{21}u_{12} = 3 - 2(1) = 1\) <br>
-              \(u_{23} = a_{23} - l_{21}u_{13} = 3 - 2(1) = 1\)
-            </div>
-
-            <div class="step-box">
-              <span class="step-title" data-en="Step 4: Second column of L" data-tr="Adım 4: L'nin ikinci sütunu">Step
-                4: Second column of L</span>
-              \(l_{32} = \frac{a_{32} - l_{31}u_{12}}{u_{22}} = \frac{7 - 4(1)}{1} = 3\)
-            </div>
-
-            <div class="step-box">
-              <span class="step-title" data-en="Step 5: Final element" data-tr="Adım 5: Son eleman">Step 5: Final
-                element</span>
-              \(u_{33} = a_{33} - l_{31}u_{13} - l_{32}u_{23} = 9 - 4(1) - 3(1) = 2\)
-            </div>
-
-            <p><strong data-en="Result:" data-tr="Sonuç:">Result:</strong></p>
-            $$L = \begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 4 & 3 & 1 \end{bmatrix}, \quad U = \begin{bmatrix} 2 & 1 & 1
-            \\ 0 & 1 & 1 \\ 0 & 0 & 2 \end{bmatrix}$$
-
-            <div class="key-insight">
-              <strong data-en="Verification:" data-tr="Doğrulama:">Verification:</strong> <span
-                data-en="Always multiply L * U to check you get back A!"
-                data-tr="A'yı geri elde edip etmediğinizi kontrol etmek için daima L * U çarpımı yapın!">Always multiply
-                \(L \times U\) to check you get back \(A\)!</span>
-            </div>
-
-            <div class="common-mistake">
-              <strong data-en="Mistake:" data-tr="Hata:">Mistake:</strong> <span
-                data-en="Confusing Doolittle (L has 1s) with Crout (U has 1s). Check which is required in exam!"
-                data-tr="Doolittle (L'de 1'ler var) ile Crout (U'da 1'ler var) yöntemlerini karıştırmak. Sınavda hangisinin istendiğini kontrol edin!">Confusing
-                Doolittle (L has 1s) with Crout (U has 1s). Check which is required in
-                exam!</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- INTERPOLATION & CURVE FITTING -->
       <h2 data-en="📈 Interpolation & Polynomials" data-tr="📈 İnterpolasyon & Polinomlar">📈 Interpolation &
         Polynomials</h2>
       <div class="methods-grid">
@@ -1629,235 +1852,275 @@
       </div>
 
       <!-- CURVE FITTING -->
-      <h2 data-en="📉 Curve Fitting" data-tr="📉 Eğri Uydurma">📉 Curve Fitting</h2>
-      <div class="grid-2">
+      <h2 data-en="📐 Linear Systems" data-tr="📐 Doğrusal Sistemler">📐 Linear Systems</h2>
+      <div class="methods-grid">
 
-        <!-- LEAST SQUARES -->
         <div class="method-card" onclick="openModal(this)">
-          <div class="method-title">Least Squares Regression</div>
+          <div class="method-title">LU Decomposition</div>
           <div class="method-form">
-            Minimize \(\sum (y_i - \hat{y}_i)^2\)
-            <div class="var-def" data-en="where: y_hat = a0 + a1 x (linear model)"
-              data-tr="burada: y_hat = a0 + a1 x (doğrusal model)">where: \(\hat{y} = a_0 + a_1 x\) (linear model)</div>
+            \(A = L \cdot U\)
+            <div class="var-def" data-en="where: L = lower triangular, U = upper triangular"
+              data-tr="burada: L = alt üçgen, U = üst üçgen">where: L = lower triangular, U = upper triangular</div>
           </div>
 
           <div class="modal-payload">
-            <h3 data-en="Least Squares - Complete Guide" data-tr="En Küçük Kareler - Tam Rehber">Least Squares -
+            <h3 data-en="LU Decomposition - Complete Guide" data-tr="LU Ayrıştırması - Tam Rehber">LU Decomposition -
               Complete Guide</h3>
 
             <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
-            <p data-en="Least squares finds the 'best fit' line (or curve) through data points by minimizing the sum of squared vertical distances (residuals)."
-              data-tr="En küçük kareler, karesel dikey mesafelerin (kalıntıların) toplamını en aza indirerek veri noktaları boyunca 'en uygun' doğruyu (veya eğriyi) bulur.">
-              Least squares finds the "best fit" line (or curve) through data points by minimizing the sum of squared
-              vertical distances (residuals).</p>
+            <p data-en="LU Decomposition factors a matrix A into a product of lower triangular matrix L and upper triangular matrix U. This allows solving Ax=b efficiently, especially for multiple right-hand sides."
+              data-tr="LU Ayrıştırması, bir A matrisini alt üçgen L ve üst üçgen U matrislerinin çarpımına ayırır. Bu, özellikle çoklu sağ taraf vektörleri için Ax=b'yi verimli bir şekilde çözmeyi sağlar.">
+              LU Decomposition factors a matrix \(A\) into a product of lower triangular matrix \(L\) and upper
+              triangular matrix \(U\). This allows solving \(Ax=b\) efficiently, especially for multiple right-hand
+              sides.</p>
 
-            <h4 data-en="🎯 Why Squared?" data-tr="🎯 Neden Karesel?">🎯 Why Squared?</h4>
-            <p data-en="Squaring ensures positive values and penalizes large errors more than small ones. Also makes calculus derivatives easier."
-              data-tr="Kare alma pozitif değerler sağlar ve büyük hataları küçük olanlardan daha fazla cezalandırır. Ayrıca kalkülüs türevlerini kolaylaştırır.">
-              Squaring ensures positive values and penalizes large errors more than small ones. Also makes calculus
-              derivatives easier.</p>
+            <h4 data-en="🎯 Why is it useful?" data-tr="🎯 Neden yararlıdır?">🎯 Why is it useful?</h4>
+            <p data-en="Instead of solving Ax=b directly (expensive), we:"
+              data-tr="Ax=b'yi doğrudan çözmek yerine (pahalı), biz:">Instead of solving \(Ax=b\) directly (expensive),
+              we:</p>
+            <ol>
+              <li data-en="Decompose once: A = LU (costly but done once)"
+                data-tr="Bir kez ayrıştır: A = LU (pahalı ama bir kez yapılır)">Decompose once: \(A = LU\) (costly but
+                done once)</li>
+              <li data-en="Solve Ly = b by forward substitution (cheap)"
+                data-tr="Ly = b'yi ileri yerine koyma ile çöz (ucuz)">Solve \(Ly = b\) by forward substitution (cheap)
+              </li>
+              <li data-en="Solve Ux = y by back substitution (cheap)"
+                data-tr="Ux = y'yi geri yerine koyma ile çöz (ucuz)">Solve \(Ux = y\) by back substitution (cheap)</li>
+            </ol>
+            <p data-en="If you have many systems with same A but different b, you decompose once and reuse!"
+              data-tr="Eğer aynı A ama farklı b'ye sahip birçok sisteminiz varsa, bir kez ayrıştırıp tekrar kullanırsınız!">
+              If you have many systems with same \(A\) but different \(b\), you decompose once and reuse!</p>
 
-            <h4 data-en="📋 Linear Regression Formulas" data-tr="📋 Doğrusal Regresyon Formülleri">📋 Linear Regression
-              Formulas</h4>
-            <p data-en="For model y = a0 + a1 x:" data-tr="y = a0 + a1 x modeli için:">For model \(y = a_0 + a_1 x\):
-            </p>
+            <h4 data-en="📋 Doolittle's Method (L has 1s on diagonal)"
+              data-tr="📋 Doolittle Metodu (L'nin köşegeninde 1'ler vardır)">📋 Doolittle's Method (L has 1s on
+              diagonal)</h4>
+
             <div class="formula-box">
-              <strong data-en="Normal Equations (from calculus):" data-tr="Normal Denklemler (kalkülüsden):">Normal
-                Equations (from calculus):</strong>
-              $$n a_0 + (\sum x_i) a_1 = \sum y_i$$
-              $$(\sum x_i) a_0 + (\sum x_i^2) a_1 = \sum x_i y_i$$
+              $$L = \begin{bmatrix} 1 & 0 & 0 \\ l_{21} & 1 & 0 \\ l_{31} & l_{32} & 1 \end{bmatrix}, \quad U =
+              \begin{bmatrix} u_{11} & u_{12} & u_{13} \\ 0 & u_{22} & u_{23} \\ 0 & 0 & u_{33} \end{bmatrix}$$
             </div>
 
-            <div class="formula-box">
-              <strong data-en="Direct formulas:" data-tr="Doğrudan formüller:">Direct formulas:</strong>
-              $$a_1 = \frac{n\sum xy - (\sum x)(\sum y)}{n\sum x^2 - (\sum x)^2}$$
-              $$a_0 = \bar{y} - a_1 \bar{x}$$
-              <div class="var-def" data-en="where x_bar = sum(x)/n, y_bar = sum(y)/n"
-                data-tr="burada x_bar = toplam(x)/n, y_bar = toplam(y)/n">where \(\bar{x} = \frac{\sum x}{n}\),
-                \(\bar{y} = \frac{\sum y}{n}\).</div>
-            </div>
-
-            <h4 data-en="📊 Complete Example" data-tr="📊 Tam Örnek">📊 Complete Example</h4>
-            <p data-en="Fit line through: (1, 2.5), (2, 4), (3, 5.5), (4, 7)."
-              data-tr="Şu noktalardan geçen doğruyu uydur: (1, 2.5), (2, 4), (3, 5.5), (4, 7).">Fit line through: (1,
-              2.5), (2, 4), (3, 5.5), (4, 7).</p>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>\(x\)</th>
-                  <th>\(y\)</th>
-                  <th>\(x^2\)</th>
-                  <th>\(xy\)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>2.5</td>
-                  <td>1</td>
-                  <td>2.5</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>4.0</td>
-                  <td>4</td>
-                  <td>8.0</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>5.5</td>
-                  <td>9</td>
-                  <td>16.5</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>7.0</td>
-                  <td>16</td>
-                  <td>28.0</td>
-                </tr>
-                <tr style="font-weight:bold; border-top: 2px solid #333;">
-                  <td>\(\sum = 10\)</td>
-                  <td>\(\sum = 19\)</td>
-                  <td>\(\sum = 30\)</td>
-                  <td>\(\sum = 55\)</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="step-box">
-              <span class="step-title" data-en="Solve normal equations:" data-tr="Normal denklemleri çöz:">Solve normal
-                equations:</span>
-              \(4a_0 + 10a_1 = 19\) <br>
-              \(10a_0 + 30a_1 = 55\)
-            </div>
-
-            <div class="step-box">
-              <span class="step-title" data-en="Or use direct formula:" data-tr="Veya doğrudan formülü kullan:">Or use
-                direct formula:</span>
-              $$a_1 = \frac{4(55) - 10(19)}{4(30) - 10^2} = \frac{220 - 190}{120 - 100} = \frac{30}{20} = 1.5$$
-              $$a_0 = \frac{19}{4} - 1.5(\frac{10}{4}) = 4.75 - 3.75 = 1.0$$
-            </div>
-
-            <p><strong data-en="Result:" data-tr="Sonuç:">Result:</strong> \(y = 1.0 + 1.5x\)</p>
+            <p><strong data-en="Formulas:" data-tr="Formüller:">Formulas:</strong></p>
+            <ul>
+              <li data-en="First row of U: u1j = a1j for all j" data-tr="U'nun ilk satırı: her j için u1j = a1j">First
+                row of U: \(u_{1j} = a_{1j}\) for all j</li>
+              <li data-en="First column of L: li1 = ai1 / u11 for i > 1"
+                data-tr="L'nin ilk sütunu: i > 1 için li1 = ai1 / u11">First column of L: \(l_{i1} =
+                \frac{a_{i1}}{u_{11}}\) for \(i > 1\)</li>
+              <li>General: \(u_{ij} = a_{ij} - \sum_{k=1}^{i-1} l_{ik}u_{kj}\) for \(i \le j\)</li>
+              <li>General: \(l_{ij} = \frac{1}{u_{jj}}(a_{ij} - \sum_{k=1}^{j-1} l_{ik}u_{kj})\) for \(i > j\)</li>
+            </ul>
 
             <div class="section-divider"></div>
 
-            <h4 data-en="⚠️ Goodness of Fit" data-tr="⚠️ Uyum İyiliği">⚠️ Goodness of Fit</h4>
-            <div class="formula-box">
-              <strong data-en="Standard Deviation:" data-tr="Standart Sapma:">Standard Deviation:</strong>
-              $$S_y = \sqrt{\frac{S_r}{n-2}}$$
-              <div class="var-def" data-en="where Sr = sum(yi - y_hat_i)^2 (sum of residuals squared)"
-                data-tr="burada Sr = toplam(yi - y_hat_i)^2 (kalıntıların kareleri toplamı)">where \(S_r = \sum (y_i -
-                \hat{y}_i)^2\) (sum of residuals squared).</div>
+            <h4 data-en="📊 Complete Example" data-tr="📊 Tam Örnek">📊 Complete Example</h4>
+            <p data-en="Decompose:" data-tr="Ayrıştır:">Decompose:</p>
+            $$A = \begin{bmatrix} 2 & 1 & 1 \\ 4 & 3 & 3 \\ 8 & 7 & 9 \end{bmatrix}$$
+
+            <div class="step-box">
+              <span class="step-title" data-en="Step 1: First row of U (copy row 1)"
+                data-tr="Adım 1: U'nun ilk satırı (satır 1'i kopyala)">Step 1: First row of U (copy row 1)</span>
+              $$U_{row1} = [2, 1, 1]$$
             </div>
 
-            <div class="formula-box">
-              <strong data-en="Coefficient of Determination:" data-tr="Belirlilik Katsayısı:">Coefficient of
-                Determination:</strong>
-              $$r^2 = \frac{S_t - S_r}{S_t}$$
-              <div class="var-def" data-en="where St = sum(yi - y_bar)^2. Value near 1 = good fit."
-                data-tr="burada St = toplam(yi - y_bar)^2. 1'e yakın değer = iyi uyum.">where \(S_t = \sum (y_i -
-                \bar{y})^2\). Value near 1 = good fit.</div>
+            <div class="step-box">
+              <span class="step-title" data-en="Step 2: First column of L" data-tr="Adım 2: L'nin ilk sütunu">Step 2:
+                First column of L</span>
+              \(l_{21} = \frac{a_{21}}{u_{11}} = \frac{4}{2} = 2\) <br>
+              \(l_{31} = \frac{a_{31}}{u_{11}} = \frac{8}{2} = 4\)
             </div>
-          </div>
-        </div>
 
-        <!-- EXPONENTIAL FITTING -->
-        <div class="method-card" onclick="openModal(this)">
-          <div class="method-title">Exponential Fitting</div>
-          <div class="method-form">
-            \(y = ae^{bx}\) &rarr; Linearize &rarr; \(\ln y = \ln a + bx\)
-            <div class="var-def" data-en="Apply least squares to transformed data"
-              data-tr="Dönüştürülmüş veriye en küçük kareler uygula">Apply least squares to transformed data</div>
-          </div>
+            <div class="step-box">
+              <span class="step-title" data-en="Step 3: Second row of U" data-tr="Adım 3: U'nun ikinci satırı">Step 3:
+                Second row of U</span>
+              \(u_{22} = a_{22} - l_{21}u_{12} = 3 - 2(1) = 1\) <br>
+              \(u_{23} = a_{23} - l_{21}u_{13} = 3 - 2(1) = 1\)
+            </div>
 
-          <div class="modal-payload">
-            <h3 data-en="Exponential Function Fitting" data-tr="Üstel Fonksiyon Uydurma">Exponential Function Fitting
-            </h3>
+            <div class="step-box">
+              <span class="step-title" data-en="Step 4: Second column of L" data-tr="Adım 4: L'nin ikinci sütunu">Step
+                4: Second column of L</span>
+              \(l_{32} = \frac{a_{32} - l_{31}u_{12}}{u_{22}} = \frac{7 - 4(1)}{1} = 3\)
+            </div>
 
-            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
-            <p data-en="When data follows exponential growth/decay, fit model y = ae^bx by transforming to linear form."
-              data-tr="Veriler üstel büyüme/azalma izlediğinde, doğrusal forma dönüştürerek y = ae^bx modelini uydurun.">
-              When data follows exponential growth/decay, fit model \(y = ae^{bx}\) by transforming to linear form.</p>
+            <div class="step-box">
+              <span class="step-title" data-en="Step 5: Final element" data-tr="Adım 5: Son eleman">Step 5: Final
+                element</span>
+              \(u_{33} = a_{33} - l_{31}u_{13} - l_{32}u_{23} = 9 - 4(1) - 3(1) = 2\)
+            </div>
 
-            <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
-            <ol>
-              <li data-en="Take natural log: ln(y) = ln(a) + bx." data-tr="Doğal logaritma al: ln(y) = ln(a) + bx.">Take
-                natural log: \(\ln y = \ln a + bx\).</li>
-              <li data-en="Let Y = ln(y), A = ln(a). Now it's linear: Y = A + bx."
-                data-tr="Y = ln(y), A = ln(a) olsun. Şimdi doğrusaldır: Y = A + bx.">Let \(Y = \ln y\), \(A = \ln a\).
-                Now it's linear: \(Y = A + bx\).</li>
-              <li data-en="Build table with columns: x, y, Y=ln(y), x^2, xY."
-                data-tr="Sütunlarla tablo oluştur: x, y, Y=ln(y), x^2, xY.">Build table with columns: \(x, y, Y=\ln y,
-                x^2, xY\).</li>
-              <li data-en="Apply least squares to find A and b."
-                data-tr="A ve b'yi bulmak için en küçük kareler uygula.">Apply least squares to find \(A\) and \(b\).
-              </li>
-              <li data-en="Convert back: a = e^A." data-tr="Geri dönüştür: a = e^A.">Convert back: \(a = e^A\).</li>
-            </ol>
+            <p><strong data-en="Result:" data-tr="Sonuç:">Result:</strong></p>
+            $$L = \begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 4 & 3 & 1 \end{bmatrix}, \quad U = \begin{bmatrix} 2 & 1 & 1
+            \\ 0 & 1 & 1 \\ 0 & 0 & 2 \end{bmatrix}$$
 
-            <h4 data-en="📊 Example" data-tr="📊 Örnek">📊 Example</h4>
-            <p data-en="Data: (0, 1), (1, 2.7), (2, 7.4)." data-tr="Veri: (0, 1), (1, 2.7), (2, 7.4).">Data: (0, 1), (1,
-              2.7), (2, 7.4).</p>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>x</th>
-                  <th>y</th>
-                  <th>\(Y = \ln y\)</th>
-                  <th>\(x^2\)</th>
-                  <th>\(xY\)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>0</td>
-                  <td>1.0</td>
-                  <td>0.00</td>
-                  <td>0</td>
-                  <td>0.00</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>2.7</td>
-                  <td>0.99</td>
-                  <td>1</td>
-                  <td>0.99</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>7.4</td>
-                  <td>2.00</td>
-                  <td>4</td>
-                  <td>4.00</td>
-                </tr>
-                <tr style="font-weight:bold;">
-                  <td>3</td>
-                  <td></td>
-                  <td>2.99</td>
-                  <td>5</td>
-                  <td>4.99</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <p data-en="Solve for A and b, then a = e^A." data-tr="A ve b için çöz, sonra a = e^A.">Solve for \(A\) and
-              \(b\), then \(a = e^A\).</p>
+            <div class="key-insight">
+              <strong data-en="Verification:" data-tr="Doğrulama:">Verification:</strong> <span
+                data-en="Always multiply L * U to check you get back A!"
+                data-tr="A'yı geri elde edip etmediğinizi kontrol etmek için daima L * U çarpımı yapın!">Always multiply
+                \(L \times U\) to check you get back \(A\)!</span>
+            </div>
 
             <div class="common-mistake">
               <strong data-en="Mistake:" data-tr="Hata:">Mistake:</strong> <span
-                data-en="Forgetting to convert A back to a using exponential!"
-                data-tr="A'yı üstel kullanarak a'ya geri dönüştürmeyi unutmak!">Forgetting to convert \(A\) back to
-                \(a\) using exponential!</span>
+                data-en="Confusing Doolittle (L has 1s) with Crout (U has 1s). Check which is required in exam!"
+                data-tr="Doolittle (L'de 1'ler var) ile Crout (U'da 1'ler var) yöntemlerini karıştırmak. Sınavda hangisinin istendiğini kontrol edin!">Confusing
+                Doolittle (L has 1s) with Crout (U has 1s). Check which is required in
+                exam!</span>
             </div>
           </div>
         </div>
 
+
+        <!-- CROUT DECOMPOSITION -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Crout Decomposition</div>
+          <div class="method-form">
+            \(A = LU\)
+            <div class="var-def" data-en="where: L has diagonal, U has 1s on diagonal"
+              data-tr="burada: L köşegen içerir, U köşegende 1'ler içerir">where: L has diagonal, U has 1s on diagonal
+            </div>
+          </div>
+          <div class="key-insight" data-en="LU variant: different from Doolittle"
+            data-tr="LU varyantı: Doolittle'dan farklı">
+            LU variant: different from Doolittle</div>
+
+          <div class="modal-payload">
+            <h3 data-en="Crout Decomposition - Guide" data-tr="Crout Ayrıştırması - Rehber">Crout Decomposition - Guide
+            </h3>
+
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Crout decomposition is a variant of LU decomposition where L contains the diagonal elements and U has 1s on its diagonal."
+              data-tr="Crout ayrıştırması, L'nin köşegen elemanları içerdiği ve U'nun köşeğeninde 1'ler olduğu bir LU ayrıştırma varyantıdır.">
+              Crout decomposition is a variant of LU decomposition where L contains the diagonal elements and U has 1s
+              on
+              its diagonal.</p>
+
+            <h4 data-en="🎯 Difference from Doolittle" data-tr="🎯 Doolittle'dan Farkı">🎯 Difference from Doolittle
+            </h4>
+            <div class="formula-box">
+              <strong data-en="Doolittle:" data-tr="Doolittle:">Doolittle:</strong> L has 1s on diagonal, U has diagonal
+              values<br>
+              <strong data-en="Crout:" data-tr="Crout:">Crout:</strong> L has diagonal values, U has 1s on diagonal
+            </div>
+
+            <p data-en="Both produce same solution but differ in numerical stability for certain problems."
+              data-tr="Her ikisi de aynı çözümü üretir ancak belirli problemler için sayısal kararlılıkta farklılık gösterir.">
+              Both produce same solution but differ in numerical stability for certain problems.</p>
+
+            <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
+            <ol>
+              <li data-en="For i=1 to n: Compute L(i,j) for j≤i" data-tr="i=1'den n'e: j≤i için L(i,j) hesapla">For i=1
+                to
+                n: Compute L(i,j) for j≤i</li>
+              <li data-en="For i=1 to n: Compute U(i,j) for j>i" data-tr="i=1'den n'e: j>i için U(i,j) hesapla">For i=1
+                to
+                n: Compute U(i,j) for j>i</li>
+              <li data-en="Set all U(i,i) = 1" data-tr="Tüm U(i,i) = 1 yap">Set all U(i,i) = 1</li>
+            </ol>
+
+            <div class="key-insight">
+              <strong data-en="When to use:" data-tr="Ne zaman kullanılır:">When to use:</strong>
+              <span data-en="Preference depends on problem structure. Try both if numerical issues arise."
+                data-tr="Tercih problem yapısına bağlıdır. Sayısal sorunlar ortaya çıkarsa her ikisini de deneyin.">
+                Preference depends on problem structure. Try both if numerical issues arise.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHOLESKY DECOMPOSITION -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Cholesky Decomposition</div>
+          <div class="method-form">
+            \(A = LL^T\)
+            <div class="var-def" data-en="Requires: symmetric positive-definite matrix"
+              data-tr="Gereksinim: simetrik pozitif-tanımlı matris">Requires: symmetric positive-definite matrix</div>
+          </div>
+          <div class="when-to-use" data-en="Matrix is symmetric and positive-definite"
+            data-tr="Matris simetrik ve pozitif-tanımlı ">Matrix is symmetric and positive-definite</div>
+          <div class="key-insight" data-en="2x faster and half the storage of LU!"
+            data-tr="LU'dan 2x daha hızlı ve yarı depolama!">2x faster and half the storage of LU!</div>
+
+          <div class="modal-payload">
+            <h3 data-en="Cholesky Decomposition - Complete Guide" data-tr="Cholesky Ayrıştırması - Tam Rehber">Cholesky
+              Decomposition - Complete Guide</h3>
+
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Cholesky decomposition factors a symmetric positive-definite matrix A into A = LL^T, where L is lower triangular. This is a special case of LU decomposition."
+              data-tr="Cholesky ayrıştırması, simetrik pozitif-tanımlı bir A matrisini A = LL^T olarak çarpanlarına ayırır, burada L alt üçgendir. Bu, LU ayrıştırmasının özel bir halidir.">
+              Cholesky decomposition factors a symmetric positive-definite matrix A into \(A = LL^T\), where L is lower
+              triangular. This is a special case of LU decomposition.</p>
+
+            <h4 data-en="🎯 Why Special?" data-tr="🎯 Neden Özel?">🎯 Why Special?</h4>
+            <div class="formula-box">
+              <strong data-en="Efficiency:" data-tr="Verimlilik:">Efficiency:</strong>
+              <ul>
+                <li data-en="Operations: n³/6 vs n³/3 for LU (2x faster!)"
+                  data-tr="İşlemler: LU için n³/3'e karşı n³/6 (2x daha hızlı!)">Operations: \(n^3/6\) vs \(n^3/3\)
+                  for LU (2x faster!)</li>
+                <li data-en="Storage: Only L needed (half the storage)"
+                  data-tr="Depolama: Sadece L gerekli (yarı depolama)">Storage: Only L needed (half the storage)</li>
+                <li data-en="More numerically stable for positive-definite matrices"
+                  data-tr="Pozitif-tanımlı matrisler için sayısal olarak daha kararlı">More numerically stable for
+                  positive-definite matrices</li>
+              </ul>
+            </div>
+
+            <h4 data-en="📋 Requirements" data-tr="📋 Gereksinimler">📋 Requirements</h4>
+            <ol>
+              <li data-en="Matrix must be symmetric: A = A^T" data-tr="Matris simetrik olmalı: A = A^T">Matrix must be
+                symmetric: \(A = A^T\)</li>
+              <li data-en="Matrix must be positive-definite: all eigenvalues > 0"
+                data-tr="Matris pozitif-tanımlı olmalı: tüm özdeğerler > 0">Matrix must be positive-definite: all
+                eigenvalues > 0</li>
+              <li data-en="Equivalently: x^T A x > 0 for all x ≠ 0"
+                data-tr="Eşdeğer olarak: tüm x ≠ 0 için x^T A x > 0">
+                Equivalently: \(x^T A x > 0\) for all \(x \neq 0\)</li>
+            </ol>
+
+            <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
+            <p data-en="For i = 1 to n:" data-tr="i = 1'den n'e:">For i = 1 to n:</p>
+            <div class="formula-box">
+              $$L_{ii} = \sqrt{A_{ii} - \sum_{k=1}^{i-1} L_{ik}^2}$$
+              $$L_{ji} = \frac{1}{L_{ii}}\left(A_{ji} - \sum_{k=1}^{i-1} L_{jk}L_{ik}\right) \quad \text{for } j > i$$
+            </div>
+
+            <div class="section-divider"></div>
+
+            <h4 data-en="📊 Example: 3x3 Matrix" data-tr="📊 Örnek: 3x3 Matris">📊 Example: 3x3 Matrix</h4>
+            <p data-en="Decompose:" data-tr="Ayrıştır:">Decompose:</p>
+            $$A = \begin{bmatrix} 4 & 2 & 2 \\ 2 & 10 & 7 \\ 2 & 7 & 21 \end{bmatrix}$$
+
+            <p data-en="Solution:" data-tr="Çözüm:">Solution:</p>
+            $$L = \begin{bmatrix} 2 & 0 & 0 \\ 1 & 3 & 0 \\ 1 & 2 & 4 \end{bmatrix}$$
+
+            <p data-en="Verify: LL^T = A ✓" data-tr="Doğrula: LL^T = A ✓">Verify: \(LL^T = A\) ✓</p>
+
+            <h4 data-en="⚠️ Applications" data-tr="⚠️ Uygulamalar">⚠️ Applications</h4>
+            <ul>
+              <li data-en="Solving normal equations in least squares"
+                data-tr="En küçük karelerde normal denklemleri çözme">Solving normal equations in least squares</li>
+              <li data-en="Monte Carlo simulations (generating correlated random variables)"
+                data-tr="Monte Carlo simülasyonları (ilişkili rassal değişkenler üretme)">Monte Carlo simulations
+                (generating correlated random variables)</li>
+              <li data-en="Optimization algorithms (Newton's method with Hessian)"
+                data-tr="Optimizasyon algoritmaları (Hessian ile Newton yöntemi)">Optimization algorithms (Newton's
+                method with Hessian)</li>
+              <li data-en="Kalman filtering" data-tr="Kalman filtreleme">Kalman filtering</li>
+            </ul>
+
+            <div class="common-mistake">
+              <strong data-en="Failure:" data-tr="Başarısızlık:">Failure:</strong>
+              <span
+                data-en="If you encounter sqrt of negative number, matrix is NOT positive-definite! Check your input."
+                data-tr="Negatif sayının karekökü ile karşılaşırsanız, matris pozitif-tanımlı DEĞİLDİR! Girdünüzü kontrol edin.">
+                If you encounter sqrt of negative number, matrix is NOT positive-definite! Check your input.</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- NUMERICAL INTEGRATION -->
+      <!-- INTERPOLATION & CURVE FITTING -->
       <h2 data-en="∫ Numerical Integration" data-tr="∫ Sayısal İntegrasyon">∫ Numerical Integration</h2>
       <div class="methods-grid">
 
@@ -2272,10 +2535,290 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <h2 data-en="📉 Curve Fitting" data-tr="📉 Eğri Uydurma">📉 Curve Fitting</h2>
+      <div class="methods-grid">
+
+        <!-- LEAST SQUARES -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Least Squares Regression</div>
+          <div class="method-form">
+            Minimize \(\sum (y_i - \hat{y}_i)^2\)
+            <div class="var-def" data-en="where: y_hat = a0 + a1 x (linear model)"
+              data-tr="burada: y_hat = a0 + a1 x (doğrusal model)">where: \(\hat{y} = a_0 + a_1 x\) (linear model)
+            </div>
+          </div>
+
+          <div class="modal-payload">
+            <h3 data-en="Least Squares - Complete Guide" data-tr="En Küçük Kareler - Tam Rehber">Least Squares -
+              Complete Guide</h3>
+
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="Least squares finds the 'best fit' line (or curve) through data points by minimizing the sum of squared vertical distances (residuals)."
+              data-tr="En küçük kareler, karesel dikey mesafelerin (kalıntıların) toplamını en aza indirerek veri noktaları boyunca 'en uygun' doğruyu (veya eğriyi) bulur.">
+              Least squares finds the "best fit" line (or curve) through data points by minimizing the sum of squared
+              vertical distances (residuals).</p>
+
+            <h4 data-en="🎯 Why Squared?" data-tr="🎯 Neden Karesel?">🎯 Why Squared?</h4>
+            <p data-en="Squaring ensures positive values and penalizes large errors more than small ones. Also makes calculus derivatives easier."
+              data-tr="Kare alma pozitif değerler sağlar ve büyük hataları küçük olanlardan daha fazla cezalandırır. Ayrıca kalkülüs türevlerini kolaylaştırır.">
+              Squaring ensures positive values and penalizes large errors more than small ones. Also makes calculus
+              derivatives easier.</p>
+
+            <h4 data-en="📋 Linear Regression Formulas" data-tr="📋 Doğrusal Regresyon Formülleri">📋 Linear
+              Regression
+              Formulas</h4>
+            <p data-en="For model y = a0 + a1 x:" data-tr="y = a0 + a1 x modeli için:">For model \(y = a_0 + a_1 x\):
+            </p>
+            <div class="formula-box">
+              <strong data-en="Normal Equations (from calculus):" data-tr="Normal Denklemler (kalkülüsden):">Normal
+                Equations (from calculus):</strong>
+              $$n a_0 + (\sum x_i) a_1 = \sum y_i$$
+              $$(\sum x_i) a_0 + (\sum x_i^2) a_1 = \sum x_i y_i$$
+            </div>
+
+            <div class="formula-box">
+              <strong data-en="Direct formulas:" data-tr="Doğrudan formüller:">Direct formulas:</strong>
+              $$a_1 = \frac{n\sum xy - (\sum x)(\sum y)}{n\sum x^2 - (\sum x)^2}$$
+              $$a_0 = \bar{y} - a_1 \bar{x}$$
+              <div class="var-def" data-en="where x_bar = sum(x)/n, y_bar = sum(y)/n"
+                data-tr="burada x_bar = toplam(x)/n, y_bar = toplam(y)/n">where \(\bar{x} = \frac{\sum x}{n}\),
+                \(\bar{y} = \frac{\sum y}{n}\).</div>
+            </div>
+
+            <h4 data-en="🔢 Matrix Method" data-tr="🔢 Matris Yöntemi">🔢 Matrix Method</h4>
+            <p data-en="For general polynomial fitting, the problem can be formulated as a matrix equation:"
+              data-tr="Genel polinom uydurma için, problem bir matris denklemi olarak formüle edilebilir:">
+              For general polynomial fitting, the problem can be formulated as a matrix equation:
+            </p>
+
+            <div class="formula-box">
+              <strong data-en="Matrix Form:" data-tr="Matris Formu:">Matrix Form:</strong>
+              $$\mathbf{A}\mathbf{x} = \mathbf{b}$$
+              <p data-en="where A is the design matrix, x is the coefficient vector, and b is the observation vector."
+                data-tr="burada A tasarım matrisi, x katsayı vektörü ve b gözlem vektörüdür.">
+                where \(\mathbf{A}\) is the design matrix, \(\mathbf{x}\) is the coefficient vector, and
+                \(\mathbf{b}\)
+                is the observation vector.
+              </p>
+            </div>
+
+            <div class="formula-box">
+              <strong data-en="Normal Equations (Matrix Form):" data-tr="Normal Denklemler (Matris Formu):">Normal
+                Equations (Matrix Form):</strong>
+              $$\mathbf{A}^T\mathbf{A}\mathbf{x} = \mathbf{A}^T\mathbf{b}$$
+              <strong data-en="Solution:" data-tr="Çözüm:">Solution:</strong>
+              $$\mathbf{x} = (\mathbf{A}^T\mathbf{A})^{-1}\mathbf{A}^T\mathbf{b}$$
+            </div>
+
+            <div class="step-box">
+              <span class="step-title" data-en="For linear fit y = a0 + a1*x:"
+                data-tr="Doğrusal uyum y = a0 + a1*x için:">For linear fit \(y = a_0 + a_1x\):</span>
+              $$\mathbf{A} = \begin{bmatrix} 1 & x_1 \\ 1 & x_2 \\ \vdots & \vdots \\ 1 & x_n \end{bmatrix}, \quad
+              \mathbf{x} = \begin{bmatrix} a_0 \\ a_1 \end{bmatrix}, \quad
+              \mathbf{b} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix}$$
+            </div>
+
+            <div class="key-insight">
+              <strong data-en="Advantage:" data-tr="Avantaj:">Advantage:</strong>
+              <span
+                data-en="Matrix method easily extends to polynomial fitting of any degree by adding columns to A (x^2, x^3, etc.)."
+                data-tr="Matris yöntemi, A'ya sütunlar ekleyerek (x^2, x^3, vb.) herhangi bir dereceye polinom uydurma için kolayca genişletilebilir.">
+                Matrix method easily extends to polynomial fitting of any degree by adding columns to \(\mathbf{A}\)
+                (\(x^2, x^3\), etc.).
+              </span>
+            </div>
+
+            <h4 data-en="📊 Complete Example" data-tr="📊 Tam Örnek">📊 Complete Example</h4>
+            <p data-en="Fit line through: (1, 2.5), (2, 4), (3, 5.5), (4, 7)."
+              data-tr="Şu noktalardan geçen doğruyu uydur: (1, 2.5), (2, 4), (3, 5.5), (4, 7).">Fit line through: (1,
+              2.5), (2, 4), (3, 5.5), (4, 7).</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>\(x\)</th>
+                  <th>\(y\)</th>
+                  <th>\(x^2\)</th>
+                  <th>\(xy\)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>2.5</td>
+                  <td>1</td>
+                  <td>2.5</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>4.0</td>
+                  <td>4</td>
+                  <td>8.0</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>5.5</td>
+                  <td>9</td>
+                  <td>16.5</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>7.0</td>
+                  <td>16</td>
+                  <td>28.0</td>
+                </tr>
+                <tr style="font-weight:bold; border-top: 2px solid #333;">
+                  <td>\(\sum = 10\)</td>
+                  <td>\(\sum = 19\)</td>
+                  <td>\(\sum = 30\)</td>
+                  <td>\(\sum = 55\)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="step-box">
+              <span class="step-title" data-en="Solve normal equations:" data-tr="Normal denklemleri çöz:">Solve
+                normal
+                equations:</span>
+              \(4a_0 + 10a_1 = 19\) <br>
+              \(10a_0 + 30a_1 = 55\)
+            </div>
+
+            <div class="step-box">
+              <span class="step-title" data-en="Or use direct formula:" data-tr="Veya doğrudan formülü kullan:">Or use
+                direct formula:</span>
+              $$a_1 = \frac{4(55) - 10(19)}{4(30) - 10^2} = \frac{220 - 190}{120 - 100} = \frac{30}{20} = 1.5$$
+              $$a_0 = \frac{19}{4} - 1.5(\frac{10}{4}) = 4.75 - 3.75 = 1.0$$
+            </div>
+
+            <p><strong data-en="Result:" data-tr="Sonuç:">Result:</strong> \(y = 1.0 + 1.5x\)</p>
+
+            <div class="section-divider"></div>
+
+            <h4 data-en="⚠️ Goodness of Fit" data-tr="⚠️ Uyum İyiliği">⚠️ Goodness of Fit</h4>
+            <div class="formula-box">
+              <strong data-en="Standard Deviation:" data-tr="Standart Sapma:">Standard Deviation:</strong>
+              $$S_y = \sqrt{\frac{S_r}{n-2}}$$
+              <div class="var-def" data-en="where Sr = sum(yi - y_hat_i)^2 (sum of residuals squared)"
+                data-tr="burada Sr = toplam(yi - y_hat_i)^2 (kalıntıların kareleri toplamı)">where \(S_r = \sum (y_i -
+                \hat{y}_i)^2\) (sum of residuals squared).</div>
+            </div>
+
+            <div class="formula-box">
+              <strong data-en="Coefficient of Determination:" data-tr="Belirlilik Katsayısı:">Coefficient of
+                Determination:</strong>
+              $$r^2 = \frac{S_t - S_r}{S_t}$$
+              <div class="var-def" data-en="where St = sum(yi - y_bar)^2. Value near 1 = good fit."
+                data-tr="burada St = toplam(yi - y_bar)^2. 1'e yakın değer = iyi uyum.">where \(S_t = \sum (y_i -
+                \bar{y})^2\). Value near 1 = good fit.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXPONENTIAL FITTING -->
+        <div class="method-card" onclick="openModal(this)">
+          <div class="method-title">Exponential Fitting</div>
+          <div class="method-form">
+            \(y = ae^{bx}\) &rarr; Linearize &rarr; \(\ln y = \ln a + bx\)
+            <div class="var-def" data-en="Apply least squares to transformed data"
+              data-tr="Dönüştürülmüş veriye en küçük kareler uygula">Apply least squares to transformed data</div>
+          </div>
+
+          <div class="modal-payload">
+            <h3 data-en="Exponential Function Fitting" data-tr="Üstel Fonksiyon Uydurma">Exponential Function Fitting
+            </h3>
+
+            <h4 data-en="📌 What is it?" data-tr="📌 Nedir?">📌 What is it?</h4>
+            <p data-en="When data follows exponential growth/decay, fit model y = ae^bx by transforming to linear form."
+              data-tr="Veriler üstel büyüme/azalma izlediğinde, doğrusal forma dönüştürerek y = ae^bx modelini uydurun.">
+              When data follows exponential growth/decay, fit model \(y = ae^{bx}\) by transforming to linear form.
+            </p>
+
+            <h4 data-en="📋 Algorithm" data-tr="📋 Algoritma">📋 Algorithm</h4>
+            <ol>
+              <li data-en="Take natural log: ln(y) = ln(a) + bx." data-tr="Doğal logaritma al: ln(y) = ln(a) + bx.">
+                Take
+                natural log: \(\ln y = \ln a + bx\).</li>
+              <li data-en="Let Y = ln(y), A = ln(a). Now it's linear: Y = A + bx."
+                data-tr="Y = ln(y), A = ln(a) olsun. Şimdi doğrusaldır: Y = A + bx.">Let \(Y = \ln y\), \(A = \ln a\).
+                Now it's linear: \(Y = A + bx\).</li>
+              <li data-en="Build table with columns: x, y, Y=ln(y), x^2, xY."
+                data-tr="Sütunlarla tablo oluştur: x, y, Y=ln(y), x^2, xY.">Build table with columns: \(x, y, Y=\ln y,
+                x^2, xY\).</li>
+              <li data-en="Apply least squares to find A and b."
+                data-tr="A ve b'yi bulmak için en küçük kareler uygula.">Apply least squares to find \(A\) and \(b\).
+              </li>
+              <li data-en="Convert back: a = e^A." data-tr="Geri dönüştür: a = e^A.">Convert back: \(a = e^A\).</li>
+            </ol>
+
+            <h4 data-en="📊 Example" data-tr="📊 Örnek">📊 Example</h4>
+            <p data-en="Data: (0, 1), (1, 2.7), (2, 7.4)." data-tr="Veri: (0, 1), (1, 2.7), (2, 7.4).">Data: (0, 1),
+              (1,
+              2.7), (2, 7.4).</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>x</th>
+                  <th>y</th>
+                  <th>\(Y = \ln y\)</th>
+                  <th>\(x^2\)</th>
+                  <th>\(xY\)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>1.0</td>
+                  <td>0.00</td>
+                  <td>0</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2.7</td>
+                  <td>0.99</td>
+                  <td>1</td>
+                  <td>0.99</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>7.4</td>
+                  <td>2.00</td>
+                  <td>4</td>
+                  <td>4.00</td>
+                </tr>
+                <tr style="font-weight:bold;">
+                  <td>3</td>
+                  <td></td>
+                  <td>2.99</td>
+                  <td>5</td>
+                  <td>4.99</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p data-en="Solve for A and b, then a = e^A." data-tr="A ve b için çöz, sonra a = e^A.">Solve for \(A\)
+              and
+              \(b\), then \(a = e^A\).</p>
+
+            <div class="common-mistake">
+              <strong data-en="Mistake:" data-tr="Hata:">Mistake:</strong> <span
+                data-en="Forgetting to convert A back to a using exponential!"
+                data-tr="A'yı üstel kullanarak a'ya geri dönüştürmeyi unutmak!">Forgetting to convert \(A\) back to
+                \(a\) using exponential!</span>
+            </div>
+          </div>
+        </div>
 
       </div>
 
+      <!-- NUMERICAL INTEGRATION -->
     </div>
+
+  </div>
   </div>
 
   <div id="info-modal" class="modal-overlay">
