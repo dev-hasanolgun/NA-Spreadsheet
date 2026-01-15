@@ -228,12 +228,64 @@
       margin: 20px 0;
     }
 
+    .method-form,
+    .formula-box,
+    .table-container {
+      overflow-x: auto;
+      max-width: 100%;
+      -webkit-overflow-scrolling: touch;
+      /* For smooth iOS scrolling */
+    }
+
+    /* Wrap tables in a container if not already */
+    table {
+      display: block;
+      /* Allows scrolling on the table element itself if needed, or rely on wrapper */
+      overflow-x: auto;
+      white-space: nowrap;
+      /* Prevents wrapping in table cells for readability */
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
     @media (max-width: 968px) {
+      body {
+        padding: 10px;
+      }
+
+      header {
+        padding: 20px;
+      }
+
+      .container {
+        width: 100%;
+        border-radius: 0;
+        /* Full width on mobile looks better without corners typically */
+      }
 
       .grid-2,
       .formula-grid,
       .methods-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .method-card {
+        padding: 15px;
+      }
+
+      /* Adjust Language Toggle for Mobile */
+      .lang-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 5px 12px;
+      }
+
+      .lang-toggle-text {
+        font-size: 0.8em;
       }
     }
 
